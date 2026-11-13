@@ -1,0 +1,1149 @@
+# MASTER PROMPT: DESIGN AND BUILD THE OFFICIAL WEBSITE FOR FLAWLESS ROCK CONSTRUCTION LTD
+
+## 1. YOUR ROLE AND OBJECTIVE
+
+Act as an award-winning digital agency comprising:
+
+- A senior UI/UX designer.
+- A premium corporate brand strategist.
+- A senior frontend developer.
+- A construction-industry website specialist.
+- An SEO strategist.
+- A conversion-rate optimisation specialist.
+- A professional architectural and construction photographer/art director.
+
+Your assignment is to DESIGN AND BUILD a complete, production-quality, premium corporate website for:
+
+**FLAWLESS ROCK CONSTRUCTION LTD**
+
+The website must communicate the company's professionalism, construction expertise, reliability, commitment to quality, attention to detail and customer-focused approach.
+
+This is not a generic construction company website. Create a distinctive, sophisticated digital identity that positions Flawless Rock Construction Ltd as a serious, dependable and quality-driven construction brand.
+
+The supplied AXIS WORKS website screenshot is the PRIMARY VISUAL DESIGN REFERENCE.
+
+Study its layout, typography, spacing, colour palette, image treatment, navigation, visual hierarchy, button styling, content arrangement and overall aesthetic before beginning development.
+
+Use the screenshot as inspiration for the website's visual language, but translate its industrial manufacturing identity into a premium architectural and construction identity.
+
+Do not reproduce the AXIS WORKS brand, logo, text, industrial gears or manufacturing-specific content.
+
+The finished website must be original and exclusively branded for FLAWLESS ROCK CONSTRUCTION LTD.
+
+---
+
+## 2. COMPANY INFORMATION AND BRAND IDENTITY
+
+Use the following verified business information throughout the website.
+
+**Official business name:** FLAWLESS ROCK CONSTRUCTION LTD
+
+**Industry:** Building and Construction
+
+**Business address:**
+37, by Tetlow Road, Ekeonuwa Street Junction, Owerri 460102, Imo State, Nigeria.
+
+**Telephone:** 0805 592 0437
+
+**Google Business Profile rating:** 5.0/5.0 based on 10 reviews, as supplied.
+
+**Operating hours:** Open 24 hours, according to the supplied Google Business Profile. Display this only if it remains accurate.
+
+**Google Business Profile:**
+https://www.google.com/maps/place/FLAWLESS+ROCK+CONSTRUCTION+LTD/@5.4886106,7.0317257,17z/data=!3m1!4b1!4m6!3m5!1s0x104259eeb8d87159:0x3938b8747200a0eb!8m2!3d5.4886053!4d7.0343006
+
+### Brand positioning
+
+Position the company around this central brand statement:
+
+**BUILDING WITH PRECISION. DELIVERING WITH INTEGRITY.**
+
+Supporting brand statement:
+
+"Quality construction. Dependable execution. Structures built to last."
+
+The website must consistently communicate these brand attributes:
+
+1. Structural quality.
+2. Dependability.
+3. Professionalism.
+4. Precision and attention to detail.
+5. Integrity and accountability.
+6. Client satisfaction.
+7. Quality workmanship.
+8. Lasting value.
+
+### Brand personality
+
+The company should feel:
+
+- Professional.
+- Confident.
+- Sophisticated.
+- Dependable.
+- Technically competent.
+- Modern.
+- Customer-focused.
+- Quality-driven.
+
+Avoid making the company appear like a small, generic building contractor with an ordinary template website.
+
+---
+
+## 3. VISUAL DESIGN DIRECTION
+
+### Primary reference
+
+Use the uploaded AXIS WORKS screenshot as the design benchmark.
+
+The reference has several important visual characteristics that must influence the implementation:
+
+- Predominantly dark background.
+- Large, elegant typography.
+- Dramatic, high-quality photography.
+- Strong contrast between dark backgrounds and bright accent colours.
+- Minimalist navigation.
+- Spacious content sections.
+- Structured service cards.
+- Strong editorial-style headlines.
+- Carefully aligned content.
+- Sophisticated image composition.
+- Prominent call-to-action buttons.
+- A bold, visually impactful closing section.
+
+Translate these elements into the construction industry.
+
+### Colour palette
+
+Adopt the following design system:
+
+**Primary background:** Near-black charcoal (#101113)
+
+**Secondary background:** Deep graphite (#191B1E)
+
+**Primary accent:** Construction orange (#F4512C)
+
+**Secondary accent:** Warm burnt orange (#D94426)
+
+**Primary text:** Off-white (#F5F5F3)
+
+**Secondary text:** Cool light grey (#B7B9BC)
+
+**Borders and dividers:** Dark grey (#35373A)
+
+**Light section background:** Soft concrete grey (#EDEDEB)
+
+**Dark text on light sections:** Charcoal (#17191B)
+
+Use orange strategically for:
+
+- Primary buttons.
+- Active navigation states.
+- Small decorative markers.
+- Section identifiers.
+- Important statistics.
+- Hover effects.
+- CTA backgrounds.
+
+Do not flood the entire website with orange.
+
+The dark charcoal and black aesthetic must remain dominant, just as it is in the reference screenshot.
+
+### Typography
+
+Use a premium contemporary sans-serif typeface.
+
+Recommended combinations:
+
+- Headings: Manrope, Plus Jakarta Sans or a similar geometric sans-serif.
+- Body: Inter or a similar highly readable sans-serif.
+
+Typography should be elegant, spacious and modern.
+
+Use:
+
+- Large hero headings.
+- Strong section headings.
+- Short uppercase section labels.
+- Readable paragraph widths.
+- Consistent font weights.
+- Generous line spacing.
+- Clear typographic hierarchy.
+
+Avoid overly decorative fonts.
+
+### Photography and image direction
+
+Photography is essential to the visual identity.
+
+Use authentic, high-quality construction and architectural photography.
+
+Preferred subjects:
+
+1. Modern residential architecture.
+2. Commercial building exteriors.
+3. Buildings under construction.
+4. Reinforced concrete structures.
+5. Foundation and substructure works.
+6. Construction engineers inspecting buildings.
+7. Workers carrying out professional construction activities.
+8. Architectural details.
+9. Concrete and structural finishing.
+10. Impressive completed buildings.
+
+Photographs should look realistic and professionally art-directed.
+
+Use dramatic lighting, strong compositions, architectural perspectives and high-resolution images.
+
+Avoid cartoon illustrations, generic corporate illustrations and low-quality construction photographs.
+
+IMPORTANT ASSET RULE:
+
+If actual company photographs are supplied, prioritise them over stock imagery.
+
+Never falsely represent a stock photograph, AI-generated image or unrelated building as an actual Flawless Rock Construction Ltd project.
+
+Where actual project photographs are unavailable, use appropriate architectural imagery as temporary decorative imagery, without attributing it to a company project.
+
+Structure the portfolio so that genuine project photographs can be uploaded and replaced easily later.
+
+Do not fabricate project names, clients, locations, budgets, completion dates or project achievements.
+
+---
+
+## 4. WEBSITE ARCHITECTURE
+
+Build a complete multi-page corporate website with the following navigation:
+
+1. HOME
+2. ABOUT US
+3. OUR SERVICES
+4. PROJECTS
+5. OUR PROCESS
+6. CONTACT
+
+The navigation must be consistent across the entire website.
+
+The logo should be positioned on the left, navigation links in the middle or right, and a prominent orange CTA button on the far right.
+
+CTA button text:
+
+**DISCUSS YOUR PROJECT**
+
+On smaller screens, implement a clean mobile navigation menu.
+
+The header should initially be transparent over the hero image and transition into a solid dark background when the user scrolls.
+
+The website must have a consistent footer across all pages.
+
+---
+
+# 5. HOMEPAGE DESIGN AND CONTENT
+
+The homepage is the most important page.
+
+Build it using the following sections in the specified order.
+
+## SECTION 1: HERO
+
+Create an immersive, visually striking full-width hero section inspired by the AXIS WORKS screenshot.
+
+Use a premium construction or architectural photograph occupying a significant portion of the hero, preferably on the right side or as a carefully layered full-background image.
+
+Apply a subtle dark overlay where necessary to preserve text readability.
+
+Include a small uppercase eyebrow label:
+
+BUILDING & CONSTRUCTION / OWERRI, NIGERIA
+
+Main headline:
+
+**We Build with Precision. We Deliver with Integrity.**
+
+Supporting paragraph:
+
+"From residential developments to commercial construction, Flawless Rock Construction Ltd is committed to delivering dependable building solutions through quality workmanship, attention to detail and professional project execution."
+
+Primary CTA:
+
+**EXPLORE OUR SERVICES →**
+
+Link to the Services page.
+
+Secondary CTA:
+
+**DISCUSS YOUR PROJECT →**
+
+Link to the Contact page.
+
+Below the CTA buttons, include three compact credibility indicators:
+
+- QUALITY-DRIVEN EXECUTION
+- CLIENT-FOCUSED APPROACH
+- COMMITMENT TO RELIABILITY
+
+Do not invent numerical performance statistics.
+
+The hero must immediately communicate the company's identity, professionalism and value proposition.
+
+## SECTION 2: COMPANY INTRODUCTION
+
+Section identifier:
+
+WHO WE ARE
+
+Main heading:
+
+**Building More Than Structures. Creating Lasting Value.**
+
+Body copy:
+
+"Flawless Rock Construction Ltd is a building and construction company based in Owerri, Imo State, Nigeria. We are committed to delivering dependable construction solutions through quality workmanship, careful planning, attention to detail and a professional approach to project execution.
+
+We understand that every construction project represents a significant investment. That is why we place importance on understanding our clients' expectations, maintaining effective communication and approaching every engagement with responsibility and dedication.
+
+Our goal is to create structures that inspire confidence, serve their intended purpose and provide lasting value."
+
+Include a compelling architectural image beside the text.
+
+Add a CTA:
+
+**MORE ABOUT OUR COMPANY →**
+
+Link to About Us.
+
+## SECTION 3: OUR CAPABILITIES / SERVICES
+
+Section identifier:
+
+WHAT WE DO
+
+Main heading:
+
+**Construction Solutions. One Commitment to Quality.**
+
+Supporting text:
+
+"Every project deserves careful attention, responsible execution and a commitment to excellence."
+
+Create six elegant service cards.
+
+Each card should include:
+
+- A relevant professional image.
+- Service number.
+- Service title.
+- Short description.
+- Learn More link.
+- Subtle hover animation.
+
+The proposed service categories are:
+
+### 01. Building Construction
+
+"Dependable building solutions focused on quality workmanship, structural requirements, functional design and lasting value."
+
+### 02. Residential Construction
+
+"Creating comfortable, functional and well-executed residential spaces tailored to the needs and aspirations of property owners."
+
+### 03. Commercial Construction
+
+"Developing functional commercial spaces that support business operations, accommodate organisational needs and provide long-term value."
+
+### 04. Structural and Concrete Works
+
+"Construction activities involving foundations, reinforced concrete elements and other essential structural components, subject to approved specifications."
+
+### 05. Renovation and Building Improvement
+
+"Improving existing properties through refurbishment, repairs and carefully considered building upgrades."
+
+### 06. Construction Project Coordination
+
+"Supporting organised construction delivery through project coordination, communication, monitoring and responsible execution."
+
+IMPORTANT:
+
+These categories are proposed based on the company's building-firm positioning. Make the service data easy to edit and ensure each category can be removed or revised if the company does not offer that service.
+
+CTA below cards:
+
+**VIEW ALL SERVICES →**
+
+## SECTION 4: FEATURED PROJECTS
+
+Section identifier:
+
+SELECTED WORK
+
+Main heading:
+
+**Built with Purpose. Defined by Quality.**
+
+Supporting paragraph:
+
+"Every construction project represents a commitment to quality, precision and lasting value. Explore our project portfolio and discover the work behind our construction philosophy."
+
+Create a sophisticated project gallery with large architectural photographs.
+
+Design requirements:
+
+- Use an asymmetric editorial grid.
+- Allow large landscape photographs.
+- Include smaller supporting images.
+- Use elegant project labels.
+- Apply subtle image zoom on hover.
+- Add category filters.
+- Provide a dedicated project detail layout.
+
+Suggested categories:
+
+- Residential
+- Commercial
+- Structural Works
+- Renovation
+- Ongoing Projects
+
+Do not create fictional completed projects.
+
+If no actual project photographs are available, create the gallery structure with clearly identifiable placeholder content that can be replaced later.
+
+Each project entry should support:
+
+- Project name.
+- Project category.
+- Project location.
+- Project description.
+- Project status.
+- Project completion date, where available.
+- Multiple photographs.
+
+Do not invent information for missing fields.
+
+CTA:
+
+**EXPLORE OUR PROJECTS →**
+
+## SECTION 5: WHY CHOOSE US
+
+Section identifier:
+
+THE FLAWLESS ROCK DIFFERENCE
+
+Main heading:
+
+**The Confidence to Build. The Commitment to Deliver.**
+
+Supporting text:
+
+"Choosing a construction partner requires confidence. We understand the importance of your investment and approach every project with a commitment to professionalism, quality and dependable service."
+
+Create four or six visually attractive feature blocks:
+
+01 — RELIABILITY
+
+"We value trust and dependable service, working to ensure that project expectations and agreed plans receive the attention they deserve."
+
+02 — ATTENTION TO DETAIL
+
+"We recognise that construction excellence is reflected in the details, from planning and coordination to workmanship and execution."
+
+03 — QUALITY COMMITMENT
+
+"We place importance on appropriate materials, responsible construction methods and adherence to relevant technical specifications."
+
+04 — CLIENT-CENTRED SERVICE
+
+"We value our clients' expectations and believe in maintaining effective communication throughout the construction journey."
+
+05 — PROFESSIONAL EXECUTION
+
+"We appreciate the importance of planning, coordination and responsible management in successful project delivery."
+
+06 — ACCOUNTABILITY
+
+"We believe in professional responsibility, transparency and maintaining confidence throughout every engagement."
+
+Use a combination of minimal icons, photographs and clean layouts.
+
+## SECTION 6: OUR APPROACH / PROCESS
+
+Section identifier:
+
+HOW WE WORK
+
+Main heading:
+
+**A Clear Process. A Better Construction Experience.**
+
+Supporting paragraph:
+
+"Successful construction begins with proper understanding, careful planning and disciplined execution. Our approach is designed to keep projects organised and clients informed."
+
+Present six stages using a sophisticated horizontal timeline on desktop and vertical timeline on mobile.
+
+01 — CONSULTATION
+
+"Understanding your vision, objectives, requirements and project expectations."
+
+02 — ASSESSMENT & PLANNING
+
+"Reviewing project requirements, relevant specifications and execution considerations."
+
+03 — PREPARATION
+
+"Organising the necessary resources, arrangements and coordination processes."
+
+04 — CONSTRUCTION
+
+"Executing construction activities with attention to workmanship, quality and approved requirements."
+
+05 — MONITORING & QUALITY CHECKS
+
+"Reviewing progress and construction details to maintain the required standards."
+
+06 — COMPLETION & HANDOVER
+
+"Reviewing the completed work against agreed requirements and addressing outstanding matters as applicable."
+
+## SECTION 7: CUSTOMER TRUST AND TESTIMONIALS
+
+Section identifier:
+
+CLIENT CONFIDENCE
+
+Main heading:
+
+**Trust Is Built into Every Project.**
+
+Show the Google Business Profile rating prominently:
+
+5.0 / 5.0
+
+Google Reviews
+
+10 Reviews
+
+Five-star visual treatment.
+
+The figures above are based on the supplied profile and should be verified before publication.
+
+Include these three authentic customer reviews:
+
+TESTIMONIAL 1 — NKEM SUNNY
+
+"Since the first contact with Flawless Rock Construction Company, it's been a great experience that brings calmness of mind even when not physically present at the site, as things move smoothly as agreed and planned. Keep up the good work."
+
+TESTIMONIAL 2 — CHRISTOPHER UKEKA
+
+"Reliable. Solid Structure. Great Attention to details."
+
+TESTIMONIAL 3 — AJOLOR JONATHAN
+
+"You are just so excellent in your work and very reliable. Thank you for being you."
+
+Show reviewer names and five-star ratings.
+
+Include a link to the company's Google Business Profile for visitors who wish to read additional reviews.
+
+Do not generate fictional testimonials or customer names.
+
+## SECTION 8: BRAND STATEMENT / CALL TO ACTION
+
+This should be one of the most visually powerful sections of the homepage.
+
+Use a full-width construction-orange background similar to the orange CTA section in the AXIS WORKS reference.
+
+Place a dramatic architectural or construction-related image on the right side.
+
+Section identifier:
+
+LET'S BUILD TOGETHER
+
+Large headline:
+
+**Your Vision Deserves a Flawless Foundation.**
+
+Supporting text:
+
+"Whether you are planning a new development, building a residential property or undertaking a commercial construction project, let's discuss how we can bring your vision to life."
+
+Primary button:
+
+**DISCUSS YOUR PROJECT →**
+
+Secondary text:
+
+"Let's start with a conversation."
+
+Use bold typography, generous spacing and an elegant image composition.
+
+## SECTION 9: CONTACT PREVIEW
+
+Section identifier:
+
+GET IN TOUCH
+
+Heading:
+
+**Let's Talk About Your Next Project.**
+
+Supporting text:
+
+"Have a construction project in mind? Get in touch with Flawless Rock Construction Ltd and let's discuss your requirements."
+
+Display:
+
+Telephone: 0805 592 0437
+
+Address: 37, by Tetlow Road, Ekeonuwa Street Junction, Owerri 460102, Imo State, Nigeria.
+
+Include a prominent call button.
+
+Include an enquiry form with:
+
+- Full Name.
+- Email Address.
+- Phone Number.
+- Project Type.
+- Project Location.
+- Project Description.
+- Submit Enquiry.
+
+The form must have appropriate field validation and clear submission feedback.
+
+Do not simulate successful email delivery if no backend or form service is configured.
+
+Make the form integration-ready.
+
+## SECTION 10: FOOTER
+
+Design a sophisticated dark footer inspired by the metallic, architectural footer in the AXIS WORKS reference.
+
+Include:
+
+Company name:
+FLAWLESS ROCK CONSTRUCTION LTD
+
+Brand statement:
+
+BUILDING WITH PRECISION. DELIVERING WITH INTEGRITY.
+
+Short description:
+
+"Dependable building and construction solutions driven by quality workmanship, professionalism and a commitment to lasting value."
+
+Footer navigation:
+
+- Home
+- About Us
+- Our Services
+- Projects
+- Our Process
+- Contact
+
+Contact information:
+
+- 0805 592 0437
+- 37, by Tetlow Road, Ekeonuwa Street Junction, Owerri, Imo State, Nigeria.
+
+Include social media links only when verified official company accounts are supplied.
+
+Include:
+
+Privacy Policy
+Terms of Use
+Copyright © current year Flawless Rock Construction Ltd.
+
+Use an elegant multi-column layout with subtle orange lighting accents.
+
+---
+
+# 6. ABOUT US PAGE
+
+Create a dedicated About Us page.
+
+The page should be more comprehensive than the homepage introduction.
+
+### Hero heading
+
+**The Foundation of Our Work Is Trust.**
+
+Supporting text:
+
+"Driven by a commitment to quality, professionalism and dependable construction delivery."
+
+Use an impressive full-width architectural photograph.
+
+### Company story
+
+Use the company overview developed from the supplied business information:
+
+"Flawless Rock Construction Ltd is a building and construction company based in Owerri, Imo State, Nigeria. Our commitment is to provide dependable construction solutions through quality workmanship, careful planning, attention to detail and responsible project execution.
+
+We understand that construction is more than the development of physical structures. It is about creating value, fulfilling aspirations and building environments that serve people and businesses.
+
+Our approach is guided by professionalism, accountability and the belief that every project deserves a high level of care and commitment.
+
+We aim to build lasting relationships with our clients by understanding their requirements, maintaining effective communication and approaching every construction engagement with dedication."
+
+### Vision
+
+"To become a respected and trusted construction company recognised for excellence in building delivery, structural quality, professional integrity and durable construction solutions."
+
+### Mission
+
+"To provide dependable building and construction solutions through quality workmanship, responsible project execution, attention to detail and a commitment to client satisfaction."
+
+### Corporate values
+
+Present these in an elegant visual grid:
+
+- Integrity.
+- Excellence.
+- Reliability.
+- Precision.
+- Accountability.
+- Professionalism.
+- Client Satisfaction.
+
+### Quality and safety
+
+Create sections explaining the company's commitment to construction quality, responsible execution, site safety and environmental responsibility.
+
+Avoid claiming specific certifications or regulatory accreditations unless actual documentation is supplied.
+
+### Leadership section
+
+Create an optional, editable management profile section.
+
+Do not invent the name, photograph, professional qualifications or biography of the managing director or any employee.
+
+Make it easy to add actual leadership photographs and biographies later.
+
+---
+
+# 7. SERVICES PAGE
+
+Create a comprehensive Services page.
+
+Use a premium editorial layout.
+
+Each service should have:
+
+- A large relevant photograph.
+- A clear service heading.
+- A detailed description.
+- Key service considerations.
+- A relevant CTA.
+
+Include the six proposed service categories from the homepage.
+
+Each service should have its own dedicated detail section or detail page.
+
+Use relevant imagery without falsely implying that a particular photograph represents an actual company project.
+
+End with a strong project enquiry CTA.
+
+---
+
+# 8. PROJECTS / PORTFOLIO PAGE
+
+Create a professional architectural project portfolio.
+
+This page is particularly important.
+
+The portfolio must be image-led, elegant and easy to navigate.
+
+Use a sophisticated grid inspired by high-end architectural and engineering portfolios.
+
+### Project filters
+
+- All Projects.
+- Residential.
+- Commercial.
+- Structural Works.
+- Renovation.
+- Ongoing Projects.
+
+### Project cards
+
+Every project card should support:
+
+- Project photograph.
+- Project title.
+- Project category.
+- Project location.
+- Project status.
+
+Clicking a project should open a dedicated project detail page or a full-screen project gallery.
+
+### Project image management
+
+Build the portfolio using a reusable data-driven component.
+
+Make it possible to add projects by uploading photographs and updating project information without rebuilding the entire website.
+
+Support multiple images per project.
+
+Optimise image loading and use appropriate aspect ratios.
+
+Do not populate the gallery with invented project information.
+
+If actual images are unavailable, display an elegant empty-state message such as:
+
+"Our project portfolio is being updated. Please check back soon."
+
+---
+
+# 9. OUR PROCESS PAGE
+
+Create a dedicated page explaining how the company approaches construction.
+
+Use a combination of architectural photography, numbered process sections and elegant timeline graphics.
+
+Explain:
+
+1. Consultation.
+2. Assessment and planning.
+3. Project preparation.
+4. Construction and execution.
+5. Monitoring and quality checks.
+6. Completion and handover.
+
+Emphasise communication, accountability, planning and client confidence.
+
+---
+
+# 10. CONTACT PAGE
+
+Create a visually attractive Contact page.
+
+Hero headline:
+
+**Let's Build Something That Lasts.**
+
+Supporting text:
+
+"Tell us about your project, your plans and what you want to achieve. Our team is ready to hear from you."
+
+Display the company's official contact details prominently.
+
+Telephone: 0805 592 0437
+
+Address: 37, by Tetlow Road, Ekeonuwa Street Junction, Owerri 460102, Imo State, Nigeria.
+
+### Contact form
+
+Include:
+
+- Full Name.
+- Email.
+- Telephone.
+- Project Category.
+- Project Location.
+- Estimated Project Requirements.
+- Message.
+
+Implement client-side validation.
+
+Provide clear error messages and success feedback only when the form has actually been processed.
+
+Make the form ready for integration with an email service or backend.
+
+### Google Maps
+
+Embed or link the supplied Google Business Profile location.
+
+Provide a clear GET DIRECTIONS link.
+
+Do not substitute an unrelated map location.
+
+---
+
+# 11. FUNCTIONALITY AND USER EXPERIENCE
+
+The website must be a functional multi-page website, not a static design mockup.
+
+Implement the following:
+
+### Navigation
+
+- All menu links must work.
+- Logo links to homepage.
+- Active navigation state.
+- Mobile navigation menu.
+- Smooth page transitions where appropriate.
+- Sticky header behaviour.
+
+### Buttons and CTAs
+
+All CTA buttons must lead to the correct page or action.
+
+Implement:
+
+- Call Now using the telephone number.
+- Discuss Your Project linking to Contact.
+- Explore Services linking to Services.
+- View Projects linking to Portfolio.
+- Google Reviews linking to the supplied Google Maps listing.
+
+Do not create non-functional buttons.
+
+### Animations
+
+Use subtle, premium animations:
+
+- Smooth fade-in on scroll.
+- Gentle image zoom on hover.
+- Button hover transitions.
+- Elegant navigation transitions.
+- Subtle section reveals.
+- Refined card interactions.
+
+Avoid excessive animations, bouncing elements and distracting effects.
+
+Respect reduced-motion accessibility preferences.
+
+### Responsive design
+
+The website must be fully responsive.
+
+Optimise for:
+
+- Desktop screens.
+- Laptops.
+- Tablets.
+- Mobile phones.
+
+Pay special attention to mobile hero composition, typography, image positioning, navigation and contact forms.
+
+No horizontal overflow or broken layouts.
+
+---
+
+# 12. SEO AND DIGITAL VISIBILITY
+
+Implement proper on-page SEO.
+
+### Homepage SEO title
+
+Flawless Rock Construction Ltd | Building & Construction in Owerri
+
+### Homepage meta description
+
+"Flawless Rock Construction Ltd is an Owerri-based building and construction company committed to quality workmanship, reliable construction solutions and lasting value."
+
+### Suggested keywords
+
+- Construction company in Owerri.
+- Building company in Owerri.
+- Construction services in Imo State.
+- Building construction in Imo State.
+- Residential construction Owerri.
+- Commercial construction Owerri.
+- Building contractors in Owerri.
+- Construction company in Nigeria.
+
+Use keywords naturally.
+
+Do not keyword-stuff.
+
+Implement:
+
+- Unique page titles.
+- Meta descriptions.
+- Canonical URLs.
+- Open Graph metadata.
+- Descriptive image alt text.
+- Semantic HTML.
+- XML sitemap.
+- Robots.txt.
+- Appropriate local business structured data.
+- Descriptive internal links.
+
+Use accurate business information in structured data.
+
+Do not invent an email address, social profile, founding date, geographical service radius or business registration details.
+
+---
+
+# 13. TECHNICAL IMPLEMENTATION
+
+Build the website using a modern, maintainable frontend architecture.
+
+Preferred technologies:
+
+- React.
+- TypeScript.
+- Tailwind CSS or an equally maintainable styling system.
+- Lucide icons.
+- Reusable components.
+- Responsive CSS.
+
+Use the technology stack supported by the current Google AI Studio development environment if it differs from these preferences.
+
+### Development requirements
+
+1. Create reusable components for the header, footer, service cards, project cards, testimonials and CTAs.
+2. Maintain a consistent design system.
+3. Organise images and assets in a clear folder structure.
+4. Keep content separate from presentation wherever practical.
+5. Use reusable data structures for services and projects.
+6. Implement proper routing.
+7. Ensure all routes load correctly.
+8. Avoid unnecessary dependencies.
+9. Avoid duplicated code.
+10. Ensure the website can be maintained and updated easily.
+
+### Performance
+
+Optimise for fast loading.
+
+Implement:
+
+- Lazy loading for below-the-fold images.
+- Responsive image sizing.
+- WebP or other modern image formats where supported.
+- Appropriate image compression.
+- Efficient font loading.
+- Minimal unnecessary JavaScript.
+- Layout stability.
+- Performance-conscious animations.
+
+### Accessibility
+
+Implement:
+
+- Sufficient colour contrast.
+- Keyboard navigation.
+- Visible focus indicators.
+- Accessible form labels.
+- Descriptive button names.
+- Appropriate image alt text.
+- Semantic heading hierarchy.
+- Screen-reader-friendly navigation.
+
+---
+
+# 14. IMPORTANT CONTENT ACCURACY REQUIREMENTS
+
+The website must be persuasive without making unsupported claims.
+
+The following information has not yet been supplied:
+
+- Founding year.
+- Company history.
+- Managing Director's name.
+- Management team.
+- Professional qualifications.
+- Professional registrations.
+- Certifications.
+- Completed project count.
+- Number of employees.
+- Annual construction capacity.
+- Client portfolio.
+- Project budgets.
+- Awards.
+- Official company email.
+- Official social media accounts.
+
+DO NOT INVENT ANY OF THESE.
+
+Do not use fabricated statistics such as:
+
+- 20+ years of experience.
+- 500+ completed projects.
+- 100+ satisfied clients.
+- 99% customer satisfaction.
+- ISO-certified construction.
+- Award-winning construction company.
+
+Only publish such information if supporting evidence is supplied.
+
+The company should appear credible through its presentation, quality of content, genuine photographs and authentic customer feedback rather than invented achievements.
+
+---
+
+# 15. FINAL DESIGN QUALITY REQUIREMENTS
+
+The finished website must closely follow the design philosophy of the AXIS WORKS reference.
+
+Prioritise:
+
+1. Premium dark aesthetic.
+2. Dramatic architectural photography.
+3. Bold and sophisticated typography.
+4. Orange accent colours.
+5. Strong visual hierarchy.
+6. Spacious editorial layouts.
+7. Elegant service cards.
+8. Beautiful project galleries.
+9. Sophisticated CTA sections.
+10. A distinctive footer.
+
+Avoid:
+
+- Generic construction website templates.
+- Excessive rounded cards.
+- Unnecessary gradients.
+- Overly bright backgrounds.
+- Cartoon graphics.
+- Cheap-looking stock photographs.
+- Excessive animations.
+- Cluttered layouts.
+- Inconsistent typography.
+- Unnecessary decorative elements.
+- Fake testimonials.
+- Fake project portfolios.
+
+The website should look as though it was designed by a premium international branding and digital agency.
+
+---
+
+# 16. FINAL EXECUTION INSTRUCTIONS
+
+Before writing code:
+
+1. Study the supplied AXIS WORKS screenshot carefully.
+2. Identify its visual hierarchy and design principles.
+3. Translate the reference into a construction-specific visual identity.
+4. Plan the website's page architecture.
+5. Establish the colour, typography, spacing and component systems.
+
+Then build the complete website.
+
+Do not stop after generating the homepage.
+
+Do not return only a design proposal, wireframe or explanation.
+
+Implement all requested pages, navigation, reusable components, responsive layouts, content and interactions.
+
+Ensure that every page feels like part of one coherent corporate website.
+
+After implementation:
+
+- Review the homepage visually.
+- Check all navigation links.
+- Check all page routes.
+- Test mobile and desktop layouts.
+- Test forms and buttons.
+- Check image loading.
+- Check content accuracy.
+- Correct layout inconsistencies.
+- Remove broken links and unfinished UI elements.
+
+## THE FINAL CREATIVE DIRECTION
+
+The website must communicate one unmistakable message:
+
+**FLAWLESS ROCK CONSTRUCTION LTD IS A COMPANY THAT TAKES CONSTRUCTION QUALITY, PROFESSIONALISM AND CLIENT TRUST SERIOUSLY.**
+
+Create a digital experience that makes prospective clients confident enough to enquire about their next construction project.
+
+Make the website visually impressive, technically sound, conversion-focused and ready for real company photographs and additional corporate information.
+
+**BUILDING WITH PRECISION. DELIVERING WITH INTEGRITY.**
+
+Now proceed to design and build the complete website.

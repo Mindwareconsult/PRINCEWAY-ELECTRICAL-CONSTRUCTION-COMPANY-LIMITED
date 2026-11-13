@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  /* Interim engineering palette (ready for exact hex extraction once Business Card PNGs are attached) */
+  --brand-primary: #2563EB;
+  --brand-primary-hover: #1D4ED8;
+  --brand-accent-light: #60A5FA;
+  --brand-glow: rgba(37, 99, 235, 0.25);
+  --surface-canvas: #0F1115;
+  --surface-elevated: #14171D;
+  --surface-card: #161920;
+  --border-hairline: #252A34;
+}
+
+@theme {
+  --font-display: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --color-charcoal: #0F1115;
+  --color-charcoal-card: #161920;
+  --color-graphite: #191D24;
+  --color-graphite-light: #222730;
+  --color-brand-primary: #2563EB;
+  --color-brand-secondary: #1D4ED8;
+  --color-text-offwhite: #F5F5F3;
+  --color-text-muted: #B7B9BC;
+  --color-border-default: #353A44;
+  --color-border-subtle: #252A34;
+}
+
+@layer base {
+  body {
+    background-color: var(--surface-canvas);
+    color: #F5F5F3;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom subtle grid background for architectural & engineering vibe */
+.bg-architectural-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(96, 165, 250, 0.16) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Metallic brushed footer block effect */
+.metallic-slab {
+  background: linear-gradient(180deg, #1d2129 0%, #12151a 100%);
+  border: 1px solid #2b313c;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.metallic-slab-active {
+  background: linear-gradient(180deg, #222834 0%, #151921 100%);
+  border: 1px solid var(--brand-primary);
+  box-shadow: 0 0 25px var(--brand-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}

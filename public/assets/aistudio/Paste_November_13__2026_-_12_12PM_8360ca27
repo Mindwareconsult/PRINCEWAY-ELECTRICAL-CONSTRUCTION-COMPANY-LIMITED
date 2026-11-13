@@ -1,0 +1,905 @@
+# MASTER PROMPT: COMPLETE WEBSITE REBRANDING AND CONTENT TRANSFORMATION FOR PRINCEWAY ELECTRICAL CONSTRUCTION COMPANY LIMITED
+
+## PROJECT OBJECTIVE
+
+Transform the existing Flawless Rock Construction Ltd website into the official premium corporate website of:
+
+**PRINCEWAY ELECTRICAL CONSTRUCTION COMPANY LIMITED**
+
+This is a rebranding and industry-content transformation exercise, NOT a website redesign.
+
+The existing website's visual design, page architecture, layout, typography, spacing, animations, responsive behaviour, navigation structure and functional components have already been approved.
+
+Preserve the existing design system while replacing the entire previous company's identity, branding, content, imagery and business information with Princeway's.
+
+The finished website must look as though the existing premium website was originally designed for Princeway Electrical Construction Company Limited.
+
+**DO NOT REDESIGN. DO NOT REBUILD FROM SCRATCH. PRESERVE THE APPROVED DESIGN AND TRANSFORM THE BRAND.**
+
+---
+
+# 1. UPLOADED ASSETS: ZIP FILE ANALYSIS AND IMPLEMENTATION
+
+I will upload ONE ZIP FILE containing the company's:
+
+- Official company logo.
+- Business card and brand assets.
+- Project photographs.
+- Project videos.
+- Other available visual materials.
+
+Before implementing the website, inspect the complete ZIP file and identify all usable assets.
+
+### Asset inspection requirements
+
+1. Extract and inspect the contents of the ZIP file.
+2. Identify all image files, video files, logos and brand materials.
+3. Inspect the business card to identify the official brand colours, logo and contact information.
+4. Review the photographs to identify the different types of work represented.
+5. Review the videos and identify their relevant subjects.
+6. Group related photographs and videos into appropriate project categories.
+7. Identify duplicate, blurry or unsuitable images and prioritise the best available assets.
+8. Create a logical asset organisation structure.
+9. Ensure the original files are preserved and referenced correctly in the website.
+10. Do not silently ignore files because they are inside nested folders.
+
+### Brand identity extraction
+
+The uploaded business card is the authoritative reference for the company's visual identity.
+
+Extract:
+
+- Primary brand colour.
+- Secondary brand colours.
+- Accent colours.
+- Official logo.
+- Logo variations, if available.
+- Typography references.
+- Official company name.
+- Available contact information.
+
+Build the website's colour system around these brand assets.
+
+Do not automatically retain the previous company's orange colour scheme unless it is also part of Princeway's actual branding.
+
+Do not distort, recreate or unnecessarily modify the official logo.
+
+---
+
+# 2. COMPANY PROFILE AND VERIFIED BUSINESS INFORMATION
+
+**Company name:** PRINCEWAY ELECTRICAL CONSTRUCTION COMPANY LIMITED
+
+**Industry:** Electrical Engineering, Building Construction and Borehole Drilling.
+
+**Business address:** 62 Wetheral Road, Owerri 460281, Imo State, Nigeria.
+
+**Telephone:** 0806 362 4432.
+
+**Google Business Profile:** 
+https://www.google.com/maps/place/princeway+electrical+construction+company+limited/@5.4839812,7.0343905,17z/data=!3m1!4b1!4m6!3m5!1s0x104259073b32c935:0xfba6151d97dd7f8b!8m2!3d5.4839812!4d7.0343905
+
+**Primary business services, in mandatory order:**
+
+1. Electrical Engineering.
+2. Building Construction.
+3. Borehole Drilling.
+
+These are the company's three principal service divisions.
+
+Every relevant section of the website must reflect this exact order.
+
+### Brand positioning
+
+Position Princeway Electrical Construction Company Limited as a multidisciplinary engineering and construction company providing electrical engineering solutions, building construction services and borehole drilling.
+
+The brand should communicate:
+
+- Engineering competence.
+- Construction expertise.
+- Technical responsibility.
+- Dependability.
+- Quality workmanship.
+- Professional project execution.
+- Attention to detail.
+- Client satisfaction.
+- Practical infrastructure solutions.
+
+### Proposed brand tagline
+
+**POWERING PROGRESS. BUILDING POSSIBILITIES.**
+
+Supporting statement:
+
+**Engineering Excellence. Quality Construction. Reliable Water Solutions.**
+
+These are proposed marketing statements and should not be presented as historical company slogans unless confirmed by the company.
+
+---
+
+# 3. WEBSITE DESIGN AND VISUAL DIRECTION
+
+Preserve the complete design language of the existing Flawless Rock website.
+
+Retain:
+
+- Header and navigation.
+- Hero layout.
+- Typography hierarchy.
+- Existing font choices.
+- Spacing and alignment.
+- Service card composition.
+- Project portfolio layout.
+- Image treatments.
+- Section dividers.
+- Buttons.
+- Hover effects.
+- Animations.
+- CTA sections.
+- Footer structure.
+- Responsive layouts.
+- Existing routing and functionality.
+
+Apply Princeway's actual brand colours extracted from the uploaded business card.
+
+The website should maintain a premium, modern, architectural and technical aesthetic.
+
+The design should communicate the company's three service divisions without making the website feel visually crowded or inconsistent.
+
+Use authentic project photographs from the uploaded ZIP file.
+
+Do not use unrelated stock imagery to represent actual company projects.
+
+---
+
+# 4. WEBSITE NAVIGATION
+
+Retain the existing navigation architecture:
+
+1. HOME
+2. ABOUT US
+3. OUR SERVICES
+4. PROJECTS
+5. OUR PROCESS
+6. CONTACT
+
+Keep the existing navigation styling.
+
+Replace the company logo with the official Princeway logo.
+
+Use the primary CTA:
+
+**DISCUSS YOUR PROJECT**
+
+Ensure that navigation links and buttons work correctly.
+
+---
+
+# 5. HOMEPAGE
+
+## SECTION 1: HERO
+
+Use a visually powerful photograph from the uploaded ZIP file.
+
+Prioritise an image that clearly represents the company's engineering, building construction or infrastructure capabilities.
+
+The hero should communicate that Princeway operates across three complementary areas of construction and infrastructure delivery.
+
+Eyebrow:
+
+ENGINEERING / CONSTRUCTION / INFRASTRUCTURE
+
+Main headline:
+
+**Powering Progress. Building a Better Tomorrow.**
+
+Supporting paragraph:
+
+"Princeway Electrical Construction Company Limited delivers multidisciplinary solutions across electrical engineering, building construction and borehole drilling. We approach every engagement with a commitment to professionalism, dependable service and quality-focused execution."
+
+Primary CTA:
+
+EXPLORE OUR SERVICES →
+
+Secondary CTA:
+
+DISCUSS YOUR PROJECT →
+
+Retain the existing hero composition, typography and image positioning.
+
+Below the hero, include three compact service indicators:
+
+- ELECTRICAL ENGINEERING.
+- BUILDING CONSTRUCTION.
+- BOREHOLE DRILLING.
+
+Do not introduce unsupported statistics.
+
+## SECTION 2: COMPANY INTRODUCTION
+
+Eyebrow:
+
+WHO WE ARE
+
+Headline:
+
+**Three Core Services. One Commitment to Excellence.**
+
+Content:
+
+"Princeway Electrical Construction Company Limited is a multidisciplinary engineering and construction company based in Owerri, Imo State, Nigeria.
+
+The company operates across three important areas of infrastructure and development: electrical engineering, building construction and borehole drilling.
+
+We recognise the importance of dependable electrical systems, quality building development and access to reliable water infrastructure in supporting residential, commercial and industrial needs.
+
+Our approach is centred on understanding project requirements, maintaining professional standards, paying attention to execution details and delivering services with responsibility.
+
+Whether the requirement involves electrical engineering, building construction or borehole drilling, Princeway is committed to providing a professional and dependable service experience."
+
+Use an authentic company photograph alongside the text.
+
+CTA:
+
+DISCOVER PRINCEWAY →
+
+---
+
+# 6. OUR SERVICES: THREE PRINCIPAL SERVICE DIVISIONS
+
+THIS IS A CRITICAL SECTION.
+
+The website must present the company's services in the following exact order throughout the entire website:
+
+**01. ELECTRICAL ENGINEERING**
+
+**02. BUILDING CONSTRUCTION**
+
+**03. BOREHOLE DRILLING**
+
+Do not rearrange the order.
+
+Each service must have a dedicated visual presentation, professional description, relevant imagery and a corresponding enquiry CTA.
+
+## SERVICE 01: ELECTRICAL ENGINEERING
+
+Headline:
+
+**Electrical Engineering Solutions Built Around Performance and Reliability.**
+
+Description:
+
+"Princeway Electrical Construction Company Limited provides electrical engineering services focused on dependable electrical systems, professional installation and practical engineering solutions.
+
+We understand the importance of properly executed electrical installations in residential, commercial and other building environments.
+
+Our approach places emphasis on understanding project requirements, appropriate technical planning, quality workmanship and responsible execution.
+
+From electrical installation requirements to broader electrical engineering works, we aim to support functional, dependable and properly executed electrical systems."
+
+### Service scope and capabilities
+
+Present the following as potential service areas, subject to confirmation against the company's actual operations and uploaded project evidence:
+
+- Electrical installation works.
+- Building electrical systems.
+- Electrical wiring and fittings.
+- Electrical distribution installations.
+- Power infrastructure works.
+- Electrical system upgrades.
+- Electrical maintenance.
+- Electrical engineering project execution.
+
+Do not claim specialist capabilities, licences or certifications that have not been supplied.
+
+### Visual direction
+
+Use actual uploaded photographs showing electrical installations, electrical infrastructure, wiring, electrical equipment or related engineering work.
+
+Use the strongest electrical engineering photograph for this service's primary card and detail section.
+
+CTA:
+
+**ENQUIRE ABOUT ELECTRICAL ENGINEERING →**
+
+## SERVICE 02: BUILDING CONSTRUCTION
+
+Headline:
+
+**Building Construction Driven by Quality and Professional Execution.**
+
+Description:
+
+"Princeway Electrical Construction Company Limited undertakes building construction activities with a focus on sound execution, practical project coordination and quality workmanship.
+
+We understand that successful building projects require careful attention to project requirements, materials, construction activities and the details that contribute to durable and functional structures.
+
+Our approach is guided by professionalism, responsible execution and a commitment to delivering building solutions that respond to the needs of each project.
+
+From building development activities to construction execution, we aim to approach every engagement with attention to detail and a focus on quality."
+
+### Service scope and capabilities
+
+Present relevant construction activities based on the company's actual portfolio and evidence.
+
+Potential areas include:
+
+- Residential building construction.
+- Commercial building construction.
+- Structural construction.
+- Building development.
+- Concrete and masonry works.
+- Building renovation and improvement.
+- Construction project execution.
+- General building construction.
+
+Only display specific activities where supported by the supplied company materials or confirmed capabilities.
+
+### Visual direction
+
+Use actual photographs of the company's building construction projects.
+
+Prioritise:
+
+- Building structures.
+- Construction progress.
+- Structural works.
+- Building exteriors.
+- Completed construction projects.
+- Relevant construction activities.
+
+Use a balanced combination of progress and completed-project imagery where available.
+
+CTA:
+
+**ENQUIRE ABOUT BUILDING CONSTRUCTION →**
+
+## SERVICE 03: BOREHOLE DRILLING
+
+Headline:
+
+**Reliable Borehole Drilling for Sustainable Water Access.**
+
+Description:
+
+"Princeway Electrical Construction Company Limited also provides borehole drilling services as part of its multidisciplinary construction and infrastructure offering.
+
+Borehole drilling plays an important role in supporting access to water for residential, commercial and other applications.
+
+Our approach to this service is centred on understanding site requirements, the intended water needs and the technical considerations involved in the drilling process.
+
+We aim to provide a professional service experience, with attention to project requirements and responsible execution."
+
+### Service scope and capabilities
+
+Present the following as potential service areas, subject to confirmation:
+
+- Borehole drilling.
+- Site assessment and drilling preparation.
+- Borehole construction.
+- Water access infrastructure.
+- Borehole-related installation works.
+- Borehole improvement and rehabilitation, where offered.
+
+Do not claim water treatment, laboratory testing, pumping-system installation, geological surveys or guaranteed water yield unless these capabilities are confirmed.
+
+### Visual direction
+
+Use actual photographs and videos showing the company's borehole drilling operations.
+
+Prioritise:
+
+- Drilling equipment.
+- Borehole drilling operations.
+- Drilling sites.
+- Borehole infrastructure.
+- Completed borehole installations.
+
+Use the company's own project media wherever available.
+
+CTA:
+
+**ENQUIRE ABOUT BOREHOLE DRILLING →**
+
+---
+
+# 7. SERVICE PRESENTATION ON THE HOMEPAGE
+
+Retain the existing premium three-card service section.
+
+Section identifier:
+
+OUR CORE SERVICES
+
+Headline:
+
+**Integrated Solutions Across Three Essential Industries.**
+
+Supporting text:
+
+"From electrical engineering and building construction to borehole drilling, Princeway provides practical solutions for essential infrastructure and development needs."
+
+Present the three service cards in this exact order:
+
+01 — ELECTRICAL ENGINEERING.
+
+02 — BUILDING CONSTRUCTION.
+
+03 — BOREHOLE DRILLING.
+
+Each card must include:
+
+- A relevant genuine project photograph.
+- Service number.
+- Service title.
+- Short description.
+- Learn More link.
+- Subtle hover animation.
+
+Keep the visual dimensions, image proportions and card layout consistent with the original website.
+
+On mobile, stack the cards elegantly without compromising readability.
+
+---
+
+# 8. WHY CHOOSE PRINCEWAY
+
+Eyebrow:
+
+THE PRINCEWAY DIFFERENCE
+
+Headline:
+
+**Professional Standards Across Every Project.**
+
+Supporting text:
+
+"Our multidisciplinary approach brings together electrical engineering, building construction and borehole drilling under one company, with a focus on responsible execution and quality workmanship."
+
+Create six feature blocks:
+
+01 — MULTIDISCIPLINARY CAPABILITY
+
+"Three complementary service areas supporting different construction and infrastructure requirements."
+
+02 — PROFESSIONAL EXECUTION
+
+"Approaching project assignments with responsibility, planning and attention to technical requirements."
+
+03 — QUALITY WORKMANSHIP
+
+"Recognising the importance of quality, precision and attention to detail across every service division."
+
+04 — DEPENDABILITY
+
+"Building client confidence through responsible service and professional project engagement."
+
+05 — CLIENT-FOCUSED APPROACH
+
+"Understanding individual project needs and maintaining clear communication throughout the engagement."
+
+06 — TECHNICAL RESPONSIBILITY
+
+"Recognising the importance of appropriate technical standards and safety-conscious working practices."
+
+Do not invent certifications or claim specific regulatory compliance without evidence.
+
+---
+
+# 9. OUR PROJECTS
+
+Eyebrow:
+
+OUR PORTFOLIO
+
+Headline:
+
+**Real Projects. Practical Solutions. Professional Execution.**
+
+Supporting paragraph:
+
+"Explore selected work across our electrical engineering, building construction and borehole drilling activities."
+
+Create an elegant project gallery using the actual uploaded photographs and videos.
+
+### Mandatory project portfolio filters
+
+Maintain this order:
+
+1. ALL PROJECTS
+2. ELECTRICAL ENGINEERING
+3. BUILDING CONSTRUCTION
+4. BOREHOLE DRILLING
+
+Only include categories that have corresponding uploaded project materials.
+
+### Project presentation
+
+Each project entry should support:
+
+- Project name.
+- Project category.
+- Project location.
+- Project description.
+- Project status.
+- Completion date, where available.
+- Photographs.
+- Videos.
+
+Do not invent project names, client names, locations or completion dates.
+
+Where exact project information is missing, use descriptive labels grounded in the visible project materials.
+
+### Project detail experience
+
+Implement a premium project detail view with:
+
+- Project overview.
+- Main project image.
+- Supporting image gallery.
+- Video, where available.
+- Project category.
+- Related services.
+- Enquiry CTA.
+
+Ensure all project filters work properly.
+
+---
+
+# 10. PROJECT VIDEO GALLERY
+
+Create an elegant video gallery using the videos inside the uploaded ZIP file.
+
+Organise videos according to their actual subjects.
+
+Use appropriate video thumbnails and clear play buttons.
+
+Video features:
+
+- Responsive playback.
+- Play and pause controls.
+- Fullscreen support.
+- Appropriate loading behaviour.
+- No automatic playback with sound.
+- Mobile compatibility.
+
+Videos may be featured in the homepage portfolio section or dedicated project detail views.
+
+Do not use video footage unrelated to Princeway's work.
+
+---
+
+# 11. ABOUT US PAGE
+
+Retain the original About page design.
+
+Hero headline:
+
+**Building Confidence Through Engineering and Construction.**
+
+Company overview:
+
+"Princeway Electrical Construction Company Limited is a multidisciplinary engineering and construction company located at 62 Wetheral Road, Owerri, Imo State, Nigeria.
+
+Our business focuses on three principal service areas: electrical engineering, building construction and borehole drilling.
+
+These areas of operation reflect our commitment to supporting essential building and infrastructure requirements through professional service, technical responsibility and quality-focused execution.
+
+We understand that clients need dependable partners who approach projects with care, professionalism and attention to detail.
+
+At Princeway, our objective is to provide practical engineering and construction solutions while building lasting relationships through responsible service delivery."
+
+### Mission
+
+"To provide dependable electrical engineering, building construction and borehole drilling services through professionalism, responsible execution and a commitment to quality."
+
+### Vision
+
+"To become a respected and trusted multidisciplinary engineering and construction company recognised for dependable service, professional execution and quality-focused project delivery."
+
+### Core values
+
+- Professionalism.
+- Integrity.
+- Reliability.
+- Quality.
+- Responsibility.
+- Safety Consciousness.
+- Client Satisfaction.
+
+Do not invent company history, founding dates or management profiles.
+
+Create an editable management and leadership area for future verified information.
+
+---
+
+# 12. OUR PROCESS
+
+Eyebrow:
+
+HOW WE WORK
+
+Headline:
+
+**A Responsible Approach to Every Project.**
+
+Present a six-stage process:
+
+01 — UNDERSTAND
+
+Understand the client's requirements and project objectives.
+
+02 — ASSESS
+
+Review the project scope and relevant technical considerations.
+
+03 — PLAN
+
+Establish the appropriate project approach and execution arrangements.
+
+04 — EXECUTE
+
+Carry out the agreed work with attention to project requirements.
+
+05 — REVIEW
+
+Review progress, workmanship and relevant quality considerations.
+
+06 — COMPLETE
+
+Conclude the agreed project activities and review the completed work.
+
+Use the original website's existing process design and animation.
+
+---
+
+# 13. CUSTOMER TRUST AND TESTIMONIALS
+
+Do not fabricate customer testimonials.
+
+The supplied Google Business Profile currently displays one review with a 1.0-star rating.
+
+Do not use this rating as a positive marketing claim.
+
+Create a professionally designed customer confidence section focused on the company's service commitments.
+
+Provide a discreet link to the official Google Business Profile.
+
+Keep the testimonial component editable so verified customer feedback can be incorporated later.
+
+---
+
+# 14. CALL TO ACTION
+
+Create a visually striking full-width CTA section using the existing website's approved layout.
+
+Eyebrow:
+
+LET'S BUILD SOMETHING THAT MATTERS
+
+Headline:
+
+**One Partner. Three Essential Service Areas.**
+
+Supporting text:
+
+"Whether you require electrical engineering, building construction or borehole drilling, Princeway Electrical Construction Company Limited is ready to discuss your project requirements."
+
+Primary CTA:
+
+**DISCUSS YOUR PROJECT →**
+
+Secondary CTA:
+
+**EXPLORE OUR SERVICES →**
+
+Use the actual brand colours and a relevant company photograph.
+
+---
+
+# 15. CONTACT PAGE
+
+Headline:
+
+**Let's Discuss Your Next Project.**
+
+Supporting text:
+
+"Connect with Princeway Electrical Construction Company Limited to discuss your electrical engineering, building construction or borehole drilling requirements."
+
+Display:
+
+Company: Princeway Electrical Construction Company Limited.
+
+Telephone: 0806 362 4432.
+
+Address: 62 Wetheral Road, Owerri 460281, Imo State, Nigeria.
+
+Google Maps: Use the supplied official Google Business Profile location.
+
+### Contact form
+
+Include:
+
+- Full Name.
+- Email Address.
+- Phone Number.
+- Service Required.
+- Project Location.
+- Project Description.
+
+The Service Required field must present the following options in this exact order:
+
+1. Electrical Engineering.
+2. Building Construction.
+3. Borehole Drilling.
+4. General Enquiry.
+
+Implement form validation and submission feedback.
+
+Provide:
+
+- Call Now.
+- WhatsApp Enquiry.
+- Get Directions.
+- Submit Enquiry.
+
+Verify the WhatsApp destination before implementing it.
+
+Do not fabricate an email address or claim that the contact form sends messages unless a working integration is configured.
+
+---
+
+# 16. FOOTER
+
+Retain the original footer layout.
+
+Use the official Princeway logo and extracted brand colours.
+
+Company name:
+
+PRINCEWAY ELECTRICAL CONSTRUCTION COMPANY LIMITED.
+
+Tagline:
+
+POWERING PROGRESS. BUILDING POSSIBILITIES.
+
+Include navigation links and contact information.
+
+### Our Services
+
+Display the three principal services in this exact order:
+
+1. Electrical Engineering.
+2. Building Construction.
+3. Borehole Drilling.
+
+Telephone:
+
+0806 362 4432.
+
+Address:
+
+62 Wetheral Road, Owerri, Imo State, Nigeria.
+
+Include social media links only where official accounts are supplied.
+
+---
+
+# 17. SEO AND SEARCH ENGINE OPTIMISATION
+
+Optimise the website for the company's actual business activities.
+
+Suggested homepage SEO title:
+
+Princeway Electrical Construction Company Limited | Electrical Engineering, Building Construction & Borehole Drilling
+
+Suggested meta description:
+
+"Princeway Electrical Construction Company Limited offers electrical engineering, building construction and borehole drilling services in Owerri, Imo State, Nigeria."
+
+Relevant keyword themes:
+
+- Electrical engineering company in Owerri.
+- Electrical construction in Imo State.
+- Building construction company in Owerri.
+- Building construction in Imo State.
+- Borehole drilling in Owerri.
+- Borehole drilling services in Imo State.
+- Construction company in Owerri.
+- Electrical engineering services in Nigeria.
+
+Use these keywords naturally.
+
+Update all:
+
+- Page titles.
+- Meta descriptions.
+- Image alt text.
+- Open Graph metadata.
+- Canonical information where applicable.
+- Local business structured data.
+
+Do not create unsupported business credentials or company history.
+
+---
+
+# 18. TECHNICAL REQUIREMENTS
+
+Preserve the existing technical implementation.
+
+Do not unnecessarily change the existing framework, libraries, routing or component architecture.
+
+Ensure:
+
+- All pages load correctly.
+- All navigation links work.
+- All project filters work.
+- All images load correctly.
+- All videos play correctly.
+- All CTAs work.
+- All contact links are functional.
+- The contact form validates correctly.
+- Responsive behaviour is preserved.
+- Images are optimised.
+- Videos load efficiently.
+- Accessibility is maintained.
+
+Test desktop, tablet and mobile layouts.
+
+---
+
+# 19. FINAL QUALITY CONTROL
+
+Before completing the website transformation, verify:
+
+1. The company name is correctly displayed everywhere.
+2. The official logo is used.
+3. Brand colours match the business card.
+4. The original approved website design remains intact.
+5. All references to Flawless Rock Construction Ltd are removed.
+6. The three principal services appear in the correct order throughout the website.
+7. Electrical engineering is service number one.
+8. Building construction is service number two.
+9. Borehole drilling is service number three.
+10. Authentic company photographs are used.
+11. Uploaded videos are properly integrated.
+12. Project filters work.
+13. Contact details are accurate.
+14. The Google Maps link is correct.
+15. No fabricated testimonials or statistics are displayed.
+16. All pages are responsive.
+17. All navigation and CTA elements work.
+18. SEO metadata reflects the new company.
+
+---
+
+# 20. FINAL IMPLEMENTATION DIRECTIVE
+
+Create a premium, modern, professional corporate website for PRINCEWAY ELECTRICAL CONSTRUCTION COMPANY LIMITED.
+
+The website must position Princeway as a multidisciplinary engineering and construction company with three principal service divisions:
+
+01. ELECTRICAL ENGINEERING.
+
+02. BUILDING CONSTRUCTION.
+
+03. BOREHOLE DRILLING.
+
+Maintain this order across all relevant sections.
+
+Use the uploaded business card as the official branding reference.
+
+Use the uploaded photographs and videos as the company's authentic project media.
+
+Preserve the existing website's approved visual design and technical architecture.
+
+Do not invent company information or capabilities.
+
+Do not redesign the website.
+
+Do not rebuild it from scratch.
+
+**PRESERVE THE DESIGN. APPLY THE NEW BRAND. PRESENT THE THREE SERVICES. SHOWCASE THE AUTHENTIC PROJECTS.**
+
+Inspect the uploaded ZIP file thoroughly and implement the complete transformation.
