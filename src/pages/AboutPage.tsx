@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
-import { COMPANY_INFO, SERVICES_DATA } from '../data/companyData';
+import { COMPANY_INFO, SERVICES_DATA, BRAND_ASSETS } from '../data/companyData';
 import { ArchitecturalVisual } from '../components/ArchitecturalVisual';
 import { ShieldCheck, HardHat, Award, Target, Compass } from 'lucide-react';
 
@@ -49,7 +49,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                 ABOUT PRINCEWAY
               </span>
               <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -71,12 +71,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="text-xs font-mono uppercase tracking-widest text-[#60A5FA] font-bold">
-                COMPANY OVERVIEW
+              <div className="flex items-center gap-4">
+                <div className="bg-white rounded p-2 shadow border border-[#013281]/20 shrink-0">
+                  <img
+                    src={BRAND_ASSETS.logoUrl}
+                    alt="Princeway Electrical Construction Company Limited Logo"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-14 w-auto object-contain"
+                  />
+                </div>
+                <div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-[#FB8F02] font-bold">
+                    COMPANY OVERVIEW
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F5F3] font-display">
+                    Three Principal Service Divisions Under One Roof
+                  </h2>
+                </div>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F5F3] font-display">
-                Three Principal Service Divisions Under One Roof
-              </h2>
+
               <div className="space-y-4 text-sm sm:text-base text-[#B7B9BC] leading-relaxed">
                 <p>
                   Princeway Electrical Construction Company Limited is a multidisciplinary engineering and construction company located at 62 Wetheral Road, Owerri, Imo State, Nigeria.
@@ -95,7 +109,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
                 </p>
               </div>
 
-              <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono text-[#60A5FA]">
+              <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono text-[#FB8F02]">
                 <span className="font-bold">OFFICE:</span>
                 <span className="text-[#B7B9BC]">{COMPANY_INFO.address}</span>
               </div>
@@ -103,8 +117,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
 
             <div className="lg:col-span-5">
               <ArchitecturalVisual
-                category="electrical"
-                title="Electrical & Construction Engineering"
+                category="building"
+                title="Structural & Interior Construction"
+                imageUrl={BRAND_ASSETS.aboutImageUrl}
                 aspectRatio="4:3"
                 showBadge={true}
               />
@@ -118,10 +133,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-[#161920] border border-[#252A34] p-8 rounded-lg space-y-4">
-              <div className="w-12 h-12 bg-[#2563EB]/15 border border-[#2563EB]/40 rounded flex items-center justify-center text-[#60A5FA]">
+              <div className="w-12 h-12 bg-[#013281]/50 border border-[#FB8F02]/40 rounded flex items-center justify-center text-[#FB8F02]">
                 <Target className="w-6 h-6" />
               </div>
-              <div className="text-xs font-mono uppercase tracking-widest text-[#60A5FA] font-bold">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#FB8F02] font-bold">
                 OUR MISSION
               </div>
               <h3 className="text-2xl font-bold text-[#F5F5F3]">Dependable Multidisciplinary Delivery</h3>
@@ -131,10 +146,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
             </div>
 
             <div className="bg-[#161920] border border-[#252A34] p-8 rounded-lg space-y-4">
-              <div className="w-12 h-12 bg-[#2563EB]/15 border border-[#2563EB]/40 rounded flex items-center justify-center text-[#60A5FA]">
+              <div className="w-12 h-12 bg-[#013281]/50 border border-[#FB8F02]/40 rounded flex items-center justify-center text-[#FB8F02]">
                 <Compass className="w-6 h-6" />
               </div>
-              <div className="text-xs font-mono uppercase tracking-widest text-[#60A5FA] font-bold">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#FB8F02] font-bold">
                 OUR VISION
               </div>
               <h3 className="text-2xl font-bold text-[#F5F5F3]">Trusted Engineering Partner</h3>
@@ -150,7 +165,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
       <section className="py-20 bg-[#14171D] border-t border-[#222731]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl space-y-3 mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#60A5FA] font-bold">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#FB8F02] font-bold">
               CORE VALUES
             </div>
             <h2 className="text-3xl font-bold text-[#F5F5F3] font-display">
@@ -165,9 +180,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
             {corporateValues.map((val, idx) => (
               <div
                 key={idx}
-                className="bg-[#161920] border border-[#252A34] p-5 rounded-lg space-y-2 hover:border-[#2563EB]/50 transition-colors"
+                className="bg-[#161920] border border-[#252A34] p-5 rounded-lg space-y-2 hover:border-[#FB8F02]/60 transition-colors"
               >
-                <div className="text-xs font-mono text-[#60A5FA] font-bold">0{idx + 1}</div>
+                <div className="text-xs font-mono text-[#FB8F02] font-bold">0{idx + 1}</div>
                 <h4 className="text-base font-bold text-[#F5F5F3]">{val.title}</h4>
                 <p className="text-xs text-[#B7B9BC] leading-relaxed">{val.desc}</p>
               </div>
@@ -176,12 +191,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
         </div>
       </section>
 
-      {/* Principal Divisions Summary */}
+      {/* Principal Divisions Summary in Exact Order */}
       <section className="py-20 bg-[#0F1115] border-t border-[#222731]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="bg-[#161920] border border-[#252A34] p-6 rounded-lg space-y-3">
-              <ShieldCheck className="w-8 h-8 text-[#60A5FA]" />
+              <ShieldCheck className="w-8 h-8 text-[#FB8F02]" />
               <h3 className="text-lg font-bold text-[#F5F5F3]">01. {SERVICES_DATA[0].title}</h3>
               <p className="text-xs sm:text-sm text-[#B7B9BC] leading-relaxed">
                 {SERVICES_DATA[0].shortDesc}
@@ -189,7 +204,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
             </div>
 
             <div className="bg-[#161920] border border-[#252A34] p-6 rounded-lg space-y-3">
-              <HardHat className="w-8 h-8 text-[#60A5FA]" />
+              <HardHat className="w-8 h-8 text-[#FB8F02]" />
               <h3 className="text-lg font-bold text-[#F5F5F3]">02. {SERVICES_DATA[1].title}</h3>
               <p className="text-xs sm:text-sm text-[#B7B9BC] leading-relaxed">
                 {SERVICES_DATA[1].shortDesc}
@@ -197,7 +212,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
             </div>
 
             <div className="bg-[#161920] border border-[#252A34] p-6 rounded-lg space-y-3">
-              <Award className="w-8 h-8 text-[#60A5FA]" />
+              <Award className="w-8 h-8 text-[#FB8F02]" />
               <h3 className="text-lg font-bold text-[#F5F5F3]">03. {SERVICES_DATA[2].title}</h3>
               <p className="text-xs sm:text-sm text-[#B7B9BC] leading-relaxed">
                 {SERVICES_DATA[2].shortDesc}
@@ -207,32 +222,32 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
         </div>
       </section>
 
-      {/* Editable Management & Leadership Area */}
+      {/* Corporate Operations Block */}
       <section className="py-16 bg-[#14171D] border-t border-[#222731]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 bg-[#171B22] border border-[#252A34] rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 max-w-2xl">
-              <div className="text-xs font-mono uppercase tracking-wider text-[#60A5FA] font-semibold">
-                MANAGEMENT &amp; LEADERSHIP
+              <div className="text-xs font-mono uppercase tracking-wider text-[#FB8F02] font-semibold">
+                OPERATIONS IN OWERRI &amp; IMO STATE
               </div>
               <h3 className="text-xl font-bold text-[#F5F5F3]">
                 Dedicated Engineering &amp; Project Supervision
               </h3>
               <p className="text-xs sm:text-sm text-[#B7B9BC] leading-relaxed">
-                Princeway Electrical Construction Company Limited is structured to support electrical engineering, building construction, and borehole drilling engagements in Owerri and Imo State. Verified leadership profiles and corporate credentials can be published in this section as provided.
+                Princeway Electrical Construction Company Limited supports electrical engineering, building construction, and borehole drilling requirements from our office at 62 Wetheral Road, Owerri.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3 shrink-0">
               <button
                 onClick={() => onNavigate('services')}
-                className="px-5 py-3 bg-[#1E232D] hover:bg-[#272E3B] text-[#F5F5F3] font-bold text-xs uppercase tracking-wider rounded-[2px] cursor-pointer"
+                className="px-5 py-3 bg-[#013281] hover:bg-[#012664] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] cursor-pointer"
               >
                 Explore Services
               </button>
               <button
                 onClick={onOpenConsultation}
-                className="px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] cursor-pointer"
+                className="px-6 py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] cursor-pointer"
               >
                 Discuss Your Project
               </button>

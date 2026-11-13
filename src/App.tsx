@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageId, ProjectItem, VideoGalleryItem } from './types';
-import { INITIAL_PROJECTS, INITIAL_VIDEOS, COMPANY_INFO } from './data/companyData';
+import { INITIAL_PROJECTS, INITIAL_VIDEOS, COMPANY_INFO, BRAND_ASSETS } from './data/companyData';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
@@ -19,13 +19,13 @@ export default function App() {
   const [consultationInitialService, setConsultationInitialService] = useState('Electrical Engineering');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [logoUrl, setLogoUrl] = useState<string>('');
-  const [heroImageUrl, setHeroImageUrl] = useState<string>('');
+  const [logoUrl, setLogoUrl] = useState<string>(BRAND_ASSETS.logoUrl);
+  const [heroImageUrl, setHeroImageUrl] = useState<string>(BRAND_ASSETS.heroImageUrl);
 
-  // Load and persist Princeway projects in localStorage
+  // Versioned storage key ensures authentic uploaded photos load cleanly instead of stale empty placeholders
   const [projects, setProjects] = useState<ProjectItem[]>(() => {
     try {
-      const saved = localStorage.getItem('princeway_projects');
+      const saved = localStorage.getItem('princeway_projects_v2');
       if (saved) {
         return JSON.parse(saved);
       }
@@ -35,13 +35,12 @@ export default function App() {
     return INITIAL_PROJECTS;
   });
 
-  // Load and persist Princeway videos in state (runtime objectURLs are session-scoped)
   const [videos, setVideos] = useState<VideoGalleryItem[]>(INITIAL_VIDEOS);
 
   const saveProjects = (updatedProjects: ProjectItem[]) => {
     setProjects(updatedProjects);
     try {
-      localStorage.setItem('princeway_projects', JSON.stringify(updatedProjects));
+      localStorage.setItem('princeway_projects_v2', JSON.stringify(updatedProjects));
     } catch (e) {
       console.warn('Failed to save projects to localStorage', e);
     }
@@ -98,7 +97,6 @@ export default function App() {
     );
   };
 
-  // Smart bulk attachment for extracted Business Card PNGs, site JPEGs, and MP4 videos
   const handleBulkAttachMedia = (files: FileList) => {
     let imagesAttached = 0;
     let videosAttached = 0;
@@ -130,24 +128,12 @@ export default function App() {
 
       if (file.type.startsWith('image/')) {
         const objectUrl = URL.createObjectURL(file);
-        if (lower.includes('business card front') || lower.includes('logo')) {
+        if (lower.includes('logo')) {
           setLogoUrl(objectUrl);
           logoAttached = true;
           return;
         }
-        if (lower.includes('business card back')) {
-          logoAttached = true;
-          return;
-        }
-        if (!heroImageUrl) {
-          setHeroImageUrl(objectUrl);
-        }
-        let targetProjectId = projects[0]?.id || 'pw-electrical-01';
-        if (lower.includes('8.11.')) {
-          targetProjectId = 'pw-building-01';
-        } else if (lower.includes('4.26.26') || lower.includes('4.26.25')) {
-          targetProjectId = 'pw-borehole-01';
-        }
+        const targetProjectId = lower.includes('borehole') ? 'pw-borehole-01' : 'pw-bldg-01';
         projectImageAdds[targetProjectId] = [
           ...(projectImageAdds[targetProjectId] || []),
           objectUrl,
@@ -223,11 +209,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F1115] text-[#F5F5F3] flex flex-col font-sans selection:bg-[#2563EB] selection:text-white">
+    <div className="min-h-screen bg-[#0F1115] text-[#F5F5F3] flex flex-col font-sans selection:bg-[#FB8F02] selection:text-[#0B0F19]">
       {/* Skip to Content for Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#2563EB] text-white font-bold text-xs"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#FB8F02] text-[#0B0F19] font-extrabold text-xs"
       >
         Skip to main content
       </a>
@@ -237,7 +223,7 @@ export default function App() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
         onOpenConsultation={() => handleOpenConsultation()}
-        logoUrl={logoUrl || undefined}
+        logoUrl={logoUrl}
       />
 
       {/* Main Page Content */}
@@ -248,7 +234,7 @@ export default function App() {
             onOpenConsultation={handleOpenConsultation}
             projects={projects}
             onSelectProject={(project) => setSelectedProject(project)}
-            heroImageUrl={heroImageUrl || undefined}
+            heroImageUrl={heroImageUrl}
           />
         )}
         {currentPage === 'about' && (
@@ -290,7 +276,7 @@ export default function App() {
       <Footer
         onNavigate={handleNavigate}
         onOpenConsultation={() => handleOpenConsultation()}
-        logoUrl={logoUrl || undefined}
+        logoUrl={logoUrl}
       />
 
       {/* Floating Direct Call Button */}
@@ -307,7 +293,7 @@ export default function App() {
 
         <a
           href={`tel:${COMPANY_INFO.phoneRaw}`}
-          className="flex items-center gap-2.5 px-4 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded shadow-xl hover:shadow-[#2563EB]/40 transition-all hover:scale-105 active:scale-95"
+          className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded shadow-xl hover:shadow-[#FB8F02]/40 transition-all hover:scale-105 active:scale-95"
           title={`Direct Telephone: ${COMPANY_INFO.phoneDisplay}`}
         >
           <Phone className="w-4 h-4" />

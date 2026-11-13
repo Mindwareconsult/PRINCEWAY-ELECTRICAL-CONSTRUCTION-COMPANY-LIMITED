@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PageId, ProjectItem } from '../types';
 import {
   COMPANY_INFO,
+  BRAND_ASSETS,
   SERVICES_DATA,
   WHY_CHOOSE_PRINCEWAY,
   PROCESS_STAGES,
@@ -20,6 +21,7 @@ import {
   MessageCircle,
   Navigation,
   Film,
+  Images,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -35,7 +37,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenConsultation,
   projects,
   onSelectProject,
-  heroImageUrl,
+  heroImageUrl = BRAND_ASSETS.heroImageUrl,
 }) => {
   const [projectFilter, setProjectFilter] = useState<string>('ALL PROJECTS');
   const [activeProcessStep, setActiveProcessStep] = useState<number>(0);
@@ -86,7 +88,8 @@ export const HomePage: React.FC<HomePageProps> = ({
           SECTION 1: HERO
           ========================================================================= */}
       <section className="relative min-h-[92vh] flex items-center pt-28 pb-20 overflow-hidden bg-[#0F1115]">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#2563EB]/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#013281]/25 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[380px] h-[380px] bg-[#FB8F02]/10 rounded-full blur-[130px] pointer-events-none" />
         <div className="absolute inset-0 bg-architectural-grid opacity-25 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
@@ -94,7 +97,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Left Column: Editorial Headline & CTAs */}
             <div className="lg:col-span-7 space-y-8">
               <div className="flex items-center gap-4">
-                <span className="text-[11px] font-mono tracking-[0.2em] text-[#B7B9BC] uppercase">
+                <span className="text-[11px] font-mono tracking-[0.2em] text-[#FB8F02] uppercase font-semibold">
                   ENGINEERING / CONSTRUCTION / INFRASTRUCTURE
                 </span>
                 <div className="h-[1px] w-16 bg-[#353A44]" />
@@ -102,7 +105,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#F5F5F3] leading-[1.08] font-display text-balance">
                 Powering Progress.{' '}
-                <span className="text-[#60A5FA]">Building a Better Tomorrow.</span>
+                <span className="text-[#FB8F02]">Building a Better Tomorrow.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-[#B7B9BC] max-w-2xl leading-relaxed font-sans">
@@ -113,7 +116,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <button
                   onClick={() => onNavigate('services')}
-                  className="px-6 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 shadow-lg shadow-[#2563EB]/20 hover:shadow-[#2563EB]/35 hover:translate-x-0.5 transition-all cursor-pointer whitespace-nowrap"
+                  className="px-6 py-3.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 shadow-lg shadow-[#FB8F02]/20 hover:shadow-[#FB8F02]/35 hover:translate-x-0.5 transition-all cursor-pointer whitespace-nowrap"
                 >
                   <span>EXPLORE OUR SERVICES</span>
                   <ArrowRight className="w-4 h-4" />
@@ -121,7 +124,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                 <button
                   onClick={() => onOpenConsultation('Electrical Engineering')}
-                  className="px-6 py-3.5 border border-[#353A44] hover:border-[#60A5FA] text-[#F5F5F3] hover:text-[#60A5FA] bg-[#14171D]/70 backdrop-blur font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap"
+                  className="px-6 py-3.5 border border-[#353A44] hover:border-[#FB8F02] text-[#F5F5F3] hover:text-[#FB8F02] bg-[#14171D]/70 backdrop-blur font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap"
                 >
                   <span>DISCUSS YOUR PROJECT</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -131,38 +134,38 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Three Compact Service Indicators in Mandatory Order */}
               <div className="pt-8 border-t border-[#222731] grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="space-y-1">
-                  <div className="text-[11px] font-mono text-[#60A5FA] uppercase tracking-wide">
+                  <div className="text-[11px] font-mono text-[#FB8F02] uppercase tracking-wide font-bold">
                     01 · DIVISION
                   </div>
                   <div className="text-xs font-mono font-bold tracking-wider text-[#F5F5F3] uppercase">
                     ELECTRICAL ENGINEERING
                   </div>
-                  <p className="text-xs text-[#76797E]">Power &amp; installation systems</p>
+                  <p className="text-xs text-[#8A919E]">Power &amp; installation systems</p>
                 </div>
 
                 <div className="space-y-1 border-t sm:border-t-0 sm:border-l border-[#222731] pt-4 sm:pt-0 sm:pl-6">
-                  <div className="text-[11px] font-mono text-[#60A5FA] uppercase tracking-wide">
+                  <div className="text-[11px] font-mono text-[#FB8F02] uppercase tracking-wide font-bold">
                     02 · DIVISION
                   </div>
                   <div className="text-xs font-mono font-bold tracking-wider text-[#F5F5F3] uppercase">
                     BUILDING CONSTRUCTION
                   </div>
-                  <p className="text-xs text-[#76797E]">Residential &amp; commercial structures</p>
+                  <p className="text-xs text-[#8A919E]">Residential &amp; commercial structures</p>
                 </div>
 
                 <div className="space-y-1 border-t sm:border-t-0 sm:border-l border-[#222731] pt-4 sm:pt-0 sm:pl-6">
-                  <div className="text-[11px] font-mono text-[#60A5FA] uppercase tracking-wide">
+                  <div className="text-[11px] font-mono text-[#FB8F02] uppercase tracking-wide font-bold">
                     03 · DIVISION
                   </div>
                   <div className="text-xs font-mono font-bold tracking-wider text-[#F5F5F3] uppercase">
                     BOREHOLE DRILLING
                   </div>
-                  <p className="text-xs text-[#76797E]">Water access infrastructure</p>
+                  <p className="text-xs text-[#8A919E]">Water access infrastructure</p>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Visual */}
+            {/* Right Column: Authentic Hero Showcase Photo */}
             <div className="lg:col-span-5 w-full">
               <HeroArchitecturalGraphic heroImageUrl={heroImageUrl} />
             </div>
@@ -180,7 +183,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <ArchitecturalVisual
                 category="building"
                 title="Multidisciplinary Engineering & Construction"
-                imageUrl={projects.find((p) => p.imageUrl)?.imageUrl}
+                imageUrl={BRAND_ASSETS.introImageUrl}
                 aspectRatio="4:3"
                 showBadge={true}
               />
@@ -188,7 +191,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                   WHO WE ARE
                 </span>
                 <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -196,7 +199,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#F5F5F3] font-display text-balance leading-tight">
                 Three Core Services.{' '}
-                <span className="text-[#60A5FA]">One Commitment to Excellence.</span>
+                <span className="text-[#FB8F02]">One Commitment to Excellence.</span>
               </h2>
 
               <div className="space-y-4 text-sm sm:text-base text-[#B7B9BC] leading-relaxed">
@@ -220,7 +223,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="pt-2">
                 <button
                   onClick={() => onNavigate('about')}
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#60A5FA] hover:text-white transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FB8F02] hover:text-white transition-colors cursor-pointer"
                 >
                   <span>DISCOVER PRINCEWAY</span>
                   <ArrowRight className="w-4 h-4" />
@@ -239,7 +242,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-14 border-b border-[#222731]">
             <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                   OUR CORE SERVICES
                 </span>
                 <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -254,7 +257,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <button
               onClick={() => onNavigate('services')}
-              className="text-xs font-mono uppercase tracking-widest text-[#B7B9BC] hover:text-[#60A5FA] flex items-center gap-1.5 transition-colors whitespace-nowrap self-start md:self-end cursor-pointer"
+              className="text-xs font-mono uppercase tracking-widest text-[#B7B9BC] hover:text-[#FB8F02] flex items-center gap-1.5 transition-colors whitespace-nowrap self-start md:self-end cursor-pointer"
             >
               <span>EXPLORE SERVICE DIVISIONS</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -271,12 +274,12 @@ export const HomePage: React.FC<HomePageProps> = ({
               return (
                 <div
                   key={service.id}
-                  className="group relative bg-[#161920] border border-[#252A34] hover:border-[#2563EB] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-lg"
+                  className="group relative bg-[#161920] border border-[#252A34] hover:border-[#FB8F02] rounded-lg p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-lg"
                 >
                   <div>
                     <div className="flex items-center justify-between pb-4 border-b border-[#222731] text-xs font-mono">
                       <div className="flex items-center gap-2">
-                        <span className="text-[#60A5FA] font-bold">{service.number}</span>
+                        <span className="text-[#FB8F02] font-bold">{service.number}</span>
                         <span className="text-[#353A44]">—</span>
                         <span className="text-[#F5F5F3] font-bold uppercase">{service.title}</span>
                       </div>
@@ -286,13 +289,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                       <ArchitecturalVisual
                         category={service.visualCategory}
                         title={service.title}
-                        imageUrl={matchingProjectImage || service.imageUrl}
+                        imageUrl={service.imageUrl || matchingProjectImage}
                         aspectRatio="16:9"
                         showBadge={false}
                       />
                     </div>
 
-                    <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#60A5FA] transition-colors">
+                    <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#FB8F02] transition-colors">
                       {service.number}. {service.title}
                     </h3>
                     <p className="mt-2 text-xs sm:text-sm text-[#B7B9BC] leading-relaxed">
@@ -303,13 +306,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <div className="pt-6 mt-6 border-t border-[#222731] flex items-center justify-between">
                     <button
                       onClick={() => onOpenConsultation(service.title)}
-                      className="text-xs font-mono uppercase tracking-wider text-[#60A5FA] hover:text-white font-bold flex items-center gap-1 cursor-pointer"
+                      className="text-xs font-mono uppercase tracking-wider text-[#FB8F02] hover:text-white font-bold flex items-center gap-1 cursor-pointer"
                     >
                       <span>Learn More / Enquire</span>
                     </button>
                     <button
                       onClick={() => onNavigate('services')}
-                      className="w-8 h-8 rounded-full bg-[#1E232D] group-hover:bg-[#2563EB] group-hover:text-white text-[#B7B9BC] flex items-center justify-center transition-colors cursor-pointer"
+                      className="w-8 h-8 rounded-full bg-[#013281] group-hover:bg-[#FB8F02] group-hover:text-[#0B0F19] text-white flex items-center justify-center transition-colors cursor-pointer"
                       aria-label={`Learn more about ${service.title}`}
                     >
                       <ArrowRight className="w-4 h-4" />
@@ -330,7 +333,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-[#222731]">
             <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                   OUR PORTFOLIO
                 </span>
                 <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -339,7 +342,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 Real Projects. Practical Solutions. Professional Execution.
               </h2>
               <p className="text-sm sm:text-base text-[#B7B9BC]">
-                Explore selected work across our electrical engineering, building construction and borehole drilling activities.
+                Explore authentic company photographs across our electrical engineering, building construction and borehole drilling activities.
               </p>
             </div>
 
@@ -351,7 +354,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onClick={() => setProjectFilter(cat)}
                   className={`px-3 py-1.5 rounded-[2px] transition-colors cursor-pointer ${
                     projectFilter === cat
-                      ? 'bg-[#2563EB] text-white font-bold'
+                      ? 'bg-[#FB8F02] text-[#0B0F19] font-extrabold'
                       : 'bg-[#1C2028] text-[#B7B9BC] hover:text-white'
                   }`}
                 >
@@ -362,7 +365,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* Portfolio Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12">
             {filteredProjects.map((project) => {
               const visualCat =
                 project.category === 'Electrical Engineering'
@@ -375,7 +378,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <div
                   key={project.id}
                   onClick={() => onSelectProject(project)}
-                  className="group cursor-pointer bg-[#161920] border border-[#252A34] hover:border-[#2563EB] rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between"
+                  className="group cursor-pointer bg-[#161920] border border-[#252A34] hover:border-[#FB8F02] rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     <div className="relative overflow-hidden aspect-[16/10]">
@@ -386,11 +389,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                         aspectRatio="auto"
                         showBadge={false}
                       />
-                      <div className="absolute top-3 left-3 bg-[#0F1115]/90 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-[#60A5FA] uppercase border border-[#2A303D]">
+                      <div className="absolute top-3 left-3 bg-[#013281]/95 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-white uppercase border border-[#FB8F02]/40">
                         {project.category}
                       </div>
+                      {project.galleryImages && project.galleryImages.length > 1 && (
+                        <div className="absolute top-3 right-3 bg-[#0F1115]/90 px-2 py-0.5 rounded text-[10px] font-mono text-[#FB8F02] border border-[#2D3340] flex items-center gap-1">
+                          <Images className="w-3 h-3" />
+                          <span>{project.galleryImages.length} PHOTOS</span>
+                        </div>
+                      )}
                       {project.videoUrl && (
-                        <div className="absolute top-3 right-3 bg-[#2563EB] px-2 py-0.5 rounded text-[10px] font-mono text-white flex items-center gap-1">
+                        <div className="absolute bottom-3 right-3 bg-[#FB8F02] px-2 py-0.5 rounded text-[10px] font-mono font-bold text-[#0B0F19] flex items-center gap-1">
                           <Film className="w-3 h-3" />
                           <span>VIDEO</span>
                         </div>
@@ -399,10 +408,10 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                     <div className="p-6 space-y-3">
                       <div className="flex items-center gap-2 text-xs font-mono text-[#B7B9BC]">
-                        <MapPin className="w-3.5 h-3.5 text-[#60A5FA]" />
+                        <MapPin className="w-3.5 h-3.5 text-[#FB8F02]" />
                         <span>{project.location}</span>
                       </div>
-                      <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#60A5FA] transition-colors">
+                      <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#FB8F02] transition-colors">
                         {project.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-[#B7B9BC] line-clamp-2">
@@ -411,7 +420,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     </div>
                   </div>
 
-                  <div className="px-6 pb-6 pt-3 border-t border-[#222731] flex items-center justify-between text-xs font-mono text-[#60A5FA]">
+                  <div className="px-6 pb-6 pt-3 border-t border-[#222731] flex items-center justify-between text-xs font-mono text-[#FB8F02]">
                     <span className="font-bold">VIEW PROJECT DETAILS</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -422,11 +431,11 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-[#171B22] border border-[#252A34] rounded">
             <p className="text-xs font-mono text-[#B7B9BC]">
-              Project photos and MP4 field videos can be attached directly inside the Projects &amp; Video Gallery page.
+              Browse all authentic site photographs or attach MP4 field videos inside the Projects &amp; Video Gallery page.
             </p>
             <button
               onClick={() => onNavigate('projects')}
-              className="text-xs font-bold uppercase tracking-wider text-[#60A5FA] hover:text-white flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+              className="text-xs font-bold uppercase tracking-wider text-[#FB8F02] hover:text-white flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
               <span>OPEN PORTFOLIO &amp; VIDEO GALLERY</span>
               <ArrowRight className="w-4 h-4" />
@@ -442,7 +451,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <div className="inline-flex items-center gap-3">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                 THE PRINCEWAY DIFFERENCE
               </span>
             </div>
@@ -458,10 +467,10 @@ export const HomePage: React.FC<HomePageProps> = ({
             {WHY_CHOOSE_PRINCEWAY.map((item) => (
               <div
                 key={item.number}
-                className="bg-[#161920] border border-[#252A34] hover:border-[#2563EB]/60 p-6 rounded-lg space-y-4 transition-colors"
+                className="bg-[#161920] border border-[#252A34] hover:border-[#FB8F02]/70 p-6 rounded-lg space-y-4 transition-colors"
               >
                 <div className="flex items-center justify-between pb-3 border-b border-[#222731]">
-                  <span className="text-xs font-mono text-[#60A5FA] font-bold">{item.number}</span>
+                  <span className="text-xs font-mono text-[#FB8F02] font-bold">{item.number}</span>
                   <span className="text-[10px] font-mono text-[#76797E] uppercase">CORE STANDARD</span>
                 </div>
                 <h3 className="text-base font-bold text-[#F5F5F3] tracking-wider uppercase font-display">
@@ -483,7 +492,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-3 max-w-2xl mb-12">
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                 HOW WE WORK
               </span>
               <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -504,11 +513,11 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onClick={() => setActiveProcessStep(idx)}
                   className={`p-3 text-left border rounded transition-all cursor-pointer ${
                     activeProcessStep === idx
-                      ? 'bg-[#1C212C] border-[#2563EB] shadow-md'
+                      ? 'bg-[#1C212C] border-[#FB8F02] shadow-md'
                       : 'bg-[#101318] border-[#252A34] hover:border-[#384050]'
                   }`}
                 >
-                  <div className="text-[11px] font-mono text-[#60A5FA] font-bold">
+                  <div className="text-[11px] font-mono text-[#FB8F02] font-bold">
                     STAGE {stage.step}
                   </div>
                   <div className="text-xs font-bold text-[#F5F5F3] mt-1 truncate">
@@ -522,7 +531,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="bg-[#101318] border border-[#252A34] rounded-lg p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-7 space-y-4">
                   <div className="flex items-center gap-3">
-                    <span className="px-2.5 py-0.5 bg-[#2563EB] text-white text-[11px] font-mono font-bold rounded-[2px]">
+                    <span className="px-2.5 py-0.5 bg-[#013281] border border-[#FB8F02]/40 text-white text-[11px] font-mono font-bold rounded-[2px]">
                       STAGE {PROCESS_STAGES[activeProcessStep].step}
                     </span>
                     <span className="text-xs font-mono text-[#B7B9BC]">
@@ -539,11 +548,11 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </p>
 
                   <div className="pt-2 space-y-2">
-                    <div className="text-xs font-mono uppercase text-[#60A5FA]">Stage Focus Areas:</div>
+                    <div className="text-xs font-mono uppercase text-[#FB8F02]">Stage Focus Areas:</div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-[#F5F5F3]">
                       {PROCESS_STAGES[activeProcessStep].deliverables.map((d, i) => (
                         <div key={i} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#60A5FA] shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#FB8F02] shrink-0" />
                           <span>{d}</span>
                         </div>
                       ))}
@@ -564,7 +573,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </p>
                   <button
                     onClick={() => onNavigate('process')}
-                    className="text-xs font-mono text-[#60A5FA] hover:text-white font-bold flex items-center gap-1.5 cursor-pointer"
+                    className="text-xs font-mono text-[#FB8F02] hover:text-white font-bold flex items-center gap-1.5 cursor-pointer"
                   >
                     <span>EXPLORE FULL PROCESS</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -578,14 +587,13 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       {/* =========================================================================
           SECTION 7: CUSTOMER CONFIDENCE & SERVICE COMMITMENTS
-          (No fabricated testimonials or unsupported rating claims)
           ========================================================================= */}
       <section className="py-24 bg-[#0F1115] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-14 border-b border-[#222731]">
             <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                   CLIENT CONFIDENCE
                 </span>
                 <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -602,10 +610,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               href={COMPANY_INFO.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-[#161920] border border-[#252A34] hover:border-[#2563EB] rounded text-xs font-mono text-[#B7B9BC] hover:text-[#F5F5F3] transition-colors shrink-0"
+              className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-[#161920] border border-[#252A34] hover:border-[#FB8F02] rounded text-xs font-mono text-[#B7B9BC] hover:text-[#F5F5F3] transition-colors shrink-0"
             >
               <span>View Official Google Business Profile</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#60A5FA]" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#FB8F02]" />
             </a>
           </div>
 
@@ -616,7 +624,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 className="bg-[#161920] border border-[#252A34] p-6 rounded-lg flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-3">
-                  <div className="text-xs font-mono text-[#60A5FA] font-bold">{item.number}</div>
+                  <div className="text-xs font-mono text-[#FB8F02] font-bold">{item.number}</div>
                   <h3 className="text-lg font-bold text-[#F5F5F3]">{item.title}</h3>
                   <p className="text-xs sm:text-sm text-[#B7B9BC] leading-relaxed">
                     {item.description}
@@ -639,7 +647,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <blockquote className="text-sm text-[#F5F5F3] italic leading-relaxed">
                     &ldquo;{t.reviewText}&rdquo;
                   </blockquote>
-                  <div className="pt-3 border-t border-[#222731] text-xs font-bold text-[#60A5FA]">
+                  <div className="pt-3 border-t border-[#222731] text-xs font-bold text-[#FB8F02]">
                     {t.clientName}
                   </div>
                 </div>
@@ -650,19 +658,19 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* =========================================================================
-          SECTION 8: FULL-WIDTH CALL TO ACTION
+          SECTION 8: FULL-WIDTH CALL TO ACTION (Official Princeway Navy + Gold)
           ========================================================================= */}
-      <section className="relative py-20 sm:py-28 bg-[#1D4ED8] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-dot-matrix opacity-20 pointer-events-none" />
+      <section className="relative py-20 sm:py-28 bg-gradient-to-br from-[#013281] to-[#012054] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-dot-matrix opacity-25 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-8 space-y-6">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-white/90 font-bold">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-bold">
                   LET&apos;S BUILD SOMETHING THAT MATTERS
                 </span>
-                <div className="h-[1px] w-12 bg-white/40" />
+                <div className="h-[1px] w-12 bg-[#FB8F02]/50" />
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-balance leading-[1.08]">
@@ -676,15 +684,15 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => onOpenConsultation('Electrical Engineering')}
-                  className="px-8 py-4 bg-[#0F1115] hover:bg-[#181C24] text-white font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 shadow-2xl transition-all cursor-pointer whitespace-nowrap"
+                  className="px-8 py-4 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 shadow-2xl transition-all cursor-pointer whitespace-nowrap"
                 >
                   <span>DISCUSS YOUR PROJECT</span>
-                  <ArrowRight className="w-4 h-4 text-[#60A5FA]" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={() => onNavigate('services')}
-                  className="px-7 py-4 border border-white/40 hover:border-white text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap"
+                  className="px-7 py-4 border border-white/40 hover:border-[#FB8F02] hover:text-[#FB8F02] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 transition-all cursor-pointer whitespace-nowrap"
                 >
                   <span>EXPLORE OUR SERVICES</span>
                   <ArrowRight className="w-4 h-4" />
@@ -693,30 +701,14 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             <div className="lg:col-span-4 flex justify-center">
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
-                <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-2xl" fill="none">
-                  <rect x="85" y="15" width="30" height="170" rx="4" fill="#0F1115" />
-                  <rect x="15" y="85" width="170" height="30" rx="4" fill="#0F1115" />
-                  <rect
-                    x="85"
-                    y="15"
-                    width="30"
-                    height="170"
-                    rx="4"
-                    fill="#181D26"
-                    transform="rotate(45 100 100)"
-                  />
-                  <rect
-                    x="85"
-                    y="15"
-                    width="30"
-                    height="170"
-                    rx="4"
-                    fill="#222936"
-                    transform="rotate(-45 100 100)"
-                  />
-                  <circle cx="100" cy="100" r="16" fill="#2563EB" stroke="#FFFFFF" strokeWidth="2" />
-                </svg>
+              <div className="bg-white rounded-xl p-6 shadow-2xl border-2 border-[#FB8F02]/60 max-w-[240px]">
+                <img
+                  src={BRAND_ASSETS.logoUrl}
+                  alt="Princeway Electrical Construction Company Limited Official Logo"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain"
+                />
               </div>
             </div>
           </div>
@@ -732,7 +724,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Contact Details */}
             <div className="lg:col-span-5 space-y-6">
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                   GET IN TOUCH
                 </span>
                 <div className="h-[1px] w-12 bg-[#353A44]" />
@@ -748,7 +740,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
               <div className="space-y-4 pt-4 border-t border-[#222731]">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#60A5FA] shrink-0 mt-1" />
+                  <MapPin className="w-5 h-5 text-[#FB8F02] shrink-0 mt-1" />
                   <div>
                     <div className="text-xs font-mono uppercase text-[#76797E]">Office Address</div>
                     <div className="text-sm font-semibold text-[#F5F5F3]">{COMPANY_INFO.address}</div>
@@ -756,12 +748,12 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-[#60A5FA] shrink-0 mt-1" />
+                  <Phone className="w-5 h-5 text-[#FB8F02] shrink-0 mt-1" />
                   <div>
                     <div className="text-xs font-mono uppercase text-[#76797E]">Telephone</div>
                     <a
                       href={`tel:${COMPANY_INFO.phoneRaw}`}
-                      className="text-lg font-bold text-[#F5F5F3] hover:text-[#60A5FA] transition-colors"
+                      className="text-lg font-bold text-[#F5F5F3] hover:text-[#FB8F02] transition-colors"
                     >
                       {COMPANY_INFO.phoneDisplay}
                     </a>
@@ -772,7 +764,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="px-5 py-3 bg-[#1D222C] hover:bg-[#2563EB] text-[#F5F5F3] hover:text-white font-bold text-xs uppercase tracking-wider rounded-[2px] transition-colors flex items-center gap-2"
+                  className="px-5 py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-colors flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Call Now</span>
@@ -782,9 +774,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                   href={COMPANY_INFO.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3 bg-[#161920] border border-[#252A34] hover:border-[#2563EB] text-[#F5F5F3] font-bold text-xs uppercase tracking-wider rounded-[2px] transition-colors flex items-center gap-2"
+                  className="px-5 py-3 bg-[#013281] border border-[#0A46A6] hover:border-[#FB8F02] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] transition-colors flex items-center gap-2"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#60A5FA]" />
+                  <MessageCircle className="w-4 h-4 text-[#FB8F02]" />
                   <span>WhatsApp Enquiry</span>
                 </a>
 
@@ -792,7 +784,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   href={COMPANY_INFO.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-mono text-[#B7B9BC] hover:text-[#60A5FA] flex items-center gap-1.5 ml-1"
+                  className="text-xs font-mono text-[#B7B9BC] hover:text-[#FB8F02] flex items-center gap-1.5 ml-1"
                 >
                   <Navigation className="w-3.5 h-3.5" />
                   <span>Get Directions</span>
@@ -804,7 +796,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="lg:col-span-7 bg-[#161920] border border-[#252A34] rounded-lg p-6 sm:p-8">
               {formSubmitted ? (
                 <div className="py-10 text-center space-y-4">
-                  <div className="w-12 h-12 bg-[#2563EB]/20 border border-[#2563EB] rounded-full flex items-center justify-center mx-auto text-[#60A5FA]">
+                  <div className="w-12 h-12 bg-[#FB8F02]/15 border border-[#FB8F02] rounded-full flex items-center justify-center mx-auto text-[#FB8F02]">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-[#F5F5F3]">Enquiry Details Ready</h3>
@@ -816,14 +808,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                       href={`${COMPANY_INFO.whatsappUrl}?text=${whatsappPreviewText}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider rounded-[2px] flex items-center gap-2"
+                      className="px-5 py-2.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] text-xs font-extrabold uppercase tracking-wider rounded-[2px] flex items-center gap-2"
                     >
                       <MessageCircle className="w-4 h-4" />
                       <span>Send via WhatsApp</span>
                     </a>
                     <button
                       onClick={() => setFormSubmitted(false)}
-                      className="text-xs font-mono text-[#60A5FA] underline hover:text-white cursor-pointer"
+                      className="text-xs font-mono text-[#FB8F02] underline hover:text-white cursor-pointer"
                     >
                       Edit details
                     </button>
@@ -847,7 +839,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
                         placeholder="Your full name"
-                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none"
+                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
                     </div>
 
@@ -860,7 +852,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         value={formPhone}
                         onChange={(e) => setFormPhone(e.target.value)}
                         placeholder="e.g. 0806 362 4432"
-                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none"
+                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -875,7 +867,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         value={formEmail}
                         onChange={(e) => setFormEmail(e.target.value)}
                         placeholder="name@company.com"
-                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none"
+                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
                     </div>
 
@@ -886,7 +878,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       <select
                         value={formService}
                         onChange={(e) => setFormService(e.target.value)}
-                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none"
+                        className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       >
                         <option value="Electrical Engineering">Electrical Engineering</option>
                         <option value="Building Construction">Building Construction</option>
@@ -905,7 +897,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       value={formLocation}
                       onChange={(e) => setFormLocation(e.target.value)}
                       placeholder="e.g. Owerri, Imo State"
-                      className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                     />
                   </div>
 
@@ -918,13 +910,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                       value={formDesc}
                       onChange={(e) => setFormDesc(e.target.value)}
                       placeholder="Brief details regarding your electrical engineering, building construction, or borehole drilling requirements..."
-                      className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer"
+                    className="w-full py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer"
                   >
                     Submit Enquiry
                   </button>

@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Interim engineering palette (ready for exact hex extraction once Business Card PNGs are attached) */
-  --brand-primary: #2563EB;
-  --brand-primary-hover: #1D4ED8;
-  --brand-accent-light: #60A5FA;
-  --brand-glow: rgba(37, 99, 235, 0.25);
+  /* Sampled directly from Princeway_Electrical_Logo_76b45766.png: #013281 (Navy) & #FB8F02 (Amber Gold) */
+  --brand-navy: #013281;
+  --brand-navy-hover: #012664;
+  --brand-navy-mid: #0A46A6;
+  --brand-primary: #FB8F02;
+  --brand-primary-hover: #E07E00;
+  --brand-accent-light: #FFA938;
+  --brand-glow: rgba(251, 143, 2, 0.25);
+  --brand-navy-glow: rgba(1, 50, 129, 0.45);
   --surface-canvas: #0F1115;
   --surface-elevated: #14171D;
   --surface-card: #161920;
@@ -19,8 +23,8 @@
   --color-charcoal-card: #161920;
   --color-graphite: #191D24;
   --color-graphite-light: #222730;
-  --color-brand-primary: #2563EB;
-  --color-brand-secondary: #1D4ED8;
+  --color-brand-primary: #FB8F02;
+  --color-brand-secondary: #013281;
   --color-text-offwhite: #F5F5F3;
   --color-text-muted: #B7B9BC;
   --color-border-default: #353A44;
@@ -50,7 +54,7 @@
 }
 
 .bg-dot-matrix {
-  background-image: radial-gradient(rgba(96, 165, 250, 0.16) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(251, 143, 2, 0.18) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 

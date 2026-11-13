@@ -1,5 +1,12 @@
 import { ServiceItem, ProjectItem, ProcessStage, VideoGalleryItem, TestimonialItem } from '../types';
 
+export const BRAND_ASSETS = {
+  logoUrl: '/assets/aistudio/Princeway_Electrical_Logo_76b45766.png',
+  heroImageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.50_AM_b0f4eef1.jpeg',
+  introImageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.25.35_AM_2019ff07.jpeg',
+  aboutImageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.25_AM__2__e52e7d4c.jpeg',
+};
+
 export const COMPANY_INFO = {
   name: 'PRINCEWAY ELECTRICAL CONSTRUCTION COMPANY LIMITED',
   shortName: 'PRINCEWAY',
@@ -15,7 +22,7 @@ export const COMPANY_INFO = {
   phoneRaw: '+2348063624432',
   whatsappUrl: 'https://wa.me/2348063624432',
   googleMapsUrl:
-    'https://www.google.com/maps/place/princeway+electrical+construction+company+limited/@5.4839812,7.0343905,17z/data=!3m1!4b1!4m6!3m5!1s0x104259073b32c935:0xfba6151d97dd7f8b!8m2!3d5.4839812!4d7.0343905',
+    'https://www.google.com/maps/place/princeway+electrical+construction+company+limited/@5.4839812,7.0343905,17z/data=!3m1!4b1!4m6!3m5!1s0x104259073b32c935:0xfba6151d97dd7f8b!8m2!3d5.4839812!4d7.0343006',
   directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=5.4839812,7.0343905',
 };
 
@@ -51,6 +58,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     ],
     ctaLabel: 'ENQUIRE ABOUT ELECTRICAL ENGINEERING',
     visualCategory: 'electrical',
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.26_AM__1__8cf88292.jpeg',
   },
   {
     id: 'building-construction',
@@ -82,6 +90,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     ],
     ctaLabel: 'ENQUIRE ABOUT BUILDING CONSTRUCTION',
     visualCategory: 'building',
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.25.35_AM_2019ff07.jpeg',
   },
   {
     id: 'borehole-drilling',
@@ -204,83 +213,147 @@ export const PROCESS_STAGES: ProcessStage[] = [
   },
 ];
 
-// Grounded in the user's uploaded ZIP filenames; awaiting direct image/video file upload because ZIP binary files were not extracted to disk
+// Authentic uploaded site photographs strictly categorised by what is visibly shown (neutral descriptive titles only)
 export const INITIAL_PROJECTS: ProjectItem[] = [
   {
-    id: 'pw-electrical-01',
-    title: 'Electrical Engineering & Power Distribution Works',
+    id: 'pw-elec-01',
+    title: 'Electrical Installation Project — Internal Wiring & Conduit Works',
     category: 'Electrical Engineering',
-    location: 'Owerri, Imo State',
-    status: 'Site Record',
-    description:
-      'Electrical installation and distribution infrastructure project documented in company field media. Attach the extracted JPEG/MP4 files from your ZIP archive to display the original site photographs.',
-    highlights: [
-      'Electrical installation & wiring works',
-      'Distribution & power infrastructure',
-      'Safety-conscious technical execution',
-    ],
-    imageUrl: '',
-    galleryImages: [],
-    expectedAssetHint: 'WhatsApp Image 2026-11-13 at 4.25.xx / 4.26.xx AM.jpeg',
-  },
-  {
-    id: 'pw-building-01',
-    title: 'Building Construction & Structural Development',
-    category: 'Building Construction',
-    location: 'Owerri, Imo State',
-    status: 'Site Record',
-    description:
-      'Building construction and structural works documented in company field media. Attach the extracted project images to display original site progress and completed structures.',
-    highlights: [
-      'Structural & masonry execution',
-      'Quality-focused workmanship',
-      'Organised site coordination',
-    ],
-    imageUrl: '',
-    galleryImages: [],
-    expectedAssetHint: 'WhatsApp Image 2026-11-13 at 8.11.xx AM.jpeg',
-  },
-  {
-    id: 'pw-borehole-01',
-    title: 'Borehole Drilling & Water Infrastructure Operations',
-    category: 'Borehole Drilling',
     location: 'Imo State, Nigeria',
     status: 'Site Record',
     description:
-      'Field borehole drilling operations and water access infrastructure project documented across company photos and site video records.',
+      'Internal first-fix electrical installation documented on site, showing ceiling cable drops, wall switch and socket back-boxes, and masonry conduit routing.',
+    highlights: [
+      'Ceiling lighting & distribution cable drops',
+      'Chased wall conduit & switch back-boxes',
+      'Safety-conscious technical execution',
+    ],
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.26_AM__1__8cf88292.jpeg',
+    galleryImages: [
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.26_AM__1__8cf88292.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.26_AM_b84c31ab.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.25_AM__1__eb53e0cc.jpeg',
+    ],
+  },
+  {
+    id: 'pw-elec-02',
+    title: 'Electrical Installation Project — Exterior Power & Compound Services',
+    category: 'Electrical Engineering',
+    location: 'Imo State, Nigeria',
+    status: 'Completed Work',
+    description:
+      'Completed residential compound featuring overhead electrical service drop, exterior lighting mast, split-unit AC outdoor electrical connections, and perimeter security installation.',
+    highlights: [
+      'Overhead electrical service line & lighting pole',
+      'Outdoor split-unit electrical connections',
+      'Completed residential building services',
+    ],
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.50_AM_b0f4eef1.jpeg',
+    galleryImages: [
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.50_AM_b0f4eef1.jpeg',
+    ],
+  },
+  {
+    id: 'pw-bldg-01',
+    title: 'Building Construction Project — Two-Storey Structure & Roofing',
+    category: 'Building Construction',
+    location: 'Imo State, Nigeria',
+    status: 'Site Record',
+    description:
+      'Two-storey building development captured during stone-coated hipped roofing, exterior wall rendering, horizontal façade groove detailing, and external scaffolding stages.',
+    highlights: [
+      'Two-storey concrete & masonry superstructure',
+      'Stone-coated pitched roofing & fascia',
+      'Exterior rendering & façade detailing',
+    ],
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.25.35_AM_2019ff07.jpeg',
+    galleryImages: [
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.25.35_AM_2019ff07.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.25.34_AM_fa88e333.jpeg',
+    ],
+  },
+  {
+    id: 'pw-bldg-02',
+    title: 'Building Construction Project — Structural Blockwork & Concrete Decking',
+    category: 'Building Construction',
+    location: 'Imo State, Nigeria',
+    status: 'Site Record',
+    description:
+      'Multi-stage structural construction showing sandcrete blockwork masonry, steel column reinforcement starter cages, timber formwork props, and cast first-floor reinforced concrete slab.',
+    highlights: [
+      'Sandcrete blockwork & structural columns',
+      'Steel reinforcement starter bars & shoring',
+      'Cast reinforced concrete decking slab',
+    ],
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.54_AM_beca50f7.jpeg',
+    galleryImages: [
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.54_AM_beca50f7.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.55_AM_3dd6b9c4.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_8.11.56_AM_1c31c280.jpeg',
+    ],
+  },
+  {
+    id: 'pw-bldg-03',
+    title: 'Building Construction Project — Concrete Staircase & Interior Ceiling Works',
+    category: 'Building Construction',
+    location: 'Imo State, Nigeria',
+    status: 'Site Record',
+    description:
+      'Interior building finishing featuring a cast curved reinforced concrete staircase alongside suspended decorative POP tray and medallion ceiling installations.',
+    highlights: [
+      'Curved reinforced concrete staircase construction',
+      'Decorative suspended & medallion POP ceilings',
+      'Coordinated interior finishing & lighting prep',
+    ],
+    imageUrl: '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.25_AM__2__e52e7d4c.jpeg',
+    galleryImages: [
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.25_AM__2__e52e7d4c.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.25_AM_3980f945.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.24_AM_f265d619.jpeg',
+      '/assets/aistudio/WhatsApp_Image_2026-11-13_at_4.26.24_AM__1__eee94240.jpeg',
+    ],
+  },
+  {
+    id: 'pw-borehole-01',
+    title: 'Borehole Drilling Project — Water Access Infrastructure',
+    category: 'Borehole Drilling',
+    location: 'Owerri, Imo State',
+    status: 'Active Documentation',
+    description:
+      'Borehole drilling and water access infrastructure division. Field photographs and MP4 video files can be attached directly here once uploaded outside the ZIP.',
     highlights: [
       'Site assessment & drilling preparation',
-      'Active borehole drilling execution',
-      'Water access infrastructure delivery',
+      'Borehole drilling & casing construction',
+      'Water access infrastructure support',
     ],
     imageUrl: '',
     galleryImages: [],
-    expectedAssetHint: 'WhatsApp Video 2026-11-13 at 4.25.11 / 4.25.34 / 4.26.24 AM.mp4',
+    expectedAssetHint: 'Upload borehole site photos or MP4 videos directly',
   },
 ];
 
 export const INITIAL_VIDEOS: VideoGalleryItem[] = [
   {
     id: 'vid-1',
-    title: 'Field Operations Video Record — 04:25:11',
+    title: 'Project Video Record 01',
     category: 'Electrical Engineering',
-    description: 'Uploaded ZIP asset: WhatsApp Video 2026-11-13 at 4.25.11 AM.mp4. Attach or select the extracted MP4 file to enable inline playback.',
+    description: 'Reference slot for WhatsApp Video 2026-11-13 at 4.25.11 AM.mp4 (not included in extracted image upload batch; attach MP4 directly to play).',
     videoUrl: '',
     sourceFilename: 'WhatsApp Video 2026-11-13 at 4.25.11 AM.mp4',
   },
   {
     id: 'vid-2',
-    title: 'Field Operations Video Record — 04:25:34',
+    title: 'Project Video Record 02',
     category: 'Building Construction',
-    description: 'Uploaded ZIP asset: WhatsApp Video 2026-11-13 at 4.25.34 AM.mp4. Attach or select the extracted MP4 file to enable inline playback.',
+    description: 'Reference slot for WhatsApp Video 2026-11-13 at 4.25.34 AM.mp4 (not included in extracted image upload batch; attach MP4 directly to play).',
     videoUrl: '',
     sourceFilename: 'WhatsApp Video 2026-11-13 at 4.25.34 AM.mp4',
   },
   {
     id: 'vid-3',
-    title: 'Field Operations Video Record — 04:26:24',
+    title: 'Project Video Record 03',
     category: 'Borehole Drilling',
-    description: 'Uploaded ZIP asset: WhatsApp Video 2026-11-13 at 4.26.24 AM.mp4. Attach or select the extracted MP4 file to enable inline playback.',
+    description: 'Reference slot for WhatsApp Video 2026-11-13 at 4.26.24 AM.mp4 (not included in extracted image upload batch; attach MP4 directly to play).',
     videoUrl: '',
     sourceFilename: 'WhatsApp Video 2026-11-13 at 4.26.24 AM.mp4',
   },

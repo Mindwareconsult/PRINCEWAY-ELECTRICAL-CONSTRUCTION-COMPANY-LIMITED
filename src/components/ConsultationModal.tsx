@@ -71,7 +71,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         {/* Top Header */}
         <div className="px-6 py-5 bg-[#171B22] border-b border-[#252A34] flex items-center justify-between">
           <div>
-            <div className="text-[10px] font-mono tracking-widest text-[#60A5FA] uppercase font-bold">
+            <div className="text-[10px] font-mono tracking-widest text-[#FB8F02] uppercase font-bold">
               START A CONVERSATION
             </div>
             <h3 className="text-lg font-bold text-[#F5F5F3]">Discuss Your Project with Princeway</h3>
@@ -89,29 +89,29 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
           {submitted ? (
             <div className="py-10 text-center space-y-4">
-              <div className="w-14 h-14 bg-[#2563EB]/20 border border-[#2563EB] rounded-full flex items-center justify-center mx-auto text-[#60A5FA]">
+              <div className="w-14 h-14 bg-[#FB8F02]/15 border border-[#FB8F02] rounded-full flex items-center justify-center mx-auto text-[#FB8F02]">
                 <CheckCircle className="w-8 h-8" />
               </div>
               <h4 className="text-xl font-bold text-[#F5F5F3]">Project Brief Prepared</h4>
               <p className="text-sm text-[#B7B9BC] max-w-md mx-auto leading-relaxed">
                 Thank you, <span className="text-[#F5F5F3] font-semibold">{formData.fullName}</span>. Your brief for{' '}
-                <span className="text-[#60A5FA] font-semibold">{formData.serviceRequired}</span> is ready. Because no automated mail server is connected in this preview, please send it directly via WhatsApp or call us immediately:
+                <span className="text-[#FB8F02] font-semibold">{formData.serviceRequired}</span> is ready. Send it directly via WhatsApp or call us immediately:
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
                   href={`${COMPANY_INFO.whatsappUrl}?text=${whatsappText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2"
+                  className="px-5 py-2.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Send via WhatsApp</span>
                 </a>
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="px-5 py-2.5 bg-[#1D222B] hover:bg-[#272D38] text-[#F5F5F3] font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 border border-[#303744]"
+                  className="px-5 py-2.5 bg-[#013281] hover:bg-[#012664] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 border border-[#0A46A6]"
                 >
-                  <Phone className="w-4 h-4 text-[#60A5FA]" />
+                  <Phone className="w-4 h-4 text-[#FB8F02]" />
                   <span>Call {COMPANY_INFO.phoneDisplay}</span>
                 </a>
                 <button
@@ -137,7 +137,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="Your full name"
-                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   />
                   {errors.fullName && <p className="text-[11px] text-red-400 mt-1">{errors.fullName}</p>}
                 </div>
@@ -151,7 +151,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="e.g. 0806 362 4432"
-                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   />
                   {errors.phone && <p className="text-[11px] text-red-400 mt-1">{errors.phone}</p>}
                 </div>
@@ -167,7 +167,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
-                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   />
                   {errors.email && <p className="text-[11px] text-red-400 mt-1">{errors.email}</p>}
                 </div>
@@ -179,7 +179,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   <select
                     value={formData.serviceRequired}
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none transition-colors"
+                    className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   >
                     <option value="Electrical Engineering">Electrical Engineering</option>
                     <option value="Building Construction">Building Construction</option>
@@ -198,7 +198,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   value={formData.projectLocation}
                   onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })}
                   placeholder="e.g. Owerri, Imo State"
-                  className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                 />
               </div>
 
@@ -211,20 +211,20 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Tell us about your electrical engineering, building construction, or borehole drilling requirements..."
-                  className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#2563EB] focus:outline-none transition-colors"
+                  className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                 />
                 {errors.description && <p className="text-[11px] text-red-400 mt-1">{errors.description}</p>}
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-[#B7B9BC] flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-[#60A5FA]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#FB8F02]" />
                   <span>62 Wetheral Road, Owerri</span>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
                   <span>Prepare Project Enquiry</span>
                   <ArrowRight className="w-4 h-4" />

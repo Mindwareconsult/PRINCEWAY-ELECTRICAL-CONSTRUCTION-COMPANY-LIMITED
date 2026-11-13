@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PageId, ProjectItem, ServiceCategory, VideoGalleryItem } from '../types';
 import { ArchitecturalVisual } from '../components/ArchitecturalVisual';
-import { MapPin, Plus, Upload, ArrowUpRight, Film, Image as ImageIcon, CheckCircle2 } from 'lucide-react';
+import { MapPin, Plus, Upload, ArrowUpRight, Film, Image as ImageIcon, CheckCircle2, Images } from 'lucide-react';
 
 interface ProjectsPageProps {
   onNavigate: (page: PageId) => void;
@@ -41,7 +41,6 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
   const [newLocation, setNewLocation] = useState('Owerri, Imo State');
   const [newStatus, setNewStatus] = useState<ProjectItem['status']>('Site Record');
   const [newDesc, setNewDesc] = useState('');
-  const [newHighlights, setNewHighlights] = useState('');
   const [newImageUrl, setNewImageUrl] = useState('');
   const [newVideoUrl, setNewVideoUrl] = useState('');
 
@@ -76,7 +75,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
     const parts: string[] = [];
     if (result.imagesAttached > 0) parts.push(`${result.imagesAttached} photo(s)`);
     if (result.videosAttached > 0) parts.push(`${result.videosAttached} video(s)`);
-    if (result.logoAttached) parts.push('business card/logo');
+    if (result.logoAttached) parts.push('brand logo');
     setAttachSummary(
       parts.length > 0
         ? `Attached ${parts.join(', ')} into the live showcase.`
@@ -88,11 +87,6 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
     e.preventDefault();
     if (!newTitle.trim()) return;
 
-    const highlightsArray = newHighlights
-      .split('\n')
-      .map((s) => s.trim())
-      .filter(Boolean);
-
     const newProject: ProjectItem = {
       id: `pw-custom-${Date.now()}`,
       title: newTitle.trim(),
@@ -101,10 +95,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
       status: newStatus,
       description:
         newDesc.trim() || 'Site record documented for Princeway Electrical Construction Company Limited.',
-      highlights:
-        highlightsArray.length > 0
-          ? highlightsArray
-          : ['Practical engineering execution', 'Quality-focused site supervision'],
+      highlights: ['Practical engineering execution', 'Quality-focused site supervision'],
       imageUrl: newImageUrl,
       galleryImages: newImageUrl ? [newImageUrl] : [],
       videoUrl: newVideoUrl || undefined,
@@ -114,7 +105,6 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
     onAddProject(newProject);
     setNewTitle('');
     setNewDesc('');
-    setNewHighlights('');
     setNewImageUrl('');
     setNewVideoUrl('');
     setShowAddForm(false);
@@ -134,7 +124,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                 PORTFOLIO &amp; FIELD DOCUMENTATION
               </span>
               <div className="h-[1px] w-12 bg-[#353C49]" />
@@ -145,7 +135,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-[#B7B9BC] leading-relaxed">
-              Explore project records and field documentation across Electrical Engineering, Building Construction, and Borehole Drilling.
+              Explore authentic company project photographs and field documentation across Electrical Engineering, Building Construction, and Borehole Drilling. Click any project card to view all attached site photos in the enlarged lightbox.
             </p>
           </div>
         </div>
@@ -164,7 +154,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                   onClick={() => setFilter(cat)}
                   className={`px-3.5 py-2 text-xs font-mono rounded-[2px] transition-colors cursor-pointer ${
                     filter === cat
-                      ? 'bg-[#2563EB] text-white font-bold'
+                      ? 'bg-[#FB8F02] text-[#0B0F19] font-extrabold'
                       : 'bg-[#0F1115] text-[#B7B9BC] hover:text-white border border-[#252A34]'
                   }`}
                 >
@@ -176,9 +166,9 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
             {/* Upload & Add Project Controls */}
             <div className="flex flex-wrap items-center gap-3">
               {onBulkAttachMedia && (
-                <label className="cursor-pointer px-4 py-2 bg-[#161920] hover:bg-[#1E2430] border border-[#2D3340] text-[#F5F5F3] font-mono text-xs font-semibold rounded-[2px] flex items-center gap-2 transition-colors">
-                  <Upload className="w-3.5 h-3.5 text-[#60A5FA]" />
-                  <span>Attach Unzipped Photos / Videos</span>
+                <label className="cursor-pointer px-4 py-2 bg-[#013281] hover:bg-[#012664] border border-[#0A46A6] text-white font-mono text-xs font-semibold rounded-[2px] flex items-center gap-2 transition-colors">
+                  <Upload className="w-3.5 h-3.5 text-[#FB8F02]" />
+                  <span>Attach Additional Photos / MP4 Videos</span>
                   <input
                     type="file"
                     multiple
@@ -191,7 +181,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
 
               <button
                 onClick={() => setShowAddForm(!showAddForm)}
-                className="px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-mono text-xs font-semibold rounded-[2px] flex items-center gap-2 transition-colors cursor-pointer"
+                className="px-4 py-2 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-mono text-xs font-extrabold rounded-[2px] flex items-center gap-2 transition-colors cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 <span>{showAddForm ? 'Close Add Form' : 'Add Project Record'}</span>
@@ -200,8 +190,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
           </div>
 
           {attachSummary && (
-            <div className="p-3 bg-[#102038] border border-[#2563EB]/50 rounded text-xs text-[#E5E7EB] flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#60A5FA] shrink-0" />
+            <div className="p-3 bg-[#013281]/30 border border-[#FB8F02]/50 rounded text-xs text-[#E5E7EB] flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#FB8F02] shrink-0" />
               <span>{attachSummary}</span>
             </div>
           )}
@@ -216,7 +206,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                     Upload authentic site photographs or MP4 videos directly into the portfolio.
                   </p>
                 </div>
-                <span className="text-[10px] font-mono text-[#60A5FA]">PRINCEWAY MEDIA MANAGER</span>
+                <span className="text-[10px] font-mono text-[#FB8F02]">PRINCEWAY MEDIA MANAGER</span>
               </div>
 
               <form onSubmit={handleCreateProject} className="space-y-4">
@@ -228,10 +218,10 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Owerri Commercial Wiring & Distribution"
+                      placeholder="e.g. Borehole Drilling Project"
                       value={newTitle}
                       onChange={(e) => setNewTitle(e.target.value)}
-                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#2563EB]"
+                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#FB8F02]"
                     />
                   </div>
 
@@ -242,7 +232,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                     <select
                       value={newCategory}
                       onChange={(e) => setNewCategory(e.target.value as ServiceCategory)}
-                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#2563EB]"
+                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#FB8F02]"
                     >
                       <option value="Electrical Engineering">Electrical Engineering</option>
                       <option value="Building Construction">Building Construction</option>
@@ -259,7 +249,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       placeholder="e.g. Owerri, Imo State"
                       value={newLocation}
                       onChange={(e) => setNewLocation(e.target.value)}
-                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#2563EB]"
+                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#FB8F02]"
                     />
                   </div>
                 </div>
@@ -272,7 +262,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                     <select
                       value={newStatus}
                       onChange={(e) => setNewStatus(e.target.value as ProjectItem['status'])}
-                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#2563EB]"
+                      className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#FB8F02]"
                     >
                       <option value="Site Record">Site Record</option>
                       <option value="Active Documentation">Active Documentation</option>
@@ -285,7 +275,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       Attach Site Photo
                     </label>
                     <label className="cursor-pointer w-full px-3 py-2 bg-[#0F1115] hover:bg-[#1E2430] border border-[#2D3340] text-white text-xs font-semibold rounded flex items-center gap-2">
-                      <ImageIcon className="w-3.5 h-3.5 text-[#60A5FA]" />
+                      <ImageIcon className="w-3.5 h-3.5 text-[#FB8F02]" />
                       <span className="truncate">{newImageUrl ? 'Photo Attached' : 'Select JPEG / PNG'}</span>
                       <input
                         type="file"
@@ -301,7 +291,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       Attach Site Video (Optional)
                     </label>
                     <label className="cursor-pointer w-full px-3 py-2 bg-[#0F1115] hover:bg-[#1E2430] border border-[#2D3340] text-white text-xs font-semibold rounded flex items-center gap-2">
-                      <Film className="w-3.5 h-3.5 text-[#60A5FA]" />
+                      <Film className="w-3.5 h-3.5 text-[#FB8F02]" />
                       <span className="truncate">{newVideoUrl ? 'Video Attached' : 'Select MP4 Video'}</span>
                       <input
                         type="file"
@@ -322,7 +312,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                     placeholder="Describe the electrical, building, or borehole work documented..."
                     value={newDesc}
                     onChange={(e) => setNewDesc(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-3 py-2 bg-[#0F1115] border border-[#2D3340] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#FB8F02]"
                   />
                 </div>
 
@@ -336,7 +326,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase rounded-[2px] cursor-pointer"
+                    className="px-6 py-2 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] text-xs font-extrabold uppercase rounded-[2px] cursor-pointer"
                   >
                     Save Project Record
                   </button>
@@ -348,9 +338,9 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
           {/* Media Integrity Notice */}
           <div className="p-4 bg-[#0F1115] border border-[#252A34] rounded text-xs text-[#B7B9BC] flex items-center justify-between gap-4">
             <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#2563EB] shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-[#FB8F02] shrink-0" />
               <span>
-                <strong>Portfolio Media:</strong> Technical division diagrams are shown until you attach your extracted site JPEG and MP4 files directly—keeping every displayed photograph and video 100% genuine to Princeway.
+                <strong>Authentic Media Archive:</strong> Displaying Princeway&apos;s verified site photographs across Electrical Engineering and Building Construction. Click any project card to browse all grouped photos or attach borehole media &amp; MP4 videos.
               </span>
             </div>
             <span className="text-[11px] font-mono text-[#8A919E] hidden md:block shrink-0">
@@ -364,7 +354,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
               <div
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className="group cursor-pointer bg-[#161920] border border-[#252A34] hover:border-[#2563EB] rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between"
+                className="group cursor-pointer bg-[#161920] border border-[#252A34] hover:border-[#FB8F02] rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative overflow-hidden aspect-[16/10]">
@@ -375,21 +365,24 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       aspectRatio="auto"
                       showBadge={false}
                     />
-                    <div className="absolute top-3 left-3 bg-[#0F1115]/90 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-[#60A5FA] uppercase border border-[#2D3340]">
+                    <div className="absolute top-3 left-3 bg-[#013281]/95 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-white uppercase border border-[#FB8F02]/40">
                       {project.category}
                     </div>
-                    <div className="absolute top-3 right-3 bg-[#0F1115]/90 backdrop-blur px-2 py-0.5 rounded text-[10px] font-mono text-[#B7B9BC] border border-[#2D3340]">
-                      {project.status}
-                    </div>
+                    {project.galleryImages && project.galleryImages.length > 1 && (
+                      <div className="absolute top-3 right-3 bg-[#0F1115]/90 px-2 py-0.5 rounded text-[10px] font-mono text-[#FB8F02] border border-[#2D3340] flex items-center gap-1">
+                        <Images className="w-3 h-3" />
+                        <span>{project.galleryImages.length} PHOTOS</span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6 space-y-3">
                     <div className="flex items-center gap-1.5 text-xs font-mono text-[#B7B9BC]">
-                      <MapPin className="w-3.5 h-3.5 text-[#60A5FA]" />
+                      <MapPin className="w-3.5 h-3.5 text-[#FB8F02]" />
                       <span>{project.location}</span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#60A5FA] transition-colors leading-snug">
+                    <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#FB8F02] transition-colors leading-snug">
                       {project.title}
                     </h3>
 
@@ -399,7 +392,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                   </div>
                 </div>
 
-                <div className="px-6 pb-6 pt-3 border-t border-[#252A34] flex items-center justify-between text-xs font-mono text-[#60A5FA]">
+                <div className="px-6 pb-6 pt-3 border-t border-[#252A34] flex items-center justify-between text-xs font-mono text-[#FB8F02]">
                   <span className="font-bold">VIEW PROJECT DETAILS</span>
                   <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
@@ -414,7 +407,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
               </p>
               <button
                 onClick={() => setFilter('ALL PROJECTS')}
-                className="px-4 py-2 bg-[#2563EB] text-white text-xs font-mono font-bold rounded-[2px] cursor-pointer"
+                className="px-4 py-2 bg-[#FB8F02] text-[#0B0F19] text-xs font-mono font-extrabold rounded-[2px] cursor-pointer"
               >
                 Show All Projects
               </button>
@@ -425,14 +418,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
           <div className="pt-12 border-t border-[#252A34] space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="space-y-2">
-                <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+                <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                   FIELD VIDEO RECORDS
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F5F3] font-display">
                   Project Video Gallery
                 </h2>
                 <p className="text-xs sm:text-sm text-[#B7B9BC] max-w-2xl">
-                  Playback support for Princeway&apos;s site MP4 documentation with standard media controls and fullscreen support.
+                  Playback support for Princeway&apos;s MP4 project videos with standard controls, mobile compatibility, and fullscreen support.
                 </p>
               </div>
             </div>
@@ -454,11 +447,11 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                       />
                     ) : (
                       <div className="p-6 text-center space-y-3">
-                        <Film className="w-8 h-8 text-[#60A5FA] mx-auto" />
+                        <Film className="w-8 h-8 text-[#FB8F02] mx-auto" />
                         <div className="text-xs font-mono text-[#E5E7EB]">
                           {vid.sourceFilename}
                         </div>
-                        <label className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[11px] font-bold uppercase tracking-wider rounded-[2px] cursor-pointer">
+                        <label className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] text-[11px] font-extrabold uppercase tracking-wider rounded-[2px] cursor-pointer">
                           <Upload className="w-3.5 h-3.5" />
                           <span>Attach MP4 File</span>
                           <input
@@ -478,7 +471,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                   </div>
 
                   <div className="p-5 space-y-2">
-                    <span className="inline-block text-[10px] font-mono uppercase tracking-wider text-[#60A5FA] font-semibold">
+                    <span className="inline-block text-[10px] font-mono uppercase tracking-wider text-[#FB8F02] font-semibold">
                       {vid.category}
                     </span>
                     <h3 className="text-sm font-bold text-[#F5F5F3]">{vid.title}</h3>
@@ -501,7 +494,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
             </div>
             <button
               onClick={() => onOpenConsultation()}
-              className="px-6 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] whitespace-nowrap cursor-pointer"
+              className="px-6 py-3.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] whitespace-nowrap cursor-pointer"
             >
               DISCUSS YOUR PROJECT →
             </button>

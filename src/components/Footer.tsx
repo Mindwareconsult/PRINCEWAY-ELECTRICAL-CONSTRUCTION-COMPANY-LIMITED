@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageId } from '../types';
-import { COMPANY_INFO, SERVICES_DATA } from '../data/companyData';
+import { COMPANY_INFO, SERVICES_DATA, BRAND_ASSETS } from '../data/companyData';
 import { Phone, MapPin, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 interface FooterProps {
@@ -9,7 +9,11 @@ interface FooterProps {
   logoUrl?: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, logoUrl }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onNavigate,
+  onOpenConsultation,
+  logoUrl = BRAND_ASSETS.logoUrl,
+}) => {
   return (
     <footer className="relative bg-[#0B0D11] border-t border-[#222731] pt-16 pb-12 overflow-hidden">
       <div className="absolute inset-0 bg-architectural-grid opacity-15 pointer-events-none" />
@@ -19,29 +23,25 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-[#222731]">
           {/* Brand Info (Cols 1-4) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              {logoUrl ? (
+            <div className="flex items-center gap-3.5">
+              <div className="bg-white rounded-[4px] px-2.5 py-1.5 shadow-md border border-[#013281]/20 shrink-0">
                 <img
                   src={logoUrl}
                   alt="Princeway Electrical Construction Company Limited Logo"
-                  className="h-9 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
-              ) : (
-                <div className="w-8 h-8 bg-[#2563EB] rounded-[2px] flex items-center justify-center font-bold text-white text-xs">
-                  PW
-                </div>
-              )}
+              </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg tracking-wider text-[#F5F5F3] font-display">
                   PRINCEWAY
                 </span>
-                <span className="text-[9px] tracking-widest text-[#B7B9BC] -mt-1">
+                <span className="text-[9px] tracking-widest text-[#B7B9BC] -mt-0.5">
                   ELECTRICAL CONSTRUCTION COMPANY LIMITED
                 </span>
               </div>
             </div>
 
-            <p className="text-xs font-mono tracking-wider text-[#60A5FA] uppercase font-semibold">
+            <p className="text-xs font-mono tracking-wider text-[#FB8F02] uppercase font-semibold">
               {COMPANY_INFO.proposedTagline}
             </p>
 
@@ -55,10 +55,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
                 href={COMPANY_INFO.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#14171D] border border-[#252A34] rounded hover:border-[#2563EB] transition-colors text-xs text-[#B7B9BC] hover:text-[#F5F5F3] group"
+                className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#14171D] border border-[#252A34] rounded hover:border-[#FB8F02] transition-colors text-xs text-[#B7B9BC] hover:text-[#F5F5F3] group"
               >
                 <span>Official Google Business Profile</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[#60A5FA]" />
+                <ExternalLink className="w-3.5 h-3.5 text-[#FB8F02]" />
               </a>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <li>
                 <button
                   onClick={() => onNavigate('home')}
-                  className="hover:text-[#60A5FA] transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB8F02] transition-colors text-left cursor-pointer"
                 >
                   Home
                 </button>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <li>
                 <button
                   onClick={() => onNavigate('about')}
-                  className="hover:text-[#60A5FA] transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB8F02] transition-colors text-left cursor-pointer"
                 >
                   About Us
                 </button>
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <li>
                 <button
                   onClick={() => onNavigate('services')}
-                  className="hover:text-[#60A5FA] transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB8F02] transition-colors text-left cursor-pointer"
                 >
                   Our Services
                 </button>
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <li>
                 <button
                   onClick={() => onNavigate('projects')}
-                  className="hover:text-[#60A5FA] transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB8F02] transition-colors text-left cursor-pointer"
                 >
                   Projects
                 </button>
@@ -104,7 +104,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <li>
                 <button
                   onClick={() => onNavigate('process')}
-                  className="hover:text-[#60A5FA] transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB8F02] transition-colors text-left cursor-pointer"
                 >
                   Our Process
                 </button>
@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <li>
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="hover:text-[#60A5FA] transition-colors text-left cursor-pointer"
+                  className="hover:text-[#FB8F02] transition-colors text-left cursor-pointer"
                 >
                   Contact
                 </button>
@@ -130,9 +130,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
                 <li key={service.id}>
                   <button
                     onClick={() => onNavigate('services')}
-                    className="hover:text-[#60A5FA] transition-colors text-left flex items-center gap-2 cursor-pointer"
+                    className="hover:text-[#FB8F02] transition-colors text-left flex items-center gap-2 cursor-pointer"
                   >
-                    <span className="text-xs font-mono text-[#60A5FA]">{service.number}.</span>
+                    <span className="text-xs font-mono text-[#FB8F02]">{service.number}.</span>
                     <span>{service.title}</span>
                   </button>
                 </li>
@@ -147,14 +147,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
             </div>
             <div className="space-y-3 text-sm text-[#B7B9BC]">
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#60A5FA] shrink-0 mt-1" />
+                <MapPin className="w-4 h-4 text-[#FB8F02] shrink-0 mt-1" />
                 <span className="leading-snug">{COMPANY_INFO.address}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#60A5FA] shrink-0" />
+                <Phone className="w-4 h-4 text-[#FB8F02] shrink-0" />
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="text-[#F5F5F3] font-semibold hover:text-[#60A5FA] transition-colors"
+                  className="text-[#F5F5F3] font-semibold hover:text-[#FB8F02] transition-colors"
                 >
                   {COMPANY_INFO.phoneDisplay}
                 </a>
@@ -163,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
               <div className="pt-2">
                 <button
                   onClick={onOpenConsultation}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer"
                 >
                   <span>DISCUSS YOUR PROJECT</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -173,11 +173,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
           </div>
         </div>
 
-        {/* Preserved Signature Metallic Slabs with Subtle Brand Rim Glow */}
+        {/* Preserved Signature Metallic Slabs with Princeway Navy + Amber Rim Glow */}
         <div className="pt-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
             <div className="relative group">
-              <div className="metallic-slab p-6 rounded-md flex flex-col justify-between min-h-[110px] relative z-10 transition-all duration-300 group-hover:border-[#2563EB]/60">
+              <div className="metallic-slab p-6 rounded-md flex flex-col justify-between min-h-[110px] relative z-10 transition-all duration-300 group-hover:border-[#FB8F02]/70">
                 <div className="font-display font-extrabold text-sm tracking-widest text-[#F5F5F3] uppercase">
                   PRINCEWAY
                 </div>
@@ -185,11 +185,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
                   POWERING PROGRESS. BUILDING POSSIBILITIES.
                 </div>
               </div>
-              <div className="absolute -bottom-1 inset-x-4 h-2 bg-[#2563EB]/35 blur-md rounded-full pointer-events-none group-hover:bg-[#2563EB]/65 transition-all duration-300" />
+              <div className="absolute -bottom-1 inset-x-4 h-2 bg-[#013281]/75 blur-md rounded-full pointer-events-none group-hover:bg-[#FB8F02]/60 transition-all duration-300" />
             </div>
 
             <div className="relative group">
-              <div className="metallic-slab p-6 rounded-md flex flex-col justify-between min-h-[110px] relative z-10 transition-all duration-300 group-hover:border-[#2563EB]/60">
+              <div className="metallic-slab p-6 rounded-md flex flex-col justify-between min-h-[110px] relative z-10 transition-all duration-300 group-hover:border-[#FB8F02]/70">
                 <div className="flex items-center justify-between text-xs font-semibold text-[#B7B9BC]">
                   <button onClick={() => onNavigate('services')} className="hover:text-white transition-colors cursor-pointer">
                     Electrical
@@ -203,15 +203,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
                     Borehole
                   </button>
                 </div>
-                <div className="text-[10px] font-mono tracking-widest text-[#60A5FA] uppercase font-bold">
+                <div className="text-[10px] font-mono tracking-widest text-[#FB8F02] uppercase font-bold">
                   THREE CORE DIVISIONS
                 </div>
               </div>
-              <div className="absolute -bottom-1 inset-x-4 h-2 bg-[#2563EB]/35 blur-md rounded-full pointer-events-none group-hover:bg-[#2563EB]/65 transition-all duration-300" />
+              <div className="absolute -bottom-1 inset-x-4 h-2 bg-[#013281]/75 blur-md rounded-full pointer-events-none group-hover:bg-[#FB8F02]/60 transition-all duration-300" />
             </div>
 
             <div className="relative group">
-              <div className="metallic-slab p-6 rounded-md flex flex-col justify-between min-h-[110px] relative z-10 transition-all duration-300 group-hover:border-[#2563EB]/60">
+              <div className="metallic-slab p-6 rounded-md flex flex-col justify-between min-h-[110px] relative z-10 transition-all duration-300 group-hover:border-[#FB8F02]/70">
                 <div className="font-display font-extrabold text-sm tracking-widest text-[#F5F5F3] uppercase">
                   62 WETHERAL ROAD
                 </div>
@@ -219,7 +219,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenConsultation, 
                   OWERRI, IMO STATE, NIGERIA
                 </div>
               </div>
-              <div className="absolute -bottom-1 inset-x-4 h-2 bg-[#2563EB]/35 blur-md rounded-full pointer-events-none group-hover:bg-[#2563EB]/65 transition-all duration-300" />
+              <div className="absolute -bottom-1 inset-x-4 h-2 bg-[#013281]/75 blur-md rounded-full pointer-events-none group-hover:bg-[#FB8F02]/60 transition-all duration-300" />
             </div>
           </div>
         </div>

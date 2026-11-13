@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProjectItem } from '../types';
 import { X, MapPin, CheckCircle2, ArrowRight, Upload, Image as ImageIcon, Film } from 'lucide-react';
 import { ArchitecturalVisual } from './ArchitecturalVisual';
@@ -20,6 +20,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 }) => {
   const [uploadUrl, setUploadUrl] = useState('');
   const [showUploadInput, setShowUploadInput] = useState(false);
+  const [activeImage, setActiveImage] = useState<string>('');
+
+  useEffect(() => {
+    setActiveImage(project?.imageUrl || project?.galleryImages?.[0] || '');
+  }, [project]);
 
   if (!project) return null;
 
@@ -45,6 +50,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       reader.onloadend = () => {
         if (typeof reader.result === 'string') {
           onUpdateProjectImage(project.id, reader.result);
+          setActiveImage(reader.result);
         }
       };
       reader.readAsDataURL(file);
@@ -54,6 +60,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
   const handleManualUrlSave = () => {
     if (uploadUrl.trim() && onUpdateProjectImage) {
       onUpdateProjectImage(project.id, uploadUrl.trim());
+      setActiveImage(uploadUrl.trim());
       setUploadUrl('');
       setShowUploadInput(false);
     }
@@ -65,7 +72,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         {/* Header */}
         <div className="px-6 py-4 bg-[#171B22] border-b border-[#252A34] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#60A5FA] font-semibold">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#FB8F02] font-semibold">
               {project.category}
             </span>
             <span className="text-[#353A44]">·</span>
@@ -82,42 +89,55 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
         {/* Content */}
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
-          {/* Main Visual */}
+          {/* Main Enlarged Stage */}
           <div className="relative rounded-lg overflow-hidden border border-[#252A34]">
             <ArchitecturalVisual
               category={visualCat}
               title={project.title}
-              imageUrl={project.imageUrl}
+              imageUrl={activeImage || project.imageUrl}
               aspectRatio="16:9"
               showBadge={true}
+              eager={true}
             />
           </div>
 
-          {/* Supporting Gallery Images (if attached) */}
-          {project.galleryImages && project.galleryImages.length > 0 && (
+          {/* Interactive Lightbox Thumbnail Strip */}
+          {project.galleryImages && project.galleryImages.length > 1 && (
             <div className="space-y-2">
-              <div className="text-xs font-mono uppercase tracking-wider text-[#60A5FA]">
-                Supporting Site Gallery
+              <div className="text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
+                Project Photographs (Select to Enlarge)
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {project.galleryImages.map((img, i) => (
-                  <div key={i} className="aspect-[4/3] rounded overflow-hidden border border-[#252A34]">
-                    <img
-                      src={img}
-                      alt={`${project.title} site view ${i + 1}`}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                {project.galleryImages.map((img, i) => {
+                  const isSelected = (activeImage || project.imageUrl) === img;
+                  return (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setActiveImage(img)}
+                      className={`aspect-[4/3] rounded overflow-hidden border-2 transition-all cursor-pointer ${
+                        isSelected ? 'border-[#FB8F02] scale-[1.02]' : 'border-[#252A34] opacity-80 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`${project.title} site view ${i + 1}`}
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
 
-          {/* Embedded Project Video Player (if attached) */}
+          {/* Embedded Project Video Player */}
           {project.videoUrl && (
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#60A5FA]">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
                 <Film className="w-3.5 h-3.5" />
                 <span>{project.videoTitle || 'Field Video Documentation'}</span>
               </div>
@@ -136,19 +156,19 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           {/* Media Attach Bar */}
           <div className="p-3 bg-[#161920] border border-[#252A34] rounded flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-2 text-[#B7B9BC]">
-              <ImageIcon className="w-4 h-4 text-[#60A5FA] shrink-0" />
+              <ImageIcon className="w-4 h-4 text-[#FB8F02] shrink-0" />
               <span>
                 {project.imageUrl
                   ? 'Verified Princeway site photograph linked.'
                   : project.expectedAssetHint
-                  ? `Ready for extracted ZIP media (${project.expectedAssetHint}).`
+                  ? `Attach borehole media (${project.expectedAssetHint}).`
                   : 'Attach extracted site photo or MP4 video.'}
               </span>
             </div>
 
             <div className="flex items-center gap-2 shrink-0">
               <label className="cursor-pointer px-3 py-1.5 bg-[#202632] hover:bg-[#2A3242] text-[#F5F5F3] font-semibold rounded-[2px] transition-colors flex items-center gap-1.5">
-                <Upload className="w-3.5 h-3.5 text-[#60A5FA]" />
+                <Upload className="w-3.5 h-3.5 text-[#FB8F02]" />
                 <span>Upload Photo / Video</span>
                 <input
                   type="file"
@@ -174,11 +194,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 placeholder="Paste direct image URL..."
                 value={uploadUrl}
                 onChange={(e) => setUploadUrl(e.target.value)}
-                className="flex-1 px-3 py-1.5 bg-[#161920] border border-[#2A303D] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#2563EB]"
+                className="flex-1 px-3 py-1.5 bg-[#161920] border border-[#2A303D] rounded text-xs text-[#F5F5F3] focus:outline-none focus:border-[#FB8F02]"
               />
               <button
                 onClick={handleManualUrlSave}
-                className="px-4 py-1.5 bg-[#2563EB] text-white font-bold text-xs rounded hover:bg-[#1D4ED8] cursor-pointer"
+                className="px-4 py-1.5 bg-[#FB8F02] text-[#0B0F19] font-extrabold text-xs rounded hover:bg-[#E07E00] cursor-pointer"
               >
                 Apply
               </button>
@@ -190,7 +210,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             <h2 className="text-2xl font-bold text-[#F5F5F3]">{project.title}</h2>
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#B7B9BC]">
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#60A5FA]" />
+                <MapPin className="w-3.5 h-3.5 text-[#FB8F02]" />
                 <span>{project.location}</span>
               </div>
               <span>·</span>
@@ -208,8 +228,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
           {/* Key Highlights */}
           <div className="space-y-2.5 pt-2">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[#60A5FA]">
-              Scope & Execution Focus
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
+              Scope &amp; Execution Focus
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {project.highlights.map((spec, i) => (
@@ -217,7 +237,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                   key={i}
                   className="flex items-start gap-2.5 p-2.5 bg-[#161920] border border-[#252A34] rounded-[2px]"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#60A5FA] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-4 h-4 text-[#FB8F02] shrink-0 mt-0.5" />
                   <span className="text-xs text-[#B7B9BC]">{spec}</span>
                 </div>
               ))}
@@ -235,7 +255,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               onClose();
               onOpenConsultation();
             }}
-            className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-1.5 transition-colors whitespace-nowrap cursor-pointer"
+            className="px-5 py-2.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-1.5 transition-colors whitespace-nowrap cursor-pointer"
           >
             <span>Enquire About {project.category}</span>
             <ArrowRight className="w-3.5 h-3.5" />

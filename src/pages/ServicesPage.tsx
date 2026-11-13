@@ -22,7 +22,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                 THREE PRINCIPAL DIVISIONS
               </span>
               <div className="h-[1px] w-12 bg-[#353C49]" />
@@ -50,15 +50,15 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
                 onClick={() => setActiveTab(service.id)}
                 className={`p-5 text-left border rounded transition-all cursor-pointer ${
                   activeTab === service.id
-                    ? 'bg-[#181D26] border-[#2563EB] shadow-lg'
+                    ? 'bg-[#181D26] border-[#FB8F02] shadow-lg'
                     : 'bg-[#0F1115] border-[#252A34] text-[#B7B9BC] hover:border-[#363E4D] hover:text-[#F5F5F3]'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#60A5FA] font-bold">
+                  <span className="text-[11px] font-mono text-[#FB8F02] font-bold">
                     DIVISION {service.number}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-[#60A5FA]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#FB8F02]" />
                 </div>
                 <div className="text-lg font-bold text-[#F5F5F3] mt-1.5">
                   {service.title}
@@ -86,7 +86,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
                 </div>
 
                 <div className="p-4 bg-[#14171D] border border-[#252A34] rounded text-xs space-y-2">
-                  <div className="text-[10px] font-mono text-[#60A5FA] uppercase font-bold">
+                  <div className="text-[10px] font-mono text-[#FB8F02] uppercase font-bold">
                     EXECUTION FOCUS
                   </div>
                   <p className="text-[#B7B9BC] leading-relaxed">
@@ -99,7 +99,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
               <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-mono text-[#60A5FA] font-bold">
+                    <span className="text-sm font-mono text-[#FB8F02] font-bold">
                       {selectedService.number}. {selectedService.title.toUpperCase()}
                     </span>
                     <span className="text-[#353C49]">·</span>
@@ -120,13 +120,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
 
                   {/* Scope of Work */}
                   <div className="space-y-3">
-                    <h4 className="text-xs font-mono uppercase tracking-wider text-[#60A5FA] font-semibold">
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-[#FB8F02] font-semibold">
                       Scope of Services:
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {selectedService.scope.map((item, idx) => (
                         <div key={idx} className="flex items-start gap-2.5 text-xs text-[#B7B9BC]">
-                          <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#FB8F02] shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -155,7 +155,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
                 <div className="pt-8 border-t border-[#252A34] flex flex-wrap items-center justify-between gap-4">
                   <button
                     onClick={() => onOpenConsultation(selectedService.title)}
-                    className="px-6 py-3 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 shadow-lg transition-all cursor-pointer"
+                    className="px-6 py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2 shadow-lg transition-all cursor-pointer"
                   >
                     <span>{selectedService.ctaLabel}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -163,7 +163,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
 
                   <button
                     onClick={() => onNavigate('contact')}
-                    className="text-xs font-mono text-[#B7B9BC] hover:text-[#60A5FA] flex items-center gap-1 cursor-pointer"
+                    className="text-xs font-mono text-[#B7B9BC] hover:text-[#FB8F02] flex items-center gap-1 cursor-pointer"
                   >
                     <span>Contact Office in Owerri</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -179,7 +179,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
       <section className="py-20 bg-[#0F1115] border-t border-[#252A34]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#60A5FA] font-bold">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#FB8F02] font-bold">
               INTEGRATED CAPABILITIES
             </div>
             <h2 className="text-3xl font-bold text-[#F5F5F3] font-display">
@@ -194,11 +194,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
             {SERVICES_DATA.map((srv) => (
               <div
                 key={srv.id}
-                className="bg-[#161920] border border-[#252A34] rounded-lg p-6 flex flex-col justify-between space-y-6 hover:border-[#2563EB]/70 transition-colors"
+                className="bg-[#161920] border border-[#252A34] rounded-lg p-6 flex flex-col justify-between space-y-6 hover:border-[#FB8F02]/70 transition-colors"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-3 border-b border-[#252A34]">
-                    <span className="text-xs font-mono text-[#60A5FA] font-bold">
+                    <span className="text-xs font-mono text-[#FB8F02] font-bold">
                       {srv.number}. {srv.title.toUpperCase()}
                     </span>
                   </div>
@@ -209,7 +209,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
                   <ul className="space-y-1.5 pt-2">
                     {srv.scope.slice(0, 4).map((sc, i) => (
                       <li key={i} className="text-xs text-[#9CA3AF] flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FB8F02]" />
                         <span>{sc}</span>
                       </li>
                     ))}
@@ -228,7 +228,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
                   </button>
                   <button
                     onClick={() => onOpenConsultation(srv.title)}
-                    className="text-xs font-bold uppercase tracking-wider text-[#60A5FA] hover:text-white flex items-center gap-1 cursor-pointer"
+                    className="text-xs font-bold uppercase tracking-wider text-[#FB8F02] hover:text-white flex items-center gap-1 cursor-pointer"
                   >
                     <span>Enquire</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -251,7 +251,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
           </p>
           <button
             onClick={() => onOpenConsultation()}
-            className="px-8 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] transition-all cursor-pointer"
+            className="px-8 py-3.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-all cursor-pointer"
           >
             DISCUSS YOUR PROJECT →
           </button>

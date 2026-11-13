@@ -17,7 +17,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-3">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
                 HOW WE WORK
               </span>
               <div className="h-[1px] w-12 bg-[#353C49]" />
@@ -39,7 +39,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-center gap-4 p-4 bg-[#161920] border border-[#252A34] rounded">
-              <Users className="w-7 h-7 text-[#60A5FA] shrink-0" />
+              <Users className="w-7 h-7 text-[#FB8F02] shrink-0" />
               <div>
                 <div className="text-xs font-bold text-[#F5F5F3]">Clear Communication</div>
                 <div className="text-[11px] text-[#B7B9BC]">Direct client alignment</div>
@@ -47,7 +47,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
             </div>
 
             <div className="flex items-center gap-4 p-4 bg-[#161920] border border-[#252A34] rounded">
-              <ShieldCheck className="w-7 h-7 text-[#60A5FA] shrink-0" />
+              <ShieldCheck className="w-7 h-7 text-[#FB8F02] shrink-0" />
               <div>
                 <div className="text-xs font-bold text-[#F5F5F3]">Technical Responsibility</div>
                 <div className="text-[11px] text-[#B7B9BC]">Safety-conscious site practice</div>
@@ -55,7 +55,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
             </div>
 
             <div className="flex items-center gap-4 p-4 bg-[#161920] border border-[#252A34] rounded">
-              <Clock className="w-7 h-7 text-[#60A5FA] shrink-0" />
+              <Clock className="w-7 h-7 text-[#FB8F02] shrink-0" />
               <div>
                 <div className="text-xs font-bold text-[#F5F5F3]">Organised Planning</div>
                 <div className="text-[11px] text-[#B7B9BC]">Structured trade sequencing</div>
@@ -63,7 +63,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
             </div>
 
             <div className="flex items-center gap-4 p-4 bg-[#161920] border border-[#252A34] rounded">
-              <FileCheck className="w-7 h-7 text-[#60A5FA] shrink-0" />
+              <FileCheck className="w-7 h-7 text-[#FB8F02] shrink-0" />
               <div>
                 <div className="text-xs font-bold text-[#F5F5F3]">Workmanship Review</div>
                 <div className="text-[11px] text-[#B7B9BC]">Ongoing quality inspection</div>
@@ -82,15 +82,15 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
               className="relative pl-8 sm:pl-16 border-l-2 border-[#252A34] group"
             >
               {/* Step indicator circle */}
-              <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-[#161920] border-2 border-[#2563EB] flex items-center justify-center font-mono text-xs font-bold text-[#F5F5F3] shadow-md group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+              <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-[#161920] border-2 border-[#FB8F02] flex items-center justify-center font-mono text-xs font-bold text-[#F5F5F3] shadow-md group-hover:bg-[#FB8F02] group-hover:text-[#0B0F19] transition-colors">
                 {stage.step}
               </div>
 
               {/* Stage Card */}
-              <div className="bg-[#161920] border border-[#252A34] group-hover:border-[#2563EB]/70 rounded-lg p-6 sm:p-8 space-y-5 transition-all">
+              <div className="bg-[#161920] border border-[#252A34] group-hover:border-[#FB8F02]/70 rounded-lg p-6 sm:p-8 space-y-5 transition-all">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#252A34] pb-4">
                   <div className="space-y-1">
-                    <span className="text-[10px] font-mono tracking-widest text-[#60A5FA] uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#FB8F02] uppercase font-bold">
                       STAGE {stage.step} // {stage.subtitle}
                     </span>
                     <h3 className="text-2xl font-bold text-[#F5F5F3]">{stage.title}</h3>
@@ -105,7 +105,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
                 </p>
 
                 <div className="space-y-2.5 pt-2">
-                  <div className="text-xs font-mono uppercase tracking-wider text-[#60A5FA] font-semibold">
+                  <div className="text-xs font-mono uppercase tracking-wider text-[#FB8F02] font-semibold">
                     Activities &amp; Key Outputs:
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -114,7 +114,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
                         key={i}
                         className="flex items-center gap-2 p-2.5 bg-[#0F1115] border border-[#252A34] rounded text-xs text-[#F5F5F3]"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#FB8F02] shrink-0" />
                         <span>{del}</span>
                       </div>
                     ))}
@@ -137,7 +137,7 @@ export const ProcessPage: React.FC<ProcessPageProps> = ({ onOpenConsultation }) 
           </p>
           <button
             onClick={onOpenConsultation}
-            className="px-8 py-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs uppercase tracking-wider rounded-[2px] transition-all cursor-pointer"
+            className="px-8 py-4 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-all cursor-pointer"
           >
             DISCUSS YOUR PROJECT →
           </button>
