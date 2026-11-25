@@ -20,7 +20,10 @@ export const COMPANY_INFO = {
   country: 'Nigeria',
   phoneDisplay: '0806 362 4432',
   phoneRaw: '+2348063624432',
+  email: 'Princeway4elect@gmail.com',
   whatsappUrl: 'https://wa.me/2348063624432',
+  developerName: 'Mindware Consulting Ltd',
+  developerUrl: 'https://mindwareconsult.com.ng/',
   googleMapsUrl:
     'https://www.google.com/maps/place/princeway+electrical+construction+company+limited/@5.4839812,7.0343905,17z/data=!3m1!4b1!4m6!3m5!1s0x104259073b32c935:0xfba6151d97dd7f8b!8m2!3d5.4839812!4d7.0343006',
   directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=5.4839812,7.0343905',

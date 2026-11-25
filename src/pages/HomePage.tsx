@@ -17,6 +17,7 @@ import {
   ArrowRight,
   Phone,
   MapPin,
+  Mail,
   ExternalLink,
   CheckCircle2,
   MessageCircle,
@@ -770,9 +771,23 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <div className="text-xs font-mono uppercase text-[#76797E]">Telephone</div>
                     <a
                       href={`tel:${COMPANY_INFO.phoneRaw}`}
-                      className="text-lg font-bold text-[#F5F5F3] hover:text-[#FB8F02] transition-colors"
+                      className="text-lg font-bold text-[#F5F5F3] hover:text-[#FB8F02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02] rounded-xs transition-colors"
                     >
                       {COMPANY_INFO.phoneDisplay}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-[#FB8F02] shrink-0 mt-1" />
+                  <div>
+                    <div className="text-xs font-mono uppercase text-[#76797E]">Official Email</div>
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="text-sm sm:text-base font-bold text-[#F5F5F3] hover:text-[#FB8F02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02] rounded-xs transition-colors break-all"
+                      aria-label={`Email Princeway at ${COMPANY_INFO.email}`}
+                    >
+                      {COMPANY_INFO.email}
                     </a>
                   </div>
                 </div>

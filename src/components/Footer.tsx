@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageId } from '../types';
 import { COMPANY_INFO, SERVICES_DATA, BRAND_ASSETS } from '../data/companyData';
-import { Phone, MapPin, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { Phone, MapPin, Mail, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -154,9 +154,19 @@ export const Footer: React.FC<FooterProps> = ({
                 <Phone className="w-4 h-4 text-[#FB8F02] shrink-0" />
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="text-[#F5F5F3] font-semibold hover:text-[#FB8F02] transition-colors"
+                  className="text-[#F5F5F3] font-semibold hover:text-[#FB8F02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02] rounded-xs transition-colors"
                 >
                   {COMPANY_INFO.phoneDisplay}
+                </a>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-[#FB8F02] shrink-0 mt-1" />
+                <a
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  className="text-[#F5F5F3] font-semibold hover:text-[#FB8F02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02] rounded-xs transition-colors break-all"
+                  aria-label={`Email Princeway Electrical Construction Company Limited at ${COMPANY_INFO.email}`}
+                >
+                  {COMPANY_INFO.email}
                 </a>
               </div>
 
@@ -224,15 +234,32 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* Bottom Legal Line */}
-        <div className="mt-12 pt-6 border-t border-[#1b1f27] flex flex-col sm:flex-row items-center justify-between text-xs text-[#76797E] gap-4">
-          <div>
-            Copyright © {new Date().getFullYear()} Princeway Electrical Construction Company Limited. All rights reserved.
+        {/* Bottom Legal Line & Developer Credit */}
+        <div className="mt-12 pt-6 border-t border-[#1b1f27] flex flex-col gap-4 text-xs text-[#76797E]">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            <div>
+              Copyright © {new Date().getFullYear()} Princeway Electrical Construction Company Limited. All rights reserved.
+            </div>
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-4 gap-y-1">
+              <span className="text-[11px] font-mono">62 Wetheral Road, Owerri, Imo State</span>
+              <span aria-hidden="true">·</span>
+              <span>Tel: {COMPANY_INFO.phoneDisplay}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-6">
-            <span className="text-[11px] font-mono">62 Wetheral Road, Owerri, Imo State</span>
-            <span>·</span>
-            <span>Tel: {COMPANY_INFO.phoneDisplay}</span>
+
+          <div className="pt-3 border-t border-[#161a21] flex items-center justify-center md:justify-end text-xs text-[#8A919E]">
+            <span>
+              Website developed by{' '}
+              <a
+                href={COMPANY_INFO.developerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#B7B9BC] hover:text-[#FB8F02] underline underline-offset-4 decoration-[#353C49] hover:decoration-[#FB8F02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02] focus-visible:text-[#FB8F02] rounded-xs transition-colors"
+              >
+                {COMPANY_INFO.developerName}
+              </a>
+              .
+            </span>
           </div>
         </div>
       </div>

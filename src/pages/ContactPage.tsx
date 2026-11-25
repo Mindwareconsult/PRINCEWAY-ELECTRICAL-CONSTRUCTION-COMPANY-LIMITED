@@ -5,6 +5,7 @@ import { COMPANY_INFO } from '../data/companyData';
 import {
   MapPin,
   Phone,
+  Mail,
   ExternalLink,
   ArrowRight,
   CheckCircle2,
@@ -119,6 +120,32 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                     >
                       <MessageCircle className="w-3.5 h-3.5 text-[#FB8F02]" />
                       <span>WHATSAPP ENQUIRY</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Official Email */}
+                <div className="p-5 bg-[#161920] border border-[#252A34] rounded-lg space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono text-[#FB8F02]">
+                    <span className="uppercase font-bold">OFFICIAL EMAIL</span>
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="text-base sm:text-lg font-extrabold text-[#F5F5F3] hover:text-[#FB8F02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02] rounded-xs transition-colors break-all"
+                      aria-label={`Send an email to ${COMPANY_INFO.email}`}
+                    >
+                      {COMPANY_INFO.email}
+                    </a>
+                  </div>
+                  <div className="pt-1">
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#013281] hover:bg-[#FB8F02] text-white hover:text-[#0B0F19] border border-[#0A46A6] text-xs font-bold font-mono rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FB8F02]"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>SEND EMAIL</span>
                     </a>
                   </div>
                 </div>

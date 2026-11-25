@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { Menu, X, ArrowUpRight, Phone, MapPin } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Phone, MapPin, Mail } from 'lucide-react';
 import { COMPANY_INFO, BRAND_ASSETS } from '../data/companyData';
 
 interface HeaderProps {
@@ -172,6 +172,13 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <Phone className="w-4 h-4 text-[#FB8F02]" />
                 <span>{COMPANY_INFO.phoneDisplay}</span>
+              </a>
+              <a
+                href={`mailto:${COMPANY_INFO.email}`}
+                className="flex items-center gap-2 text-[#F5F5F3] hover:text-[#FB8F02] break-all"
+              >
+                <Mail className="w-4 h-4 text-[#FB8F02] shrink-0" />
+                <span>{COMPANY_INFO.email}</span>
               </a>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-[#FB8F02] shrink-0 mt-0.5" />
