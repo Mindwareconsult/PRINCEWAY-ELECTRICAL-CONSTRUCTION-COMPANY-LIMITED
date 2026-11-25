@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { PageId, ProjectItem } from '../types';
 import {
   COMPANY_INFO,
@@ -22,6 +23,7 @@ import {
   Navigation,
   Film,
   Images,
+  AlertCircle,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -42,6 +44,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   const [projectFilter, setProjectFilter] = useState<string>('ALL PROJECTS');
   const [activeProcessStep, setActiveProcessStep] = useState<number>(0);
 
+  const [state, handleFormspreeSubmit, resetFormspree] = useForm('maeoareb');
+
   // Quick Enquiry Form state
   const [formName, setFormName] = useState('');
   const [formEmail, setFormEmail] = useState('');
@@ -49,8 +53,6 @@ export const HomePage: React.FC<HomePageProps> = ({
   const [formService, setFormService] = useState('Electrical Engineering');
   const [formLocation, setFormLocation] = useState('Owerri, Imo State');
   const [formDesc, setFormDesc] = useState('');
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formError, setFormError] = useState('');
 
   const filterOptions = [
     'ALL PROJECTS',
@@ -59,23 +61,22 @@ export const HomePage: React.FC<HomePageProps> = ({
     'BOREHOLE DRILLING',
   ];
 
+  const featuredProjects = projects.filter((p) => p.featuredOnHome);
   const filteredProjects =
     projectFilter === 'ALL PROJECTS'
-      ? projects
+      ? featuredProjects.length > 0
+        ? featuredProjects
+        : projects.slice(0, 4)
       : projects.filter((p) => p.category.toUpperCase() === projectFilter);
 
-  const handleContactPreviewSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formName.trim() || !formPhone.trim() || !formDesc.trim()) {
-      setFormError('Please fill in your full name, phone number, and project description.');
-      return;
-    }
-    if (formEmail.trim() && !/\S+@\S+\.\S+/.test(formEmail)) {
-      setFormError('Please enter a valid email address.');
-      return;
-    }
-    setFormError('');
-    setFormSubmitted(true);
+  const handleResetQuickForm = () => {
+    resetFormspree();
+    setFormName('');
+    setFormEmail('');
+    setFormPhone('');
+    setFormService('Electrical Engineering');
+    setFormLocation('Owerri, Imo State');
+    setFormDesc('');
   };
 
   const whatsappPreviewText = encodeURIComponent(
@@ -291,6 +292,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                         title={service.title}
                         imageUrl={service.imageUrl || matchingProjectImage}
                         aspectRatio="16:9"
+                        objectPosition={
+                          service.visualCategory === 'electrical'
+                            ? 'upper'
+                            : service.visualCategory === 'borehole'
+                            ? 'top'
+                            : 'center'
+                        }
                         showBadge={false}
                       />
                     </div>
@@ -364,8 +372,14 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           </div>
 
-          {/* Portfolio Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12">
+          {/* Portfolio Grid: 2x2 balanced grid for the 4 featured items on ALL PROJECTS, 3-col when filtered */}
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 ${
+              projectFilter === 'ALL PROJECTS' && filteredProjects.length === 4
+                ? 'lg:grid-cols-2'
+                : 'lg:grid-cols-3'
+            } gap-8 pt-12`}
+          >
             {filteredProjects.map((project) => {
               const visualCat =
                 project.category === 'Electrical Engineering'
@@ -373,6 +387,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                   : project.category === 'Borehole Drilling'
                   ? 'borehole'
                   : 'building';
+              const videoCount =
+                (project.linkedVideoIds?.length || 0) + (project.videoUrl ? 1 : 0);
 
               return (
                 <div
@@ -387,6 +403,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         title={project.title}
                         imageUrl={project.imageUrl}
                         aspectRatio="auto"
+                        objectPosition={project.objectPosition || 'center'}
                         showBadge={false}
                       />
                       <div className="absolute top-3 left-3 bg-[#013281]/95 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-white uppercase border border-[#FB8F02]/40">
@@ -398,10 +415,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                           <span>{project.galleryImages.length} PHOTOS</span>
                         </div>
                       )}
-                      {project.videoUrl && (
+                      {videoCount > 0 && (
                         <div className="absolute bottom-3 right-3 bg-[#FB8F02] px-2 py-0.5 rounded text-[10px] font-mono font-bold text-[#0B0F19] flex items-center gap-1">
                           <Film className="w-3 h-3" />
-                          <span>VIDEO</span>
+                          <span>{videoCount} VIDEO{videoCount > 1 ? 'S' : ''}</span>
                         </div>
                       )}
                     </div>
@@ -431,7 +448,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-[#171B22] border border-[#252A34] rounded">
             <p className="text-xs font-mono text-[#B7B9BC]">
-              Browse all authentic site photographs or attach MP4 field videos inside the Projects &amp; Video Gallery page.
+              Explore all project photo collections and 8 field videos across Electrical Engineering, Building Construction, and Borehole Drilling.
             </p>
             <button
               onClick={() => onNavigate('projects')}
@@ -794,14 +811,18 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             {/* Quick Enquiry Form */}
             <div className="lg:col-span-7 bg-[#161920] border border-[#252A34] rounded-lg p-6 sm:p-8">
-              {formSubmitted ? (
-                <div className="py-10 text-center space-y-4">
+              {state.succeeded ? (
+                <div role="status" aria-live="polite" className="py-10 text-center space-y-4">
                   <div className="w-12 h-12 bg-[#FB8F02]/15 border border-[#FB8F02] rounded-full flex items-center justify-center mx-auto text-[#FB8F02]">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#F5F5F3]">Enquiry Details Ready</h3>
-                  <p className="text-xs sm:text-sm text-[#B7B9BC] max-w-md mx-auto">
-                    Your details for <span className="text-white font-semibold">{formService}</span> are validated. Send directly via WhatsApp or call {COMPANY_INFO.phoneDisplay}.
+                  <h3 className="text-xl font-bold text-[#F5F5F3]">
+                    Thank You for Contacting Princeway!
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#B7B9BC] max-w-md mx-auto leading-relaxed">
+                    Your inquiry for{' '}
+                    <span className="text-white font-semibold">{formService}</span> has been
+                    received by {COMPANY_INFO.name}. Our team will review your message and get back to you.
                   </p>
                   <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                     <a
@@ -811,71 +832,133 @@ export const HomePage: React.FC<HomePageProps> = ({
                       className="px-5 py-2.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] text-xs font-extrabold uppercase tracking-wider rounded-[2px] flex items-center gap-2"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Send via WhatsApp</span>
+                      <span>Follow Up on WhatsApp</span>
                     </a>
                     <button
-                      onClick={() => setFormSubmitted(false)}
+                      type="button"
+                      onClick={handleResetQuickForm}
                       className="text-xs font-mono text-[#FB8F02] underline hover:text-white cursor-pointer"
                     >
-                      Edit details
+                      Send another inquiry
                     </button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleContactPreviewSubmit} className="space-y-4">
-                  {formError && (
-                    <div className="p-3 bg-red-900/30 border border-red-500/40 text-red-200 text-xs rounded">
-                      {formError}
+                <form onSubmit={handleFormspreeSubmit} className="space-y-4">
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value={`New Homepage Inquiry (${formService}) - Princeway Electrical`}
+                  />
+                  <input type="hidden" name="form_source" value="Homepage Contact Form" />
+
+                  {state.errors && (
+                    <div
+                      role="alert"
+                      className="p-3 bg-red-900/30 border border-red-500/40 text-red-200 text-xs rounded flex items-start gap-2"
+                    >
+                      <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                      <div className="space-y-1">
+                        <p className="font-semibold">
+                          Unable to submit your inquiry. Please check your details and try again.
+                        </p>
+                        <ValidationError errors={state.errors} />
+                      </div>
                     </div>
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1">
+                      <label
+                        htmlFor="home-name"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1"
+                      >
                         Full Name *
                       </label>
                       <input
+                        id="home-name"
+                        name="name"
                         type="text"
+                        autoComplete="name"
+                        required
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
                         placeholder="Your full name"
                         className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
+                      <ValidationError
+                        prefix="Full Name"
+                        field="name"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1">
+                      <label
+                        htmlFor="home-phone"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1"
+                      >
                         Phone Number *
                       </label>
                       <input
+                        id="home-phone"
+                        name="phone"
                         type="tel"
+                        autoComplete="tel"
+                        required
                         value={formPhone}
                         onChange={(e) => setFormPhone(e.target.value)}
                         placeholder="e.g. 0806 362 4432"
                         className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
+                      />
+                      <ValidationError
+                        prefix="Phone Number"
+                        field="phone"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1">
-                        Email Address
+                      <label
+                        htmlFor="home-email"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1"
+                      >
+                        Email Address *
                       </label>
                       <input
+                        id="home-email"
+                        name="email"
                         type="email"
+                        autoComplete="email"
+                        required
                         value={formEmail}
                         onChange={(e) => setFormEmail(e.target.value)}
                         placeholder="name@company.com"
                         className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
+                      <ValidationError
+                        prefix="Email"
+                        field="email"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1">
-                        Service Required
+                      <label
+                        htmlFor="home-service"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1"
+                      >
+                        Service of Interest *
                       </label>
                       <select
+                        id="home-service"
+                        name="service"
+                        required
                         value={formService}
                         onChange={(e) => setFormService(e.target.value)}
                         className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
@@ -883,16 +966,26 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <option value="Electrical Engineering">Electrical Engineering</option>
                         <option value="Building Construction">Building Construction</option>
                         <option value="Borehole Drilling">Borehole Drilling</option>
-                        <option value="General Enquiry">General Enquiry</option>
                       </select>
+                      <ValidationError
+                        prefix="Service"
+                        field="service"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1">
+                    <label
+                      htmlFor="home-location"
+                      className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1"
+                    >
                       Project Location
                     </label>
                     <input
+                      id="home-location"
+                      name="location"
                       type="text"
                       value={formLocation}
                       onChange={(e) => setFormLocation(e.target.value)}
@@ -902,23 +995,36 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1">
+                    <label
+                      htmlFor="home-message"
+                      className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1"
+                    >
                       Project Description *
                     </label>
                     <textarea
+                      id="home-message"
+                      name="message"
                       rows={3}
+                      required
                       value={formDesc}
                       onChange={(e) => setFormDesc(e.target.value)}
                       placeholder="Brief details regarding your electrical engineering, building construction, or borehole drilling requirements..."
                       className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-xs text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                     />
+                    <ValidationError
+                      prefix="Project Description"
+                      field="message"
+                      errors={state.errors}
+                      className="text-[11px] text-red-400 mt-1"
+                    />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer"
+                    disabled={state.submitting}
+                    className="w-full py-3 bg-[#FB8F02] hover:bg-[#E07E00] disabled:opacity-60 disabled:cursor-not-allowed text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] transition-colors cursor-pointer"
                   >
-                    Submit Enquiry
+                    {state.submitting ? 'Sending...' : 'Submit Enquiry'}
                   </button>
                 </form>
               )}

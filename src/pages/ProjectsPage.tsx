@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId, ProjectItem, ServiceCategory, VideoGalleryItem } from '../types';
 import { ArchitecturalVisual } from '../components/ArchitecturalVisual';
+import { YouTubeEmbedCard } from '../components/YouTubeEmbedCard';
 import { MapPin, Plus, Upload, ArrowUpRight, Film, Image as ImageIcon, CheckCircle2, Images } from 'lucide-react';
 
 interface ProjectsPageProps {
@@ -20,7 +21,6 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
   videos,
   onSelectProject,
   onAddProject,
-  onUpdateVideoUrl,
   onBulkAttachMedia,
 }) => {
   // Mandatory filter order
@@ -48,6 +48,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
     filter === 'ALL PROJECTS'
       ? projects
       : projects.filter((p) => p.category.toUpperCase() === filter);
+
+  const filteredVideos =
+    filter === 'ALL PROJECTS'
+      ? videos
+      : videos.filter((v) => v.category.toUpperCase() === filter);
+
+  const widescreenVideos = filteredVideos.filter((v) => !v.isShort);
+  const shortVideos = filteredVideos.filter((v) => v.isShort);
 
   const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -135,7 +143,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-[#B7B9BC] leading-relaxed">
-              Explore authentic company project photographs and field documentation across Electrical Engineering, Building Construction, and Borehole Drilling. Click any project card to view all attached site photos in the enlarged lightbox.
+              Explore authentic company project photographs and field videos across Electrical Engineering, Building Construction, and Borehole Drilling. Click any project card to browse all grouped photos and linked site videos.
             </p>
           </div>
         </div>
@@ -168,7 +176,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
               {onBulkAttachMedia && (
                 <label className="cursor-pointer px-4 py-2 bg-[#013281] hover:bg-[#012664] border border-[#0A46A6] text-white font-mono text-xs font-semibold rounded-[2px] flex items-center gap-2 transition-colors">
                   <Upload className="w-3.5 h-3.5 text-[#FB8F02]" />
-                  <span>Attach Additional Photos / MP4 Videos</span>
+                  <span>Attach Additional Photos / Videos</span>
                   <input
                     type="file"
                     multiple
@@ -340,64 +348,79 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
             <div className="flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-[#FB8F02] shrink-0" />
               <span>
-                <strong>Authentic Media Archive:</strong> Displaying Princeway&apos;s verified site photographs across Electrical Engineering and Building Construction. Click any project card to browse all grouped photos or attach borehole media &amp; MP4 videos.
+                <strong>Verified Company Archive:</strong> Showcasing authentic field photography and project videos across Electrical Engineering, Building Construction, and Borehole Drilling.
               </span>
             </div>
             <span className="text-[11px] font-mono text-[#8A919E] hidden md:block shrink-0">
-              PRINCEWAY PROJECT ARCHIVE
+              {filteredProjects.length} COLLECTIONS · {filteredVideos.length} VIDEOS
             </span>
           </div>
 
           {/* Grid of Projects */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => onSelectProject(project)}
-                className="group cursor-pointer bg-[#161920] border border-[#252A34] hover:border-[#FB8F02] rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="relative overflow-hidden aspect-[16/10]">
-                    <ArchitecturalVisual
-                      category={getVisualCategory(project.category)}
-                      title={project.title}
-                      imageUrl={project.imageUrl || project.galleryImages?.[0]}
-                      aspectRatio="auto"
-                      showBadge={false}
-                    />
-                    <div className="absolute top-3 left-3 bg-[#013281]/95 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-white uppercase border border-[#FB8F02]/40">
-                      {project.category}
-                    </div>
-                    {project.galleryImages && project.galleryImages.length > 1 && (
-                      <div className="absolute top-3 right-3 bg-[#0F1115]/90 px-2 py-0.5 rounded text-[10px] font-mono text-[#FB8F02] border border-[#2D3340] flex items-center gap-1">
-                        <Images className="w-3 h-3" />
-                        <span>{project.galleryImages.length} PHOTOS</span>
+            {filteredProjects.map((project) => {
+              const videoCount =
+                (project.linkedVideoIds?.length || 0) + (project.videoUrl ? 1 : 0);
+
+              return (
+                <div
+                  key={project.id}
+                  onClick={() => onSelectProject(project)}
+                  className="group cursor-pointer bg-[#161920] border border-[#252A34] hover:border-[#FB8F02] rounded-lg overflow-hidden transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="relative overflow-hidden aspect-[16/10]">
+                      <ArchitecturalVisual
+                        category={getVisualCategory(project.category)}
+                        title={project.title}
+                        imageUrl={project.imageUrl || project.galleryImages?.[0]}
+                        aspectRatio="auto"
+                        objectPosition={project.objectPosition || 'center'}
+                        showBadge={false}
+                      />
+                      <div className="absolute top-3 left-3 bg-[#013281]/95 backdrop-blur px-2.5 py-1 rounded text-[10px] font-mono tracking-wider text-white uppercase border border-[#FB8F02]/40">
+                        {project.category}
                       </div>
-                    )}
-                  </div>
 
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-center gap-1.5 text-xs font-mono text-[#B7B9BC]">
-                      <MapPin className="w-3.5 h-3.5 text-[#FB8F02]" />
-                      <span>{project.location}</span>
+                      <div className="absolute top-3 right-3 flex items-center gap-1.5">
+                        {project.galleryImages && project.galleryImages.length > 1 && (
+                          <div className="bg-[#0F1115]/90 px-2 py-0.5 rounded text-[10px] font-mono text-[#FB8F02] border border-[#2D3340] flex items-center gap-1">
+                            <Images className="w-3 h-3" />
+                            <span>{project.galleryImages.length} PHOTOS</span>
+                          </div>
+                        )}
+                        {videoCount > 0 && (
+                          <div className="bg-[#FB8F02] px-2 py-0.5 rounded text-[10px] font-mono font-bold text-[#0B0F19] flex items-center gap-1">
+                            <Film className="w-3 h-3" />
+                            <span>{videoCount} VIDEO{videoCount > 1 ? 'S' : ''}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
-                    <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#FB8F02] transition-colors leading-snug">
-                      {project.title}
-                    </h3>
+                    <div className="p-6 space-y-3">
+                      <div className="flex items-center gap-1.5 text-xs font-mono text-[#B7B9BC]">
+                        <MapPin className="w-3.5 h-3.5 text-[#FB8F02]" />
+                        <span>{project.location}</span>
+                      </div>
 
-                    <p className="text-xs text-[#B7B9BC] line-clamp-3 leading-relaxed">
-                      {project.description}
-                    </p>
+                      <h3 className="text-lg font-bold text-[#F5F5F3] group-hover:text-[#FB8F02] transition-colors leading-snug">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-xs text-[#B7B9BC] line-clamp-3 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="px-6 pb-6 pt-3 border-t border-[#252A34] flex items-center justify-between text-xs font-mono text-[#FB8F02]">
+                    <span className="font-bold">VIEW PROJECT DETAILS</span>
+                    <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </div>
                 </div>
-
-                <div className="px-6 pb-6 pt-3 border-t border-[#252A34] flex items-center justify-between text-xs font-mono text-[#FB8F02]">
-                  <span className="font-bold">VIEW PROJECT DETAILS</span>
-                  <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {filteredProjects.length === 0 && (
@@ -415,7 +438,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
           )}
 
           {/* Project Video Gallery Section */}
-          <div className="pt-12 border-t border-[#252A34] space-y-6">
+          <div className="pt-12 border-t border-[#252A34] space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="space-y-2">
                 <div className="text-xs font-mono uppercase tracking-[0.2em] text-[#FB8F02] font-semibold">
@@ -425,61 +448,45 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
                   Project Video Gallery
                 </h2>
                 <p className="text-xs sm:text-sm text-[#B7B9BC] max-w-2xl">
-                  Playback support for Princeway&apos;s MP4 project videos with standard controls, mobile compatibility, and fullscreen support.
+                  Watch Princeway&apos;s authentic field execution videos across Electrical Engineering, Building Construction, and Borehole Drilling. Click any preview thumbnail to play.
                 </p>
               </div>
+              <span className="text-xs font-mono text-[#FB8F02] font-semibold shrink-0">
+                SHOWING {filteredVideos.length} VIDEO{filteredVideos.length !== 1 ? 'S' : ''}
+              </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {videos.map((vid) => (
-                <div
-                  key={vid.id}
-                  className="bg-[#0F1115] border border-[#252A34] rounded-lg overflow-hidden flex flex-col justify-between"
-                >
-                  <div className="aspect-video bg-[#161920] border-b border-[#252A34] flex items-center justify-center relative">
-                    {vid.videoUrl ? (
-                      <video
-                        src={vid.videoUrl}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="p-6 text-center space-y-3">
-                        <Film className="w-8 h-8 text-[#FB8F02] mx-auto" />
-                        <div className="text-xs font-mono text-[#E5E7EB]">
-                          {vid.sourceFilename}
-                        </div>
-                        <label className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] text-[11px] font-extrabold uppercase tracking-wider rounded-[2px] cursor-pointer">
-                          <Upload className="w-3.5 h-3.5" />
-                          <span>Attach MP4 File</span>
-                          <input
-                            type="file"
-                            accept="video/mp4,video/*"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0];
-                              if (file) {
-                                onUpdateVideoUrl(vid.id, URL.createObjectURL(file));
-                              }
-                            }}
-                            className="hidden"
-                          />
-                        </label>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="p-5 space-y-2">
-                    <span className="inline-block text-[10px] font-mono uppercase tracking-wider text-[#FB8F02] font-semibold">
-                      {vid.category}
-                    </span>
-                    <h3 className="text-sm font-bold text-[#F5F5F3]">{vid.title}</h3>
-                    <p className="text-xs text-[#9CA3AF] leading-relaxed">{vid.description}</p>
-                  </div>
+            {widescreenVideos.length > 0 && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#B7B9BC]">
+                    Widescreen Field Videos (16:9)
+                  </span>
+                  <div className="h-[1px] flex-1 bg-[#252A34]" />
                 </div>
-              ))}
-            </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {widescreenVideos.map((vid) => (
+                    <YouTubeEmbedCard key={vid.id} video={vid} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {shortVideos.length > 0 && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#B7B9BC]">
+                    Site Progress Shorts (9:16)
+                  </span>
+                  <div className="h-[1px] flex-1 bg-[#252A34]" />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {shortVideos.map((vid) => (
+                    <YouTubeEmbedCard key={vid.id} video={vid} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* CTA Banner */}

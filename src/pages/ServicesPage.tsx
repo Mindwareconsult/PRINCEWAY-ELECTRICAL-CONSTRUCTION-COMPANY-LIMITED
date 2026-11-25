@@ -81,6 +81,13 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenCo
                     title={selectedService.title}
                     imageUrl={selectedService.imageUrl}
                     aspectRatio="4:3"
+                    objectPosition={
+                      selectedService.visualCategory === 'electrical'
+                        ? 'upper'
+                        : selectedService.visualCategory === 'borehole'
+                        ? 'top'
+                        : 'center'
+                    }
                     showBadge={true}
                   />
                 </div>

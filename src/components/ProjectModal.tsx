@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { ProjectItem } from '../types';
-import { X, MapPin, CheckCircle2, ArrowRight, Upload, Image as ImageIcon, Film } from 'lucide-react';
+import { ProjectItem, VideoGalleryItem } from '../types';
+import {
+  X,
+  MapPin,
+  CheckCircle2,
+  ArrowRight,
+  Upload,
+  Image as ImageIcon,
+  Film,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 import { ArchitecturalVisual } from './ArchitecturalVisual';
+import { YouTubeEmbedCard } from './YouTubeEmbedCard';
 
 interface ProjectModalProps {
   project: ProjectItem | null;
+  videos?: VideoGalleryItem[];
   onClose: () => void;
   onOpenConsultation: () => void;
   onUpdateProjectImage?: (projectId: string, imageUrl: string) => void;
@@ -13,6 +25,7 @@ interface ProjectModalProps {
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({
   project,
+  videos = [],
   onClose,
   onOpenConsultation,
   onUpdateProjectImage,
@@ -34,6 +47,34 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       : project.category === 'Borehole Drilling'
       ? 'borehole'
       : 'building';
+
+  const gallery =
+    project.galleryImages && project.galleryImages.length > 0
+      ? project.galleryImages
+      : project.imageUrl
+      ? [project.imageUrl]
+      : [];
+
+  const currentIdx = Math.max(0, gallery.indexOf(activeImage));
+  const hasGallery = gallery.length > 0;
+
+  const linkedVideos = videos.filter(
+    (v) =>
+      project.linkedVideoIds?.includes(v.id) ||
+      v.projectId === project.id
+  );
+
+  const handlePrevImage = () => {
+    if (gallery.length <= 1) return;
+    const prevIdx = (currentIdx - 1 + gallery.length) % gallery.length;
+    setActiveImage(gallery[prevIdx]);
+  };
+
+  const handleNextImage = () => {
+    if (gallery.length <= 1) return;
+    const nextIdx = (currentIdx + 1) % gallery.length;
+    setActiveImage(gallery[nextIdx]);
+  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -68,7 +109,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-[#12151B] border border-[#2A303D] rounded-lg shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div className="relative w-full max-w-4xl bg-[#12151B] border border-[#2A303D] rounded-lg shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
         {/* Header */}
         <div className="px-6 py-4 bg-[#171B22] border-b border-[#252A34] flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -89,34 +130,82 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
         {/* Content */}
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
-          {/* Main Enlarged Stage */}
-          <div className="relative rounded-lg overflow-hidden border border-[#252A34]">
-            <ArchitecturalVisual
-              category={visualCat}
-              title={project.title}
-              imageUrl={activeImage || project.imageUrl}
-              aspectRatio="16:9"
-              showBadge={true}
-              eager={true}
-            />
-          </div>
+          {/* Main Enlarged Stage: show full uncropped image inside clean dark lightbox stage if photo exists, or SVG fallback */}
+          {hasGallery ? (
+            <div className="relative rounded-lg overflow-hidden border border-[#252A34] bg-[#0A0C10]">
+              <div className="relative flex items-center justify-center min-h-[260px] max-h-[460px] w-full">
+                <img
+                  src={activeImage || gallery[0]}
+                  alt={`${project.title} — photo ${currentIdx + 1}`}
+                  referrerPolicy="no-referrer"
+                  className="max-h-[460px] w-auto max-w-full object-contain mx-auto"
+                />
+
+                {gallery.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handlePrevImage}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#0F1115]/85 hover:bg-[#FB8F02] text-white hover:text-[#0B0F19] border border-[#2D3340] flex items-center justify-center transition-colors cursor-pointer shadow-lg"
+                      aria-label="Previous project photograph"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNextImage}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#0F1115]/85 hover:bg-[#FB8F02] text-white hover:text-[#0B0F19] border border-[#2D3340] flex items-center justify-center transition-colors cursor-pointer shadow-lg"
+                      aria-label="Next project photograph"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </>
+                )}
+
+                <div className="absolute bottom-3 left-3 text-[11px] font-mono tracking-wider text-[#F5F5F3] bg-[#0F1115]/85 backdrop-blur px-2.5 py-1 border border-[#FB8F02]/40">
+                  PRINCEWAY PROJECT PHOTO
+                </div>
+
+                {gallery.length > 1 && (
+                  <div className="absolute bottom-3 right-3 text-[11px] font-mono text-[#FB8F02] bg-[#0F1115]/90 px-2.5 py-1 rounded border border-[#2D3340]">
+                    {currentIdx + 1} / {gallery.length}
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="relative rounded-lg overflow-hidden border border-[#252A34]">
+              <ArchitecturalVisual
+                category={visualCat}
+                title={project.title}
+                imageUrl={project.imageUrl}
+                aspectRatio="16:9"
+                showBadge={true}
+                eager={true}
+              />
+            </div>
+          )}
 
           {/* Interactive Lightbox Thumbnail Strip */}
-          {project.galleryImages && project.galleryImages.length > 1 && (
+          {gallery.length > 1 && (
             <div className="space-y-2">
-              <div className="text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
-                Project Photographs (Select to Enlarge)
+              <div className="flex items-center justify-between">
+                <div className="text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
+                  Project Photographs ({gallery.length} Site Views — Select to Enlarge)
+                </div>
               </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                {project.galleryImages.map((img, i) => {
-                  const isSelected = (activeImage || project.imageUrl) === img;
+              <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 gap-2.5">
+                {gallery.map((img, i) => {
+                  const isSelected = (activeImage || gallery[0]) === img;
                   return (
                     <button
                       key={i}
                       type="button"
                       onClick={() => setActiveImage(img)}
                       className={`aspect-[4/3] rounded overflow-hidden border-2 transition-all cursor-pointer ${
-                        isSelected ? 'border-[#FB8F02] scale-[1.02]' : 'border-[#252A34] opacity-80 hover:opacity-100'
+                        isSelected
+                          ? 'border-[#FB8F02] ring-2 ring-[#FB8F02]/30 scale-[1.02]'
+                          : 'border-[#252A34] opacity-75 hover:opacity-100'
                       }`}
                     >
                       <img
@@ -125,7 +214,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                         referrerPolicy="no-referrer"
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                       />
                     </button>
                   );
@@ -134,7 +223,30 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             </div>
           )}
 
-          {/* Embedded Project Video Player */}
+          {/* Linked YouTube Field Videos */}
+          {linkedVideos.length > 0 && (
+            <div className="space-y-3 pt-1">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
+                <Film className="w-3.5 h-3.5" />
+                <span>
+                  Related Field Video Documentation ({linkedVideos.length})
+                </span>
+              </div>
+              <div
+                className={`grid gap-4 ${
+                  linkedVideos.length === 1
+                    ? 'grid-cols-1 max-w-md'
+                    : 'grid-cols-1 sm:grid-cols-2'
+                }`}
+              >
+                {linkedVideos.map((vid) => (
+                  <YouTubeEmbedCard key={vid.id} video={vid} compact={true} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Custom Attached Video File Player */}
           {project.videoUrl && (
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#FB8F02]">
@@ -158,11 +270,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             <div className="flex items-center gap-2 text-[#B7B9BC]">
               <ImageIcon className="w-4 h-4 text-[#FB8F02] shrink-0" />
               <span>
-                {project.imageUrl
-                  ? 'Verified Princeway site photograph linked.'
-                  : project.expectedAssetHint
-                  ? `Attach borehole media (${project.expectedAssetHint}).`
-                  : 'Attach extracted site photo or MP4 video.'}
+                {hasGallery || linkedVideos.length > 0
+                  ? 'Verified Princeway site documentation linked.'
+                  : 'Attach additional site photo or MP4 video.'}
               </span>
             </div>
 

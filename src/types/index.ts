@@ -38,8 +38,11 @@ export interface ProjectItem {
   highlights: string[];
   imageUrl: string;
   galleryImages: string[];
+  objectPosition?: 'center' | 'top' | 'upper';
   videoUrl?: string;
   videoTitle?: string;
+  linkedVideoIds?: string[];
+  featuredOnHome?: boolean;
   expectedAssetHint?: string;
   isCustomUpload?: boolean;
 }
@@ -49,6 +52,11 @@ export interface VideoGalleryItem {
   title: string;
   category: ServiceCategory;
   description: string;
+  youtubeId?: string;
+  youtubeUrl?: string;
+  isShort?: boolean;
+  featured?: boolean;
+  projectId?: string;
   videoUrl: string;
   posterUrl?: string;
   sourceFilename: string;

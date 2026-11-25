@@ -6,6 +6,7 @@ interface ArchitecturalVisualProps {
   imageUrl?: string;
   className?: string;
   aspectRatio?: '16:9' | '4:3' | '1:1' | 'auto';
+  objectPosition?: 'center' | 'top' | 'upper';
   showBadge?: boolean;
   eager?: boolean;
 }
@@ -16,6 +17,7 @@ export const ArchitecturalVisual: React.FC<ArchitecturalVisualProps> = ({
   imageUrl,
   className = '',
   aspectRatio = '16:9',
+  objectPosition = 'center',
   showBadge = true,
   eager = false,
 }) => {
@@ -26,6 +28,12 @@ export const ArchitecturalVisual: React.FC<ArchitecturalVisualProps> = ({
     'auto': 'h-full w-full',
   }[aspectRatio];
 
+  const objectPosClass = {
+    center: 'object-center',
+    top: 'object-top',
+    upper: 'object-[50%_20%]',
+  }[objectPosition];
+
   if (imageUrl) {
     return (
       <div className={`relative overflow-hidden bg-[#14171D] border border-[#252A34] rounded-lg group ${aspectClass} ${className}`}>
@@ -35,7 +43,7 @@ export const ArchitecturalVisual: React.FC<ArchitecturalVisualProps> = ({
           referrerPolicy="no-referrer"
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
-          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          className={`w-full h-full object-cover ${objectPosClass} transition-transform duration-700 group-hover:scale-105`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F1115]/90 via-[#0F1115]/20 to-transparent opacity-80" />
         {showBadge && (

@@ -22,10 +22,10 @@ export default function App() {
   const [logoUrl, setLogoUrl] = useState<string>(BRAND_ASSETS.logoUrl);
   const [heroImageUrl, setHeroImageUrl] = useState<string>(BRAND_ASSETS.heroImageUrl);
 
-  // Versioned storage key ensures authentic uploaded photos load cleanly instead of stale empty placeholders
+  // Versioned storage key ensures latest organized projects & assets load cleanly
   const [projects, setProjects] = useState<ProjectItem[]>(() => {
     try {
-      const saved = localStorage.getItem('princeway_projects_v2');
+      const saved = localStorage.getItem('princeway_projects_v3');
       if (saved) {
         return JSON.parse(saved);
       }
@@ -40,7 +40,7 @@ export default function App() {
   const saveProjects = (updatedProjects: ProjectItem[]) => {
     setProjects(updatedProjects);
     try {
-      localStorage.setItem('princeway_projects_v2', JSON.stringify(updatedProjects));
+      localStorage.setItem('princeway_projects_v3', JSON.stringify(updatedProjects));
     } catch (e) {
       console.warn('Failed to save projects to localStorage', e);
     }
@@ -133,7 +133,11 @@ export default function App() {
           logoAttached = true;
           return;
         }
-        const targetProjectId = lower.includes('borehole') ? 'pw-borehole-01' : 'pw-bldg-01';
+        const targetProjectId = lower.includes('borehole')
+          ? 'pw-borehole-01'
+          : lower.includes('panel')
+          ? 'pw-elec-panel'
+          : 'pw-bldg-twostorey';
         projectImageAdds[targetProjectId] = [
           ...(projectImageAdds[targetProjectId] || []),
           objectUrl,
@@ -312,6 +316,7 @@ export default function App() {
       {/* Global Project Details Modal */}
       <ProjectModal
         project={selectedProject}
+        videos={videos}
         onClose={() => setSelectedProject(null)}
         onOpenConsultation={() => {
           const cat = selectedProject?.category;

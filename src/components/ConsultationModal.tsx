@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, Phone, CheckCircle, ArrowRight, MapPin, MessageCircle } from 'lucide-react';
+import { useForm, ValidationError } from '@formspree/react';
+import { X, Phone, CheckCircle, ArrowRight, MapPin, MessageCircle, AlertCircle } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { EnquiryFormData } from '../types';
 
@@ -9,57 +10,65 @@ interface ConsultationModalProps {
   initialService?: string;
 }
 
+const VALID_SERVICES = [
+  'Electrical Engineering',
+  'Building Construction',
+  'Borehole Drilling',
+] as const;
+
 export const ConsultationModal: React.FC<ConsultationModalProps> = ({
   isOpen,
   onClose,
   initialService = 'Electrical Engineering',
 }) => {
+  const [state, handleSubmit, reset] = useForm('maeoareb');
+
+  const normalizedInitialService = VALID_SERVICES.includes(
+    initialService as (typeof VALID_SERVICES)[number]
+  )
+    ? initialService
+    : 'Electrical Engineering';
+
   const [formData, setFormData] = useState<EnquiryFormData>({
     fullName: '',
     email: '',
     phone: '',
-    serviceRequired: initialService,
+    serviceRequired: normalizedInitialService,
     projectLocation: 'Owerri, Imo State',
     description: '',
   });
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
-
   useEffect(() => {
+    const nextService = VALID_SERVICES.includes(
+      initialService as (typeof VALID_SERVICES)[number]
+    )
+      ? initialService
+      : 'Electrical Engineering';
+
     setFormData((prev) => ({
       ...prev,
-      serviceRequired: initialService || 'Electrical Engineering',
+      serviceRequired: nextService,
     }));
   }, [initialService, isOpen]);
 
   if (!isOpen) return null;
 
-  const validate = () => {
-    const errs: Record<string, string> = {};
-    if (!formData.fullName.trim()) errs.fullName = 'Please enter your full name.';
-    if (!formData.phone.trim()) {
-      errs.phone = 'Please provide a valid phone number.';
-    } else if (formData.phone.trim().length < 8) {
-      errs.phone = 'Phone number is too short.';
+  const handleClose = () => {
+    if (state.succeeded) {
+      reset();
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        serviceRequired: normalizedInitialService,
+        projectLocation: 'Owerri, Imo State',
+        description: '',
+      });
     }
-    if (!formData.email.trim()) {
-      errs.email = 'Please provide an email address.';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errs.email = 'Please enter a valid email format.';
-    }
-    if (!formData.description.trim()) {
-      errs.description = 'Please describe your project or requirements.';
-    }
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
+    onClose();
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setSubmitted(true);
-  };
+  const formSource = `${formData.serviceRequired || 'Project Consultation'} Inquiry`;
 
   const whatsappText = encodeURIComponent(
     `Hello Princeway Electrical Construction Company Limited,\n\nName: ${formData.fullName}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService Required: ${formData.serviceRequired}\nLocation: ${formData.projectLocation}\nProject Details: ${formData.description}`
@@ -77,7 +86,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             <h3 className="text-lg font-bold text-[#F5F5F3]">Discuss Your Project with Princeway</h3>
           </div>
           <button
-            onClick={onClose}
+            type="button"
+            onClick={handleClose}
             className="p-1.5 text-[#B7B9BC] hover:text-white rounded hover:bg-[#232833] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
@@ -87,15 +97,22 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
-          {submitted ? (
-            <div className="py-10 text-center space-y-4">
+          {state.succeeded ? (
+            <div role="status" aria-live="polite" className="py-10 text-center space-y-4">
               <div className="w-14 h-14 bg-[#FB8F02]/15 border border-[#FB8F02] rounded-full flex items-center justify-center mx-auto text-[#FB8F02]">
                 <CheckCircle className="w-8 h-8" />
               </div>
-              <h4 className="text-xl font-bold text-[#F5F5F3]">Project Brief Prepared</h4>
+              <h4 className="text-xl font-bold text-[#F5F5F3]">
+                Thank You for Contacting Princeway!
+              </h4>
               <p className="text-sm text-[#B7B9BC] max-w-md mx-auto leading-relaxed">
-                Thank you, <span className="text-[#F5F5F3] font-semibold">{formData.fullName}</span>. Your brief for{' '}
-                <span className="text-[#FB8F02] font-semibold">{formData.serviceRequired}</span> is ready. Send it directly via WhatsApp or call us immediately:
+                Your inquiry for{' '}
+                <span className="text-[#FB8F02] font-semibold">
+                  {formData.serviceRequired}
+                </span>{' '}
+                has been received by{' '}
+                <span className="text-[#F5F5F3] font-semibold">{COMPANY_INFO.name}</span>.
+                Our team will review your message and get back to you.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
@@ -105,7 +122,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   className="px-5 py-2.5 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Send via WhatsApp</span>
+                  <span>Follow Up on WhatsApp</span>
                 </a>
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
@@ -115,10 +132,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                   <span>Call {COMPANY_INFO.phoneDisplay}</span>
                 </a>
                 <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    onClose();
-                  }}
+                  type="button"
+                  onClick={handleClose}
                   className="px-4 py-2.5 text-[#B7B9BC] hover:text-white font-bold text-xs uppercase tracking-wider cursor-pointer"
                 >
                   Close
@@ -127,56 +142,120 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="hidden"
+                name="_subject"
+                value={`New Project Enquiry (${formData.serviceRequired}) - Princeway Electrical`}
+              />
+              <input type="hidden" name="form_source" value={formSource} />
+
+              {state.errors && (
+                <div
+                  role="alert"
+                  className="p-3 bg-red-900/30 border border-red-500/40 text-red-200 text-xs rounded flex items-start gap-2"
+                >
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <p className="font-semibold">
+                      There was a problem submitting your inquiry. Please check the highlighted fields and try again.
+                    </p>
+                    <ValidationError errors={state.errors} />
+                  </div>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5">
+                  <label
+                    htmlFor="modal-name"
+                    className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5"
+                  >
                     Full Name *
                   </label>
                   <input
+                    id="modal-name"
+                    name="name"
                     type="text"
+                    autoComplete="name"
+                    required
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="Your full name"
                     className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   />
-                  {errors.fullName && <p className="text-[11px] text-red-400 mt-1">{errors.fullName}</p>}
+                  <ValidationError
+                    prefix="Full Name"
+                    field="name"
+                    errors={state.errors}
+                    className="text-[11px] text-red-400 mt-1"
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5">
+                  <label
+                    htmlFor="modal-phone"
+                    className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5"
+                  >
                     Phone Number *
                   </label>
                   <input
+                    id="modal-phone"
+                    name="phone"
                     type="tel"
+                    autoComplete="tel"
+                    required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="e.g. 0806 362 4432"
                     className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   />
-                  {errors.phone && <p className="text-[11px] text-red-400 mt-1">{errors.phone}</p>}
+                  <ValidationError
+                    prefix="Phone Number"
+                    field="phone"
+                    errors={state.errors}
+                    className="text-[11px] text-red-400 mt-1"
+                  />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5">
+                  <label
+                    htmlFor="modal-email"
+                    className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5"
+                  >
                     Email Address *
                   </label>
                   <input
+                    id="modal-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
+                    required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
                     className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                   />
-                  {errors.email && <p className="text-[11px] text-red-400 mt-1">{errors.email}</p>}
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
+                    className="text-[11px] text-red-400 mt-1"
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5">
-                    Service Required
+                  <label
+                    htmlFor="modal-service"
+                    className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5"
+                  >
+                    Service of Interest *
                   </label>
                   <select
+                    id="modal-service"
+                    name="service"
+                    required
                     value={formData.serviceRequired}
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                     className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
@@ -184,16 +263,26 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
                     <option value="Electrical Engineering">Electrical Engineering</option>
                     <option value="Building Construction">Building Construction</option>
                     <option value="Borehole Drilling">Borehole Drilling</option>
-                    <option value="General Enquiry">General Enquiry</option>
                   </select>
+                  <ValidationError
+                    prefix="Service"
+                    field="service"
+                    errors={state.errors}
+                    className="text-[11px] text-red-400 mt-1"
+                  />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5">
+                <label
+                  htmlFor="modal-location"
+                  className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5"
+                >
                   Project Location
                 </label>
                 <input
+                  id="modal-location"
+                  name="location"
                   type="text"
                   value={formData.projectLocation}
                   onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })}
@@ -203,17 +292,28 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5">
+                <label
+                  htmlFor="modal-message"
+                  className="block text-xs font-mono uppercase tracking-wider text-[#B7B9BC] mb-1.5"
+                >
                   Project Description *
                 </label>
                 <textarea
+                  id="modal-message"
+                  name="message"
                   rows={4}
+                  required
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Tell us about your electrical engineering, building construction, or borehole drilling requirements..."
                   className="w-full px-3.5 py-2.5 bg-[#0F1115] border border-[#2A303D] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none transition-colors"
                 />
-                {errors.description && <p className="text-[11px] text-red-400 mt-1">{errors.description}</p>}
+                <ValidationError
+                  prefix="Project Description"
+                  field="message"
+                  errors={state.errors}
+                  className="text-[11px] text-red-400 mt-1"
+                />
               </div>
 
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -224,9 +324,10 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-6 py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  disabled={state.submitting}
+                  className="w-full sm:w-auto px-6 py-3 bg-[#FB8F02] hover:bg-[#E07E00] disabled:opacity-60 disabled:cursor-not-allowed text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <span>Prepare Project Enquiry</span>
+                  <span>{state.submitting ? 'Submitting Inquiry...' : 'Submit Project Enquiry'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { PageId } from '../types';
 import { COMPANY_INFO } from '../data/companyData';
 import {
@@ -9,6 +10,7 @@ import {
   CheckCircle2,
   Navigation,
   MessageCircle,
+  AlertCircle,
 } from 'lucide-react';
 
 interface ContactPageProps {
@@ -16,44 +18,33 @@ interface ContactPageProps {
 }
 
 export const ContactPage: React.FC<ContactPageProps> = () => {
+  const [state, handleSubmit, reset] = useForm('maeoareb');
+
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [serviceRequired, setServiceRequired] = useState('Electrical Engineering');
   const [location, setLocation] = useState('Owerri, Imo State');
+  const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
-
-  const validate = () => {
-    const errs: Record<string, string> = {};
-    if (!fullName.trim()) errs.fullName = 'Full name is required.';
-    if (!phone.trim()) {
-      errs.phone = 'Phone number is required.';
-    } else if (phone.trim().length < 8) {
-      errs.phone = 'Please provide a valid telephone number.';
-    }
-    if (email.trim() && !/\S+@\S+\.\S+/.test(email)) {
-      errs.email = 'Please provide a valid email format.';
-    }
-    if (!message.trim()) {
-      errs.message = 'Please describe your project requirements.';
-    }
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
-  };
 
   const whatsappBriefUrl = `${COMPANY_INFO.whatsappUrl}?text=${encodeURIComponent(
     `Hello Princeway Electrical Construction Company Limited,\n\nName: ${fullName}\nPhone: ${phone}${
       email ? `\nEmail: ${email}` : ''
-    }\nService Required: ${serviceRequired}\nLocation: ${location}\nProject Details: ${message}`
+    }\nService Required: ${serviceRequired}\nLocation: ${location}${
+      subject ? `\nSubject: ${subject}` : ''
+    }\nProject Details: ${message}`
   )}`;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-    setSubmitted(true);
+  const handleReset = () => {
+    reset();
+    setFullName('');
+    setEmail('');
+    setPhone('');
+    setServiceRequired('Electrical Engineering');
+    setLocation('Owerri, Imo State');
+    setSubject('');
+    setMessage('');
   };
 
   return (
@@ -198,21 +189,24 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                 </span>
                 <h3 className="text-2xl font-bold text-[#F5F5F3]">Request a Project Discussion</h3>
                 <p className="text-xs sm:text-sm text-[#B7B9BC]">
-                  Complete the enquiry brief below to prepare your project details for direct WhatsApp dispatch or telephone follow-up.
+                  Complete the enquiry form below to send your project requirements directly to Princeway Electrical Construction Company Limited.
                 </p>
               </div>
 
-              {submitted ? (
-                <div className="py-12 text-center space-y-5">
+              {state.succeeded ? (
+                <div role="status" aria-live="polite" className="py-12 text-center space-y-5">
                   <div className="w-16 h-16 bg-[#FB8F02]/15 border border-[#FB8F02] rounded-full flex items-center justify-center mx-auto text-[#FB8F02]">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h4 className="text-2xl font-bold text-[#F5F5F3]">Enquiry Brief Ready</h4>
+                  <h4 className="text-2xl font-bold text-[#F5F5F3]">
+                    Thank You for Contacting Princeway!
+                  </h4>
                   <p className="text-sm text-[#B7B9BC] max-w-md mx-auto leading-relaxed">
-                    Thank you, <span className="text-white font-semibold">{fullName}</span>. Your{' '}
-                    <span className="text-[#FB8F02]">{serviceRequired}</span> project brief is formatted for{' '}
-                    <span className="text-white font-medium">{COMPANY_INFO.name}</span>. Send it directly via WhatsApp or call us immediately on{' '}
-                    <span className="text-[#FB8F02]">{COMPANY_INFO.phoneDisplay}</span>.
+                    Your inquiry regarding{' '}
+                    <span className="text-[#FB8F02] font-semibold">{serviceRequired}</span> has been
+                    received by{' '}
+                    <span className="text-white font-medium">{COMPANY_INFO.name}</span>. Our team
+                    will review your message and respond promptly.
                   </p>
                   <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                     <a
@@ -222,7 +216,7 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                       className="px-6 py-3 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] text-xs font-extrabold uppercase tracking-wider rounded-[2px] flex items-center gap-2"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Send Brief via WhatsApp</span>
+                      <span>Also Send via WhatsApp</span>
                     </a>
                     <a
                       href={`tel:${COMPANY_INFO.phoneRaw}`}
@@ -232,65 +226,134 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                       <span>Call {COMPANY_INFO.phoneDisplay}</span>
                     </a>
                     <button
-                      onClick={() => setSubmitted(false)}
+                      type="button"
+                      onClick={handleReset}
                       className="px-4 py-3 text-xs font-mono text-[#9CA3AF] hover:text-white cursor-pointer"
                     >
-                      Edit Brief
+                      Send Another Inquiry
                     </button>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value={
+                      subject.trim()
+                        ? `${subject.trim()} - Princeway Electrical`
+                        : `New Contact Page Inquiry (${serviceRequired}) - Princeway Electrical`
+                    }
+                  />
+                  <input type="hidden" name="form_source" value="Contact Page" />
+
+                  {state.errors && (
+                    <div
+                      role="alert"
+                      className="p-3 bg-red-900/30 border border-red-500/40 text-red-200 text-xs rounded flex items-start gap-2"
+                    >
+                      <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                      <div className="space-y-1">
+                        <p className="font-semibold">
+                          Unable to submit your message. Please verify your entries and try again.
+                        </p>
+                        <ValidationError errors={state.errors} />
+                      </div>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5">
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                      >
                         Full Name *
                       </label>
                       <input
+                        id="contact-name"
+                        name="name"
                         type="text"
+                        autoComplete="name"
+                        required
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Your full name"
                         className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
-                      {errors.fullName && <p className="text-[11px] text-red-400 mt-1">{errors.fullName}</p>}
+                      <ValidationError
+                        prefix="Full Name"
+                        field="name"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5">
+                      <label
+                        htmlFor="contact-phone"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                      >
                         Phone Number *
                       </label>
                       <input
+                        id="contact-phone"
+                        name="phone"
                         type="tel"
+                        autoComplete="tel"
+                        required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="e.g. 0806 362 4432"
                         className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
-                      {errors.phone && <p className="text-[11px] text-red-400 mt-1">{errors.phone}</p>}
+                      <ValidationError
+                        prefix="Phone Number"
+                        field="phone"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5">
-                        Email Address (Optional)
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                      >
+                        Email Address *
                       </label>
                       <input
+                        id="contact-email"
+                        name="email"
                         type="email"
+                        autoComplete="email"
+                        required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="name@example.com"
                         className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                       />
-                      {errors.email && <p className="text-[11px] text-red-400 mt-1">{errors.email}</p>}
+                      <ValidationError
+                        prefix="Email"
+                        field="email"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5">
-                        Service Required
+                      <label
+                        htmlFor="contact-service"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                      >
+                        Service of Interest *
                       </label>
                       <select
+                        id="contact-service"
+                        name="service"
+                        required
                         value={serviceRequired}
                         onChange={(e) => setServiceRequired(e.target.value)}
                         className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
@@ -298,44 +361,86 @@ export const ContactPage: React.FC<ContactPageProps> = () => {
                         <option value="Electrical Engineering">Electrical Engineering</option>
                         <option value="Building Construction">Building Construction</option>
                         <option value="Borehole Drilling">Borehole Drilling</option>
-                        <option value="General Enquiry">General Enquiry</option>
                       </select>
+                      <ValidationError
+                        prefix="Service"
+                        field="service"
+                        errors={state.errors}
+                        className="text-[11px] text-red-400 mt-1"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="contact-location"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                      >
+                        Project Location
+                      </label>
+                      <input
+                        id="contact-location"
+                        name="location"
+                        type="text"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="e.g. Owerri, Imo State"
+                        className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="contact-subject"
+                        className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                      >
+                        Subject
+                      </label>
+                      <input
+                        id="contact-subject"
+                        name="subject"
+                        type="text"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                        placeholder="e.g. Electrical Panel Installation Quote"
+                        className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
+                      />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5">
-                      Project Location
-                    </label>
-                    <input
-                      type="text"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      placeholder="e.g. Owerri, Imo State"
-                      className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5">
-                      Project Message / Requirements *
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs font-mono uppercase text-[#B7B9BC] mb-1.5"
+                    >
+                      Message / Project Description *
                     </label>
                     <textarea
+                      id="contact-message"
+                      name="message"
                       rows={5}
+                      required
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Share details of your electrical, building construction, or borehole drilling project..."
                       className="w-full px-3.5 py-2.5 bg-[#161920] border border-[#2D3340] rounded-[2px] text-sm text-[#F5F5F3] focus:border-[#FB8F02] focus:outline-none"
                     />
-                    {errors.message && <p className="text-[11px] text-red-400 mt-1">{errors.message}</p>}
+                    <ValidationError
+                      prefix="Message"
+                      field="message"
+                      errors={state.errors}
+                      className="text-[11px] text-red-400 mt-1"
+                    />
                   </div>
 
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-4 bg-[#FB8F02] hover:bg-[#E07E00] text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#FB8F02]/20"
+                      disabled={state.submitting}
+                      className="w-full py-4 bg-[#FB8F02] hover:bg-[#E07E00] disabled:opacity-60 disabled:cursor-not-allowed text-[#0B0F19] font-extrabold text-xs uppercase tracking-wider rounded-[2px] flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#FB8F02]/20"
                     >
-                      <span>Submit Enquiry</span>
+                      <span>{state.submitting ? 'Submitting Inquiry...' : 'Send Inquiry'}</span>
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
